@@ -6,7 +6,7 @@
 
 ~$ alias sail='./vendor/bin/sail'
 
-~$ sail artisan key:generate
+~$ sail up -d
 
-~$ ail up -d
+~$ sail artisan key:generate
 
