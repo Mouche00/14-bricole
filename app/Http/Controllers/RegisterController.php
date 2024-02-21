@@ -12,28 +12,36 @@ class RegisterController extends Controller
         return view('auth.signup');
     }
 
+    // public function store(Request $request, $role){
 
+    //     switch ($request->input('role')){
+    //         case 'artisan':
+                
+    //             break;
+    //     }
+    // }
+
+    public function artisan(Request $request)
+    {
+        // $attributes = $request->validate([
+        //     ''
+        // ])
+    }
 
     
-public function client(Request $request){
+    public function client(Request $request){
 
-    $request->validate([
-        'name' => 'required|min:4',
-        'email' => 'required|email',
-        'password' => 'required|min:8', 
-    ]);
-    
+        $attributes = $request->validate([
+            'name' => 'required|min:4',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8', 
+        ]);
 
-    
-    $user = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => bcrypt($request->password), 
-    ]);
+        
+        $user = User::create($attributes);
 
-    $client = $user->client()->create([
-    ]);
+        $client = $user->client()->create();
 
-    return redirect()->route('signup');
-}
+        return redirect()->route('signup');
+    }
 }
