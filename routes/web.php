@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 Route::get('register', [Controller :: class, 'register']);
 Route::get('login', [Controller :: class, 'login']);
+
 Route::get('/signup', function () {
     return view('auth.signup');
 });
