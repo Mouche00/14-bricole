@@ -18,6 +18,10 @@
 
         <div class="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
             <div class="w-full">
+                <div>
+                    <img class="h-40" src="{{url('img/logo.png')}}" alt="">
+                </div>
+                
                 <h1 class="text-2xl font-semibold tracking-wider text-gray-700 capitalize">
                     Get your free account now.
                 </h1>
