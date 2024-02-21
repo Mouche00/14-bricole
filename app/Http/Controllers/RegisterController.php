@@ -22,6 +22,7 @@ public function client(Request $request){
         'email' => 'required|email',
         'password' => 'required|min:8', 
     ]);
+    
 
     
     $user = User::create([
