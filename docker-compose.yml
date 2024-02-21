@@ -53,7 +53,7 @@ services:
         image: dpage/pgadmin4
         restart: always
         environment:
-            PGADMIN_DEFAULT_EMAIL: root
+            PGADMIN_DEFAULT_EMAIL: root@gmail.com
             PGADMIN_DEFAULT_PASSWORD: root
         ports:
         - "8000:80"
