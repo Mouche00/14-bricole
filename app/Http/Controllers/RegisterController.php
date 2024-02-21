@@ -35,6 +35,16 @@ class RegisterController extends Controller
             'name' => 'required|min:4',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8', 
+        ],
+        [
+
+            'name.min' => 'The name must have more than 3 characters.',
+            'name.unique' => 'This name is already taken.',
+            'email.required' => 'The email is required.',
+            'email.email' => 'Incorrect email structure.',
+            'email.unique' => 'This email is already taken.',
+            'password.min' => 'The password must have more than 3 characters.',
+            'password.required' => 'The password is required.',
         ]);
 
         
