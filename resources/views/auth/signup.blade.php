@@ -5,12 +5,12 @@
         @apply transform translate-x-full;
     }
 </style>
-<section class="bg-white dark:bg-gray-100">
+<section class="bg-white dark:bg-gray-100 ">
     <div class="flex justify-center min-h-screen">
-        <div class="hidden bg-cover lg:block lg:w-2/5" style="background-image: url('img/image4.jpg')">
+        <div class="hidden bg-cover lg:block lg:w-2/5" style="background-image: url('{{ asset('pictures/man.png') }}')">
             <div class="bg-gray-900 bg-opacity-40">
-                <a href="/"><button class=" absolute ml-5 mt-5 hover:bg-yellow-400 duration-700 bg-gray-200 rounded-lg px-1">
-                    <svg class="w-[46px] h-[36px] text-yellow-400 hover:text-white duration-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <a href="/"><button class=" absolute ml-5 mt-5 hover:bg-[#3a86ff] duration-700 bg-gray-200 rounded-lg px-1">
+                    <svg class="w-[46px] h-[36px] text-[#3a86ff] hover:text-white duration-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
                       </svg>
                 </button></a>
@@ -19,19 +19,17 @@
 
         <div class="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
             <div class="w-full">
-                <h1 class="text-2xl font-semibold tracking-wider text-gray-700 capitalize">
-                    Get your free account now.
+                <h1 class="text-2xl font-semibold tracking-wider text-black capitalize">
+                    Créez votre compte prestataire
                 </h1>
 
-                <p class="mt-4 text-gray-500 dark:text-gray-400">
-                    Let’s get you all set up so you can verify your personal account and begin setting up your profile.
-                </p>
+               
 
                 <div class="mt-6">
-                    <h1 class="text-gray-500 ">Select type of account</h1>
+                    <h1 class="text-gray-500 ">Sélectionnez le type de compte</h1>
 
                     <div class="mt-3 md:flex md:items-center md:-mx-2">
-                        <button id="passager-btn" class="flex justify-center w-full px-6 py-3 text-yellow-400 border border-yellow-400 rounded-lg md:w-auto md:mx-2 focus:outline-none focus:bg-yellow-400 focus:text-white">
+                        <button id="passager-btn" class="flex justify-center w-full px-6 py-3 text-[#3a86ff] border border-[#3a86ff] rounded-lg md:w-auto md:mx-2 focus:outline-none focus:bg-[#3a86ff] focus:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
@@ -41,7 +39,7 @@
                             </span>
                         </button>
 
-                        <button id="chauffeur-btn" class="flex justify-center w-full px-6 py-3 mt-4 text-yellow-400 border border-yellow-400 rounded-lg md:mt-0 md:w-auto md:mx-2 dark:border-yellow-400 dark:text-yellow-400 focus:bg-yellow-400 focus:text-white focus:outline-none">
+                        <button id="chauffeur-btn" class="flex justify-center w-full px-6 py-3 mt-4 text-[#3a86ff] border border-[#3a86ff] rounded-lg md:mt-0 md:w-auto md:mx-2 dark:border-[#3a86ff] dark:text-[#3a86ff] focus:bg-[#3a86ff] focus:text-white focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
@@ -91,7 +89,7 @@
                     </div>
 
                     <button type="submit"
-                        class="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-yellow-500 rounded-lg hover:bg-yellow-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                        class="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#3a86ff] rounded-lg hover:bg-[#3a86ff] focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                         <span>Sign Up </span>
 
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rtl:-scale-x-100" viewBox="0 0 20 20" fill="currentColor">
@@ -149,7 +147,7 @@
 
                         
     
-                        <button type="submit" class="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-yellow-500 rounded-lg hover:bg-yellow-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                        <button type="submit" class="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#3a86ff] rounded-lg hover:bg-[#3a86ff] focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                             <span>Sign Up </span>
     
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rtl:-scale-x-100" viewBox="0 0 20 20" fill="currentColor">
