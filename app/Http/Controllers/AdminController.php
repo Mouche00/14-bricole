@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function dashboard(){
+        return view('admin.adminDashboard');
+    }
+
+    public function users(){
+        return view('admin.usersDashboard');
+    }
+
+    public function domain(){
+        return view('admin.domainDashboard');
+    }
     /**
      * Display a listing of the resource.
      */
