@@ -56,7 +56,7 @@
                 <div id="passagerForm" class="w-full">
                 <form action="{{route('signup.client')}}" method="POST" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 ">
                     @csrf
-
+                  
                     <input type="text" name="role" value="client" class="hidden">
                     <div>
                         <label class="block mb-2 text-sm text-gray-700 ">First Name</label>
@@ -100,6 +100,11 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </button>
+                    <div class="text-red-500 text-[20px]">
+                        @if ($errors->any())
+                            <div>{{ $errors->first() }}</div>
+                        @endif
+                    </div>
                 </form>
             </div>
                 <div id="chauffeurForm" class="hidden w-full">

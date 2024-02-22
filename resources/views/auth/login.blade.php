@@ -1,4 +1,6 @@
-@extends('header')
+@extends('layouts.master')
+@section('login')
+
 
 <div class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-100 lg:max-w-4xl mt-[217px]">
     <div class="hidden bg-cover lg:block lg:w-1/2" style="background-image: url('img/login.jpg');"></div>
@@ -63,3 +65,4 @@
         </div>
     </div>
 </div>
+@endsection
