@@ -44,6 +44,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+
+    public function setPasswordAttribute($password){
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+
+    
     public function admin(){
         return $this->hasOne(Admin::class);
     }

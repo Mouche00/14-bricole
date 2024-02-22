@@ -73,6 +73,21 @@
                         <input name="phone" type="text" placeholder="XXX-XX-XXXX-XXX" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-300 dark:bg-gray-100 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                     </div>
 
+                   
+                    <div>
+                          
+                          <label for="dropzone-file" class="flex items-center px-3 py-3  mx-auto mt-6 text-center bg-white border  rounded-lg cursor-pointer border-gray-600 dark:bg-gray-100">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                              </svg>
+              
+                              <h2 class="mx-3 text-gray-400">Profile Photo</h2>
+              
+                              <input name="image" id="dropzone-file" type="file" class="hidden" />
+                          </label>
+                      </div>
+
+
                     <div>
                         <label class="block mb-2 text-sm text-gray-800">Email address</label>
                         <input name="email" type="email" placeholder="johnsnow@example.com" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-300 dark:bg-gray-100 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
@@ -90,24 +105,9 @@
                         <input name="password" type="password" placeholder="Enter your password" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-300 dark:bg-gray-100 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                     </div>
                     <div>
-                        <label class="block mb-2 text-sm text-gray-700 ">Password</label>
+                        <label class="block mb-2 text-sm text-gray-700 ">Confirme Password</label>
                         <input name="password" type="password" placeholder="Enter your password" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-300 dark:bg-gray-100 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                     </div>
-
-
-                    <div>
-                          
-                          <label for="dropzone-file" class="flex items-center px-3 py-3  mx-auto mt-6 text-center bg-white border  rounded-lg cursor-pointer border-gray-600 dark:bg-gray-100">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                              </svg>
-              
-                              <h2 class="mx-3 text-gray-400">Profile Photo</h2>
-              
-                              <input name="image" id="dropzone-file" type="file" class="hidden" />
-                          </label>
-                      </div>
-
 
                     <button type="submit"
                         class="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#3a86ff] rounded-lg hover:bg-[#3a86ff] focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">

@@ -16,10 +16,8 @@ class SessionController extends Controller
             'email'=> 'required',
             'password'=> 'required',
             ]);
-
-
-        if(auth()->attempt($attributes)){
             
+        if(auth()->attempt($attributes)){
           return redirect('/');
         }
 
