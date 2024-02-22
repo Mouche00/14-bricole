@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SessionController extends Controller
 {
@@ -17,19 +18,24 @@ class SessionController extends Controller
             'email'=> 'required',
             'password'=> 'required',
             ]);
-            
-        // if(auth()->attempt($attributes)){
-        //     if(auth()->user()->artisan()->first()->exists()) {
 
-        //     } elseif(auth()->user()->client()->first()->exists()) {
+
+        /* REDIRECTION WHITHOUT SAPTIE
+
+        if(auth()->attempt($attributes)){
+            if(auth()->user()->artisan()->first()->exists()) {
+
+            } elseif(auth()->user()->client()->first()->exists()) {
                 
-        //     } elseif(auth()->user()->admin()->first()->exists()) {
+            } elseif(auth()->user()->admin()->first()->exists()) {
 
-        //     } else {
+            } else {
 
-        //         return back();
-        //     }
-        // }
+                return back();
+            }
+        }
+
+        */
 
         if(! auth()->attempt($attributes)) {
             throw ValidationException::withMessages([
@@ -52,18 +58,31 @@ class SessionController extends Controller
                 break;
         }
 
-        // if(auth()->user()->hasRole('artisan')) {
+        /* OLD REDIRECTION WITH SAPTIE (MORE CONTROLE OVER ROUTES)
+        
+        if(auth()->user()->hasRole('artisan')) {
 
-        //     return redirect()->route('artisan');
-        // } elseif (auth()->user()->hasRole('client')) {
+            return redirect()->route('artisan');
+        } elseif (auth()->user()->hasRole('client')) {
 
-        //     return redirect()->route('client');
-        // } elseif (auth()->user()->hasRole('admin')) {
+            return redirect()->route('client');
+        } elseif (auth()->user()->hasRole('admin')) {
 
-        //     return redirect()->route('artisan');
-        // }
+            return redirect()->route('artisan');
+        }
+
+        */
 
         return redirect()->route($redirect);
+    }
+
+    public function destroy(Request $request) {
+
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home');
     }
 
 
