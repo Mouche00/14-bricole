@@ -1,14 +1,27 @@
-const artisanForm = document.getElementById('artisanForm');
-const clientForm = document.getElementById('clientForm');
+const cliantForm = document.getElementById("client");
+const artisanForm = document.getElementById("artisan");
 
-document.getElementById('artisan-btn').addEventListener('click', function () {
-    artisanForm.classList.remove('hidden');
-    clientForm.classList.add('hidden');
+document.getElementById("client-btn").addEventListener("click", function () {
+    cliantForm.classList.remove("hidden");
+    artisanForm.classList.add("hidden");
 });
 
-document.getElementById('client-btn').addEventListener('click', function () {
-    artisanForm.classList.add('hidden');
-    clientForm.classList.remove('hidden');
+document.getElementById("artisan-btn").addEventListener("click", function () {
+    cliantForm.classList.add("hidden");
+    artisanForm.classList.remove("hidden");
 });
 
+//picture change input
 
+var loadFile = function (event) {
+    var input = event.target;
+    var file = input.files[0];
+    var type = file.type;
+
+    var output = document.getElementById("preview_img");
+
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function () {
+        URL.revokeObjectURL(output.src); // free memory
+    };
+};
