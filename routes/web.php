@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('login', [Controller :: class, 'login']);
 
-Route::post('signup', [RegisterController :: class, 'client'])->name('signup.client');
+Route::post('/signup', [RegisterController :: class, 'client'])->name('signup.client');
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
@@ -41,6 +41,7 @@ Route::get('domain', [ArtisanController :: class, 'domain'])->name('domain');
 // Route::get('register', [Controller :: class, 'register']);
 Route::get('login', [SessionController::class, 'create']);
 Route::post('login', [SessionController::class, 'store'])->name('login.store');
+Route::get('signup', [RegisterController::class, 'index'])->name('signup');
 
 Route::post('client/signup', [RegisterController::class, 'client'])->name('signup.client');
 Route::post('artisan/signup', [RegisterController::class, 'artisan'])->name('signup.artisan');
