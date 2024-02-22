@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArtisanController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,7 @@ Route::get('/', function () {
 });
 
 
+
 Route::get('login', [Controller :: class, 'login']);
 
 Route::get('signup', [RegisterController :: class, 'index'])->name('signup');
@@ -33,3 +35,14 @@ Route::post('signup', [RegisterController :: class, 'client'])->name('signup.cli
 Route::get('artisan', [ArtisanController :: class, 'dashboard'])->name('artisan');
 Route::get('domain', [ArtisanController :: class, 'domain'])->name('domain');
 
+
+// Route::get('register', [Controller :: class, 'register']);
+Route::get('login', [SessionController::class, 'create']);
+
+Route::get('signup', [RegisterController::class, 'index'])->name('signup');
+Route::post('client/signup', [RegisterController::class, 'client'])->name('signup.client');
+Route::post('artisan/signup', [RegisterController::class, 'artisan'])->name('signup.artisan');
+
+
+Route::get('signup', [RegisterController :: class, 'index'])->name('signup');
+Route::post('signup', [RegisterController :: class, 'client'])->name('signup.client');

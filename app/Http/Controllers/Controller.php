@@ -15,6 +15,6 @@ class Controller extends BaseController
     }
 
     public function login(){
-        return view('login');
+        return view('auth.login');
     }
 }
