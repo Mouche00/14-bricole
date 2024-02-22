@@ -26,6 +26,9 @@ class User extends Authenticatable
         'phone',
         'picture',
         'address',
+        'provider',
+        'provider_id',
+        'provider_token'
     ];
 
     /**
