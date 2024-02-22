@@ -46,3 +46,7 @@ Route::get('signup', [RegisterController::class, 'index'])->name('signup');
 Route::post('client/signup', [RegisterController::class, 'client'])->name('signup.client');
 Route::post('artisan/signup', [RegisterController::class, 'artisan'])->name('signup.artisan');
 // Route::post('signupArtisan', [RegisterController :: class, 'artisan']);
+
+Route::middleware(['can:admin'])->group(function () {
+
+});
