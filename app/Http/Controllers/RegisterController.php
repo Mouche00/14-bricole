@@ -39,6 +39,15 @@ class RegisterController extends Controller
             'phone' => 'required',
             'picture' => 'required|image',
             'address'=> 'required',
+        ], [
+
+            'name.min' => 'The name must have more than 3 characters.',
+            'name.unique' => 'This name is already taken.',
+            'email.required' => 'The email is required.',
+            'email.email' => 'Incorrect email structure.',
+            'email.unique' => 'This email is already taken.',
+            'password.min' => 'The password must have more than 3 characters.',
+            'password.required' => 'The password is required.',
         ]);
 
         
