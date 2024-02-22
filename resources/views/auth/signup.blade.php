@@ -53,7 +53,7 @@
 
 
             <div id="forms-container" class="flex overflow-hidden transition-transform transform ease-in-out duration-500">
-                <div id="passagerForm" class="w-full">
+                <div id="client-form" class="w-full">
                 <form action="{{route('signup.client')}}" method="POST" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 ">
                     @csrf
 
@@ -102,9 +102,10 @@
                     </button>
                 </form>
             </div>
-                <div id="chauffeurForm" class="hidden w-full">
-                    <form action="{{url('register')}}" method="POST" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 ">
+                <div id="artisan-form" class="hidden w-full">
+                    <form action="{{route('signup.artisan')}}" method="POST" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 ">
                         @csrf
+
                         <div>
                             <label class="block mb-2 text-sm text-gray-700 ">First Name</label>
                             <input name="name" type="text" placeholder="John" class="block w-full px-5 py-3 mt-2 text-gray-300 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-300 dark:bg-gray-100 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
@@ -129,15 +130,13 @@
                         </div>
     
                         <div>
-                            <label class="block mb-2 text-sm text-gray-700 ">Plaque d'immatriculation</label>
-                            <input name="matricule" type="text" placeholder="Enter your Matricule" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-300 dark:bg-gray-100 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                            <label class="block mb-2 text-sm text-gray-700 ">Tarif</label>
+                            <input name="tarif" type="text" placeholder="Enter your Matricule" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-300 dark:bg-gray-100 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                         </div>
-
-                            <input name="role" type="hidden" placeholder="Enter your role" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-300 dark:bg-gray-100 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                         
                         <div>
-                            <label class="block mb-2 text-sm text-gray-700 ">Username</label>
-                            <input name="username" type="text" placeholder="Enter your Username" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-300 dark:bg-gray-100 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                            <label class="block mb-2 text-sm text-gray-700 ">Email</label>
+                            <input name="email" type="email" placeholder="Enter your Email" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-300 dark:bg-gray-100 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                         </div>
     
                         <div>

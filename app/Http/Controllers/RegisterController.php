@@ -23,9 +23,17 @@ class RegisterController extends Controller
 
     public function artisan(Request $request)
     {
-        // $attributes = $request->validate([
-        //     ''
-        // ])
+        $attributes = $request->validate([
+            'name' => 'required|min:4',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8', 
+        ]);
+
+        $user = User::create($attributes);
+
+        $user->artisan()->create();
+
+        return redirect()->route('login');
     }
 
     
@@ -40,7 +48,7 @@ class RegisterController extends Controller
         
         $user = User::create($attributes);
 
-        $client = $user->client()->create();
+        $user->client()->create();
 
         return redirect()->route('signup');
     }
