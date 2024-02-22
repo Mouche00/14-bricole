@@ -2,25 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Artisan;
+use App\Models\images;
 use Illuminate\Http\Request;
 
-class ArtisanController extends Controller
+class ImagesController extends Controller
 {
-
-    public function dashboard(){
-        return view('artisan.artisanDashboard');
-    }
-
-    public function domain(){
-        return view('artisan.artisanDomain');
-    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       
+        //
     }
 
     /**
@@ -42,7 +34,7 @@ class ArtisanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Artisan $artisan)
+    public function show(images $images)
     {
         //
     }
@@ -50,7 +42,7 @@ class ArtisanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Artisan $artisan)
+    public function edit(images $images)
     {
         //
     }
@@ -58,7 +50,7 @@ class ArtisanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Artisan $artisan)
+    public function update(Request $request, images $images)
     {
         //
     }
@@ -66,7 +58,7 @@ class ArtisanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Artisan $artisan)
+    public function destroy(images $images)
     {
         //
     }
