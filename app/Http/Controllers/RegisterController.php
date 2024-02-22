@@ -38,7 +38,7 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
             'phone' => 'required',
-            'picture' => 'required|image',
+            // 'picture' => 'required|image',
             'address' => 'required',
         ], [
 
