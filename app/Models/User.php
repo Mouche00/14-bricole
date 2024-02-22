@@ -19,9 +19,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lname',
         'email',
         'password',
         'phone',
+        'picture',
+        'address',
     ];
 
     /**
@@ -45,12 +48,9 @@ class User extends Authenticatable
     ];
 
 
-    public function setPasswordAttribute($password){
-        $this->attributes['password'] = bcrypt($password);
-    }
 
 
-    
+
     public function admin(){
         return $this->hasOne(Admin::class);
     }

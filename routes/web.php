@@ -27,3 +27,4 @@ Route::get('login', [SessionController::class, 'create']);
 
 Route::get('signup', [RegisterController :: class, 'index'])->name('signup');
 Route::post('signup', [RegisterController :: class, 'client'])->name('signup.client');
+Route::post('signupArtisan', [RegisterController :: class, 'artisan']);
