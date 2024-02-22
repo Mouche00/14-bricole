@@ -23,14 +23,7 @@ Route::get('/', function () {
 
 
 
-Route::get('login', [Controller :: class, 'login']);
-
-Route::get('signup', [RegisterController :: class, 'index'])->name('signup');
-Route::post('signup', [RegisterController :: class, 'client'])->name('signup.client');
-
-
-
-                            // ARTISAN ROUTE
+// ARTISAN ROUTE
 
 Route::get('artisan', [ArtisanController :: class, 'dashboard'])->name('artisan');
 Route::get('domain', [ArtisanController :: class, 'domain'])->name('domain');
@@ -38,6 +31,7 @@ Route::get('domain', [ArtisanController :: class, 'domain'])->name('domain');
 
 // Route::get('register', [Controller :: class, 'register']);
 Route::get('login', [SessionController::class, 'create']);
+Route::post('login', [SessionController::class, 'store'])->name('login.store');
 
 Route::get('signup', [RegisterController::class, 'index'])->name('signup');
 Route::post('client/signup', [RegisterController::class, 'client'])->name('signup.client');
