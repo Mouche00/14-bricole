@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class RegisterController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         return view('auth.signup');
     }
 
@@ -19,7 +20,7 @@ class RegisterController extends Controller
 
     //     switch ($request->input('role')){
     //         case 'artisan':
-                
+
     //             break;
     //     }
     // }
@@ -29,16 +30,16 @@ class RegisterController extends Controller
     //artisan registration
     public function artisan(Request $request)
     {
-      
-    
+
+
         $attributes = $request->validate([
             'name' => 'required|min:4',
             'lname' => 'required|min:4',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8', 
+            'password' => 'required|min:8',
             'phone' => 'required',
             'picture' => 'required|image',
-            'address'=> 'required',
+            'address' => 'required',
         ], [
 
             'name.min' => 'The name must have more than 3 characters.',
@@ -50,17 +51,16 @@ class RegisterController extends Controller
             'password.required' => 'The password is required.',
         ]);
 
-        
-        $fileName = time() . '.' . $request->picture->extension();
-        $request->picture->storeAs('public/images', $fileName);
-        
-        $attributes=array_merge($attributes, ['picture'=> $fileName]) ;
 
-        
+        if ($request->hasFile('picture')) {
+            $data['picture'] =  $request->file('picture')->store('images', "public");
+        }
+
+
         $user = User::create($attributes);
-        
+
         $user->assignRole('artisan');
-        
+
         $user->artisan()->create();
         Auth::login($user);
 
@@ -68,20 +68,27 @@ class RegisterController extends Controller
     }
 
     //client registration
-    public function client(Request $request){
-       
+    public function client(Request $request)
+    {
+
         $attributes = $request->validate([
             'name' => 'required|min:4',
             'lname' => 'required|min:4',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8', 
+            'password' => 'required|min:8',
             'phone' => 'required',
             'picture' => 'required',
-            'address'=> 'required',
+            'address' => 'required',
         ]);
-        $fileName = time() . '.' . $request->picture->extension();
-        $request->picture->storeAs('public/images', $fileName);
-        $attributes=array_merge($attributes, ['picture'=> $fileName]) ;
+        // $fileName = time() . '.' . $request->picture->extension();
+        // $request->picture->storeAs('public/images', $fileName);
+        // $attributes=array_merge($attributes, ['picture'=> $fileName]) ;
+
+        if ($request->hasFile('picture')) {
+            $data['picture'] =  $request->file('picture')->store('images', "public");
+        }
+
+
         $user = User::create($attributes);
 
         $user->client()->create();
