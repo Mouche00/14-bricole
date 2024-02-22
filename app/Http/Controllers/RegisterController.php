@@ -24,6 +24,9 @@ class RegisterController extends Controller
     //     }
     // }
 
+
+
+    //artisan registration
     public function artisan(Request $request)
     {
       
@@ -54,7 +57,7 @@ class RegisterController extends Controller
         return redirect('/');
     }
 
-    
+    //client registration
     public function client(Request $request){
        
         $attributes = $request->validate([
