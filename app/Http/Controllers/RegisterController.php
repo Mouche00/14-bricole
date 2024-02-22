@@ -23,9 +23,17 @@ class RegisterController extends Controller
 
     public function artisan(Request $request)
     {
-        // $attributes = $request->validate([
-        //     ''
-        // ])
+        $attributes = $request->validate([
+            'name' => 'required|min:4',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8', 
+        ]);
+
+        $user = User::create($attributes);
+
+        $user->artisan()->create();
+
+        return redirect()->route('login');
     }
 
     
@@ -35,15 +43,24 @@ class RegisterController extends Controller
             'name' => 'required|min:4',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8', 
-            'phone' => 'required',
-            'picture' => 'required'
+
+        ],
+        [
+
+            'name.min' => 'The name must have more than 3 characters.',
+            'name.unique' => 'This name is already taken.',
+            'email.required' => 'The email is required.',
+            'email.email' => 'Incorrect email structure.',
+            'email.unique' => 'This email is already taken.',
+            'password.min' => 'The password must have more than 3 characters.',
+            'password.required' => 'The password is required.',
         ]);
 
 
         
         $user = User::create($attributes);
 
-        $client = $user->client()->create();
+        $user->client()->create();
 
         return redirect()->route('signup');
     }
