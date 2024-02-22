@@ -26,32 +26,17 @@ class RegisterController extends Controller
 
     public function artisan(Request $request)
     {
-      
-    
         $attributes = $request->validate([
             'name' => 'required|min:4',
-            'lname' => 'required|min:4',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8', 
-            'phone' => 'required',
-            'picture' => 'required|image',
-            'address'=> 'required',
         ]);
 
-        
-        $fileName = time() . '.' . $request->picture->extension();
-        $request->picture->storeAs('public/images', $fileName);
-        
-        $attributes=array_merge($attributes, ['picture'=> $fileName]) ;
-
-        
         $user = User::create($attributes);
 
-        
         $user->artisan()->create();
-        Auth::login($user);
 
-        return redirect('/');
+        return redirect()->route('login');
     }
 
     
@@ -62,18 +47,24 @@ class RegisterController extends Controller
             'lname' => 'required|min:4',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8', 
-            'phone' => 'required',
-            'picture' => 'required',
-            'address'=> 'required',
+
+        ],
+        [
+
+            'name.min' => 'The name must have more than 3 characters.',
+            'name.unique' => 'This name is already taken.',
+            'email.required' => 'The email is required.',
+            'email.email' => 'Incorrect email structure.',
+            'email.unique' => 'This email is already taken.',
+            'password.min' => 'The password must have more than 3 characters.',
+            'password.required' => 'The password is required.',
         ]);
-        $fileName = time() . '.' . $request->picture->extension();
-        $request->picture->storeAs('public/images', $fileName);
-        $attributes=array_merge($attributes, ['picture'=> $fileName]) ;
+
+
+        
         $user = User::create($attributes);
 
         $user->client()->create();
-
-        Auth::login($user);
 
         return redirect('/');
     }

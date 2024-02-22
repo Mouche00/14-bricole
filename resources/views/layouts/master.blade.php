@@ -17,6 +17,8 @@
     <body >
 
         @yield('signup');
+        @yield('login');
+
 
     </body>
     </html>
