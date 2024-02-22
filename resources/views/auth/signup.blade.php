@@ -127,7 +127,7 @@
                 </form>
             </div>
                 <div id="chauffeurForm" class="hidden w-full">
-                    <form action="{{URL('signupArtisan')}}" method="POST" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 " enctype="multipart/form-data">
+                    <form action="{{ route('signup.artisan')}}" method="POST" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 " enctype="multipart/form-data">
                         @csrf
 
                         <div>
