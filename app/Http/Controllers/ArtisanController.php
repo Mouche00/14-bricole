@@ -7,12 +7,20 @@ use Illuminate\Http\Request;
 
 class ArtisanController extends Controller
 {
+
+    public function dashboard(){
+        return view('artisan.artisanDashboard');
+    }
+
+    public function domain(){
+        return view('artisan.artisanDomain');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+       
     }
 
     /**
