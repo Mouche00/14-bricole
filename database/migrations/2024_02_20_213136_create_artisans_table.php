@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('artisans', function (Blueprint $table) {
             $table->id();
-            $table->string('metier');
-            $table->string('tarif');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

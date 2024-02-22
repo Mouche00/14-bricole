@@ -1,11 +1,16 @@
 @extends('layouts.master')
 @section('login')
 
-
 <div class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-100 lg:max-w-4xl mt-[70px]">
     <div class="hidden bg-cover lg:block lg:w-1/2" style="background-image: url('img/login.jpg');"></div>
 
-    <div class="w-full px-6 py-8 md:px-8 lg:w-1/2">
+    <form action="{{ route("login.store") }}" method="POST" class="w-full px-6 py-8 md:px-8 lg:w-1/2">
+        @csrf
+
+        @foreach ($errors->all() as $message)
+            <p class="text-xs text-red-500">{{ $message }}</p>
+        @endforeach
+
         <div class="flex justify-center mx-auto">
             <img class="w-32 h-[123px] " src="{{url('img/logo.png')}}" alt="">
         </div>
@@ -38,7 +43,7 @@
 
         <div class="mt-4">
             <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-500" for="LoggingEmailAddress">Email Address</label>
-            <input id="LoggingEmailAddress" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-100 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="email" />
+            <input id="email" name="email" type="email" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-100 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="email" />
         </div>
 
         <div class="mt-4">
@@ -47,7 +52,7 @@
                 <a href="#" class="text-xs dark:text-gray-500 hover:underline hover:text-blue-500">Forget Password?</a>
             </div>
 
-            <input id="loggingPassword" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-100 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="password" />
+            <input id="password" name="password" type="password" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-100 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="password" />
         </div>
 
         <div class="mt-6">
@@ -63,6 +68,6 @@
 
             <span class="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
         </div>
-    </div>
+    </form>
 </div>
 @endsection
