@@ -15,4 +15,12 @@ class Artisan extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    public function domains() {
+        return $this->belongsToMany(Domain::class)->using(ArtisanDomain::class);
+    }
+
+    public function competances() {
+        return $this->belongsToMany(Competance::class);
+    }
 }
