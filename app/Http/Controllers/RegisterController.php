@@ -43,6 +43,7 @@ class RegisterController extends Controller
             'name' => 'required|min:4',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8', 
+
         ],
         [
 
@@ -54,6 +55,7 @@ class RegisterController extends Controller
             'password.min' => 'The password must have more than 3 characters.',
             'password.required' => 'The password is required.',
         ]);
+
 
         
         $user = User::create($attributes);
