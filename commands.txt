@@ -18,3 +18,11 @@
 
 ~$ sail up -d
 
+~$ sail artisan migrate --seed
+
+        OR
+
+~$ sail artisan db:seed
+
+~$ sail composer update
+
