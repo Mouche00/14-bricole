@@ -9,7 +9,7 @@ class Image extends Model
 {
     use HasFactory;
 
-    public function artisanDomain() {
-        return $this->belongsTo(ArtisanDomain::class);
+    public function artisan() {
+        return $this->belongsTo(Artisan::class);
     }
 }

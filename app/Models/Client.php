@@ -15,7 +15,7 @@ class Client extends Model
 
 
 
-    public function client(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 }
