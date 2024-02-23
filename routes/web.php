@@ -4,6 +4,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\ArtisanController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
@@ -55,9 +56,7 @@ Route::middleware(['auth', 'can:artisan'])->group(function () {
 });
 
 
-// ARTISAN ROUTE
-
+//Client Routes
 Route::middleware(['auth', 'can:client'])->group(function () {
-    Route::get('client', [ArtisanController::class, 'index'])->name('client');
-    // Route::get('domain', [ArtisanController::class, 'domain'])->name('domain');
+    Route::get('client', [ClientController::class, 'dashboard'])->name('artisan');
 });

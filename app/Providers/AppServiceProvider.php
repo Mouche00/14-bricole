@@ -23,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Gate::define("admin", fn(User $user) => $user->hasRole('admin'));
         Gate::define("artisan", fn(User $user) => $user->hasRole('artisan'));
+        Gate::define("client", fn(User $user) => $user->hasRole('client'));
     }
 }

@@ -16,8 +16,4 @@ class ArtisanDomain extends Pivot
     public function domain() {
         return $this->belongsTo(Domain::class);
     }
-
-    public function images() {
-        return $this->hasMany(Image::class);
-    }
 }
