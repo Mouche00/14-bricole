@@ -55,7 +55,8 @@ Route::middleware(['auth', 'can:artisan'])->group(function () {
 });
 
 
-                   //Client Route
+                   //Client Routes
 Route::middleware(['auth', 'can:client'])->group(function () {
   
+
 });
