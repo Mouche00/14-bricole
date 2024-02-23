@@ -38,7 +38,7 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
             'phone' => 'required',
-            // 'picture' => 'required|image',
+            'picture' => 'required|image',
             'address' => 'required',
         ], [
 
@@ -52,10 +52,9 @@ class RegisterController extends Controller
         ]);
 
 
-        if ($request->hasFile('picture')) {
-            $data['picture'] =  $request->file('picture')->store('images', "public");
-        }
-
+        $fileName = time() . '.' . $request->picture->extension();
+        $request->picture->storeAs('public/images', $fileName);
+        $attributes = array_merge($attributes, ['picture' => $fileName]);
 
         $user = User::create($attributes);
 
@@ -80,13 +79,12 @@ class RegisterController extends Controller
             'picture' => 'required',
             'address' => 'required',
         ]);
-        // $fileName = time() . '.' . $request->picture->extension();
-        // $request->picture->storeAs('public/images', $fileName);
-        // $attributes=array_merge($attributes, ['picture'=> $fileName]) ;
+        
+        $fileName = time() . '.' . $request->picture->extension();
+        $request->picture->storeAs('public/images', $fileName);
+        $attributes = array_merge($attributes, ['picture' => $fileName]);
 
-        if ($request->hasFile('picture')) {
-            $data['picture'] =  $request->file('picture')->store('images', "public");
-        }
+    
 
 
         $user = User::create($attributes);

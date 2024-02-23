@@ -59,3 +59,11 @@ Route::middleware(['auth', 'can:artisan'])->group(function () {
 Route::post('/domains', [DomainController::class, 'store'])->name('domains.store')->middleware('auth:artisan');
 
 Route::model('artisan', App\Models\Artisan::class);
+
+
+
+                   //Client Routes
+Route::middleware(['auth', 'can:client'])->group(function () {
+  
+
+});
