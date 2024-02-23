@@ -20,9 +20,9 @@ Route::get('/', function () {
 //laravel social
 
 
-Route::get('login', [Controller :: class, 'login']);
+Route::get('login', [Controller::class, 'login']);
 
-Route::post('/signup', [RegisterController :: class, 'client'])->name('signup.client');
+Route::post('/signup', [RegisterController::class, 'client'])->name('signup.client');
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
@@ -38,18 +38,26 @@ Route::post('artisan/signup', [RegisterController::class, 'artisan'])->name('sig
 
 
 
-                                // ADMIN DASHBOARD
-                                
+// ADMIN DASHBOARD
+
 Route::middleware(['can:admin'])->group(function () {
-    Route::get('adminDashboard', [AdminController :: class, 'dashboard'])->name('adminDashboard');
-    Route::get('domainDashboard', [AdminController :: class, 'domain'])->name('domainDashboard');
-    Route::get('usersDashboard', [AdminController :: class, 'users'])->name('usersDashboard');
+    Route::get('adminDashboard', [AdminController::class, 'dashboard'])->name('adminDashboard');
+    Route::get('domainDashboard', [AdminController::class, 'domain'])->name('domainDashboard');
+    Route::get('usersDashboard', [AdminController::class, 'users'])->name('usersDashboard');
 });
 
 
-                                          // ARTISAN ROUTE
+// ARTISAN ROUTE
 
 Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::get('artisan', [ArtisanController::class, 'dashboard'])->name('artisan');
     Route::get('domain', [ArtisanController::class, 'domain'])->name('domain');
+});
+
+
+// ARTISAN ROUTE
+
+Route::middleware(['auth', 'can:client'])->group(function () {
+    Route::get('client', [ArtisanController::class, 'index'])->name('client');
+    // Route::get('domain', [ArtisanController::class, 'domain'])->name('domain');
 });
