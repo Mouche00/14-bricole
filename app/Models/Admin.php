@@ -9,7 +9,7 @@ class Admin extends Model
 {
     use HasFactory;
 
-    public function admin(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 }
