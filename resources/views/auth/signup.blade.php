@@ -30,7 +30,7 @@
                         </svg>
                         Sign in with Google
                     </a>
-                    <h2 class="mx-4">OR</h2> 
+                    <h2 class="mx-4 font-mono text-2xl text-black">OR</h2> 
                     <a href="/auth/google/redirect" class="py-2 px-4 flex justify-center items-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-15 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
                         <svg width="20" height="20" fill="currentColor" class="mr-2" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"></path>
@@ -68,17 +68,17 @@
 
             <div id="forms-container" class="flex overflow-hidden transition-transform transform ease-in-out duration-500">
                 <div id="client" class="w-full">
-                    <form action="{{ route('signup.client')}}" method="POST" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
+                    <form action="{{ route('signup.client')}}" method="POST" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2" enctype="multipart/form-data">
                         @csrf
                     
                         <div class="col-span-2 flex justify-center">
                             <div class="relative">
                                 <div class="shrink-0">
-                                    <img id='preview_img' class="h-16 w-16 object-cover rounded-full" src="https://lh3.googleusercontent.com/a-/AFdZucpC_6WFBIfaAbPHBwGM9z8SxyM1oV4wB4Ngwp_UyQ=s96-c" alt="Current profile photo" />
+                                    <img id="client_pic" class="h-16 w-16 object-cover rounded-full" src="https://lh3.googleusercontent.com/a-/AFdZucpC_6WFBIfaAbPHBwGM9z8SxyM1oV4wB4Ngwp_UyQ=s96-c" alt="Current profile photo" />
                                   </div>
                                   <label class="block">
                                     <span class="sr-only">Choose profile photo</span>
-                                    <input type="file" name="picture" onchange="loadFile(event)" class="block w-full text-sm text-slate-500
+                                    <input type="file" name="picture" onchange="loadFile(event, 'client_pic')" class="block w-full text-sm text-slate-500
                                       file:mr-4 file:py-2 file:px-4
                                       file:rounded-full file:border-0
                                       file:text-sm file:font-semibold
@@ -141,16 +141,16 @@
                     
             </div>
                 <div id="artisan" class="hidden w-full">
-                    <form action="{{ route('signup.artisan')}}" method="POST" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
+                    <form action="{{ route('signup.artisan')}}" method="POST" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2" enctype="multipart/form-data">
                         @csrf
                         <div class="col-span-2 flex justify-center">
                             <div class="relative">
                                 <div class="shrink-0">
-                                    <img id='preview_img' class="h-16 w-16 object-cover rounded-full" src="https://lh3.googleusercontent.com/a-/AFdZucpC_6WFBIfaAbPHBwGM9z8SxyM1oV4wB4Ngwp_UyQ=s96-c" alt="Current profile photo" />
+                                    <img id="artisan_pic" class="h-16 w-16 object-cover rounded-full" src="https://lh3.googleusercontent.com/a-/AFdZucpC_6WFBIfaAbPHBwGM9z8SxyM1oV4wB4Ngwp_UyQ=s96-c" alt="Current profile photo" />
                                   </div>
                                   <label class="block">
                                     <span class="sr-only">Choose profile photo</span>
-                                    <input type="file" name="picture" onchange="loadFile(event)" class="block w-full text-sm text-slate-500
+                                    <input type="file" name="picture" onchange="loadFile(event, 'artisan_pic')" class="block w-full text-sm text-slate-500
                                       file:mr-4 file:py-2 file:px-4
                                       file:rounded-full file:border-0
                                       file:text-sm file:font-semibold
@@ -194,6 +194,11 @@
                                 <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                             </svg>
                         </button>
+                        <div class="col-span-2 text-red-500 text-[20px]">
+                            @if ($errors->any())
+                                <div>{{ $errors->first() }}</div>
+                            @endif
+                        </div>
                     </form>
                     
                 </div>

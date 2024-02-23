@@ -13,15 +13,16 @@ document.getElementById("artisan-btn").addEventListener("click", function () {
 
 //picture change input
 
-var loadFile = function (event) {
+var loadFile = function (event, id) {
     var input = event.target;
     var file = input.files[0];
     var type = file.type;
 
-    var output = document.getElementById("preview_img");
+    var output = document.getElementById(id);
 
     output.src = URL.createObjectURL(event.target.files[0]);
     output.onload = function () {
         URL.revokeObjectURL(output.src); // free memory
     };
 };
+

@@ -32,8 +32,8 @@ class ProviderController extends Controller
         ]);
 
         Auth::login($user);
-        $user->assignRole('artisan');
+        $user->assignRole('client');
 
-        return redirect()->route('artisan');
+        return redirect()->route('client');
     }
 }
