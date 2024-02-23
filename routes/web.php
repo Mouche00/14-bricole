@@ -53,3 +53,9 @@ Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::get('artisan', [ArtisanController::class, 'dashboard'])->name('artisan');
     Route::get('domain', [ArtisanController::class, 'domain'])->name('domain');
 });
+
+
+                   //Client Route
+Route::middleware(['auth', 'can:client'])->group(function () {
+  
+});
