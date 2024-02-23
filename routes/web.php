@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\ArtisanController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DomainController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -52,7 +53,13 @@ Route::middleware(['can:admin'])->group(function () {
 Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::get('artisan', [ArtisanController::class, 'dashboard'])->name('artisan');
     Route::get('domain', [ArtisanController::class, 'domain'])->name('domain');
+    Route::get('competances', [ArtisanController::class, 'competances'])->name('competances');
 });
+
+Route::post('/domains', [DomainController::class, 'store'])->name('domains.store')->middleware('auth:artisan');
+
+Route::model('artisan', App\Models\Artisan::class);
+
 
 
                    //Client Routes
