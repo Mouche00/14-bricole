@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('domains', function (Blueprint $table) {
+        Schema::create('artisan_domain', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('description');
             $table->foreignId('artisan_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('domain_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('domains');
+        Schema::dropIfExists('artisan_domain');
     }
 };

@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('artisan_competance', function (Blueprint $table) {
             $table->id();
-            $table->string('path');
+            $table->float('tarif');
             $table->foreignId('artisan_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('competance_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('artisan_competance');
     }
 };
