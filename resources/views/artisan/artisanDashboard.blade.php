@@ -29,6 +29,8 @@
                 
                         <a href="domain" class="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-800 hover:border-blue-600 mx-1.5 sm:mx-6">Domain</a>
                 
+                        <a href="competances" class="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-800 hover:border-blue-600 mx-1.5 sm:mx-6">Competances</a>
+
                 
                        
                 </div>
