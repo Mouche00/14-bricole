@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('artisans', function (Blueprint $table) {
             $table->id();
+            $table->json('images');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

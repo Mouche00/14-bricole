@@ -12,6 +12,11 @@ class Artisan extends Model
     protected $fillable =[
         'user_id'
     ];
+
+    protected $casts = [
+        'images' => 'array'
+    ];
+    
     public function user() {
         return $this->belongsTo(User::class);
     }
