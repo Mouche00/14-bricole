@@ -19,6 +19,7 @@
         @yield('signup')
         @yield('login')
         @yield('client')
+        @yield('domaine')
 
 
     </body>

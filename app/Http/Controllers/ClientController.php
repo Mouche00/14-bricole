@@ -10,14 +10,17 @@ class ClientController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function clientHome()
     {
         return view('client.clientDashboard');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function clientArtisans()
+    {
+        return view('client.domaine');
+    }
+
+   
     public function create()
     {
         //

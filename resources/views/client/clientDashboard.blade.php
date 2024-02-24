@@ -1,27 +1,13 @@
 @extends('layouts.master')
 @section('client')
 <link rel="stylesheet" href="css/client.css">
-
-<div class=" min-h-screen">
-    <div class="fixed bg-white text-blue-800 px-10 py-1 z-10 w-full">
-        <div class=" flex items-center justify-between py-2 text-5x1">
-            {{-- <img src="{{asset('pictures/oo.png')}}" class="h-24" alt=""> --}}
-          <ul class="flex space-x-4">
-            <li><a href="#" class="text-black text-xl font-mono ">Home</a></li>
-            <li><a href="#" class="text-black text-xl font-mono">Artisans</a></li>
-        </ul>
-          <div class="flex items-center text-gray-500"> 
-            <span class="material-icons-outlined p-2" style="font-size: 30px"></span>
-            <div class="bg-center bg-cover bg-no-repeat rounded-full inline-block h-12 w-12 ml-2" style="background-image: url(https://i.pinimg.com/564x/de/0f/3d/de0f3d06d2c6dbf29a888cf78e4c0323.jpg)"></div>
-          </div>
-      </div>
-    </div>
+@include('client.navbar')
 
     <div style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('pictures/az.png') }}') no-repeat center;background-size:cover"
     class="py-52 px-1 md:px-8 text-center relative text-white font-bold text-2xl md:text-3xl overflow-auto">
     <h1 class="pb-4 font-mono">Recherchez votre service</h1>
     <div class="w-11/12 md:w-3/4 lg:max-w-3xl m-auto">
-        <div class="relative z-30 text-base text-black">
+        <div class="relative z-0 text-base text-black">
             
             <div class="overflow-hidden z-0 rounded-full relative p-3 font-mono">
                 <form role="form" class="relative flex z-50 bg-white rounded-full">
@@ -87,14 +73,15 @@
               <div class="flex justify-between">
                   <div class="my-2">
                     <button type="button" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
-                        <svg class="w-5 h-5 me-2 -ms-1" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path></svg>
+                        <img src="{{asset('pictures/reservation.png')}}" class="h-6 w-6" alt="">
+                        
                         Réserver
                         </button>
                   </div>
                 
                   <div class="my-2">
                     <button type="button" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
-                        <svg class="w-5 h-5 me-2 -ms-1" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path></svg>
+                        <img src="{{asset('pictures/conversation.png')}}" class="h-6 w-6" alt="">
                         Envoyer un message
                         </button>
                     
@@ -157,32 +144,39 @@
 <div class="py-20 bg-gray-50">
     <div class="container mx-auto px-6 md:px-12 xl:px-32">
         <div class="mb-16 text-center">
-            <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Tailus blocks leadership</h2>
-            <p class="text-gray-600 lg:w-8/12 lg:mx-auto">Tailus prides itself not only on award-winning technology, but also on the talent of its people of some of the brightest minds and most experienced executives in business.</p>
+            <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold font-mono md:text-4xl">Comment ça marche ?</h2>
         </div>
-        <div class="grid gap-12 items-center md:grid-cols-3">
+        <div class="grid gap-12 items-center md:grid-cols-4">
             <div class="space-y-4 text-center">
-                <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64" 
-                    src="https://tailus.io/sources/blocks/classic/preview/images/woman1.jpg" alt="woman" loading="lazy" width="640" height="805">
+                <img class="w-32 h-32 mx-auto object-cover rounded-xl md:w-20 md:h-20 lg:w-32 lg:h-32" 
+                    src="{{asset('pictures/demande.png')}}" alt="woman" loading="lazy" width="640" height="805">
                 <div>
-                    <h4 class="text-2xl">Hentoni Doe</h4>
-                    <span class="block text-sm text-gray-500">CEO-Founder</span>
+                    <h4 class="text-xl font-bold font-mono">1. Publiez votre demande</h4>
+                    <span class="block text-sm font-bold font-mono text-[#023e8a]">Sélectionnez une catégorie et décrivez votre besoin</span>
                 </div>
             </div>
             <div class="space-y-4 text-center">
-                <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-48 md:h-64 lg:w-64 lg:h-80" 
-                    src="https://tailus.io/sources/blocks/classic/preview/images/man.jpg" alt="man" loading="lazy" width="1000" height="667">
+                <img class="w-32 h-32 mx-auto object-cover rounded-xl md:w-20 md:h-20 lg:w-32 lg:h-32" 
+                    src="{{asset('pictures/parametres.png')}}" alt="man" loading="lazy" width="1000" height="667">
                 <div>
-                    <h4 class="text-2xl">Jonathan Doe</h4>
-                    <span class="block text-sm text-gray-500">Chief Technical Officer</span>
+                    <h4 class="text-xl font-bold font-mono">2. Recevez des offres en 48h</h4>
+                    <span class="block text-sm font-bold font-mono text-[#023e8a]">Comparez les devis des prestataires</span>
                 </div>
             </div>
             <div class="space-y-4 text-center">
-                <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64" 
-                    src="https://tailus.io/sources/blocks/classic/preview/images/woman.jpg" alt="woman" loading="lazy" width="1000" height="667">
+                <img class="w-32 h-32 mx-auto object-cover rounded-xl md:w-20 md:h-20 lg:w-32 lg:h-32" 
+                    src="{{asset('pictures/ingenieur.png')}}" alt="woman" loading="lazy" width="1000" height="667">
                 <div>
-                    <h4 class="text-2xl">Anabelle Doe</h4>
-                    <span class="block text-sm text-gray-500">Chief Operations Officer</span>
+                    <h4 class="text-xl font-bold font-mono">3. Choisissez votre prestataire</h4>
+                    <span class="block text-sm font-bold font-mono text-[#023e8a]">Particulier ou professionnel selon votre budget</span>
+                </div>
+            </div>
+            <div class="space-y-4 text-center">
+                <img class="w-32 h-32 mx-auto object-cover rounded-xl md:w-20 md:h-20 lg:w-32 lg:h-32" 
+                    src="{{asset('pictures/travaux.png')}}" alt="woman" loading="lazy" width="1000" height="667">
+                <div>
+                    <h4 class="text-xl font-bold font-mono">4. Réalisez tous vos travaux</h4>
+                    <span class="block text-sm font-bold font-mono text-[#023e8a]">Fixez un rendez-vous et notez la prestation</span>
                 </div>
             </div>
         </div>
