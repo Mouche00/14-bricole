@@ -15,9 +15,16 @@ class Domain extends Model
         'artisan_id',
     ];
 
+
+    
     public function artisan()
     {
         return $this->belongsTo(Artisan::class);
+    }
+
+    public function artisanDomains()
+    {
+        return $this->hasMany(ArtisanDomain::class);
     }
 
     public function artisans() {

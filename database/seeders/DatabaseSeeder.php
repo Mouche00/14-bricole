@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Admin;
+use App\Models\Domain;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -27,5 +28,6 @@ class DatabaseSeeder extends Seeder
 
         $admin = Admin::factory()->create();
         $admin->user()->first()->assignRole('admin');
+
     }
 }

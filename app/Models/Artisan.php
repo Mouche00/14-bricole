@@ -16,6 +16,11 @@ class Artisan extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function artisanDomains()
+    {
+        return $this->hasMany(ArtisanDomain::class);
+    }
+    
     public function domains() {
         return $this->belongsToMany(Domain::class)->using(ArtisanDomain::class);
     }

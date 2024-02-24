@@ -37,11 +37,11 @@ class SessionController extends Controller
 
         */
 
-        if(! auth()->attempt($attributes)) {
-            throw ValidationException::withMessages([
-                'email' => 'Your provided credentials could not be verified.'
-            ]);
-        }
+        // if(! auth()->attempt($attributes)) {
+        //     throw ValidationException::withMessages([
+        //         'email' => 'Your provided credentials could not be verified.'
+        //     ]);
+        // }
 
         session()->regenerate();
 
@@ -54,7 +54,7 @@ class SessionController extends Controller
                 $redirect = 'client';
                 break;
             case auth()->user()->hasRole('admin'):
-                $redirect = 'admin';
+                $redirect = 'adminDashboard';
                 break;
         }
 
