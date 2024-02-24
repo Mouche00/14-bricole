@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('images', function (Blueprint $table) {
-            $table->id();
-            $table->string('path');
-            $table->foreignId('artisan_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->timestamps();
-        });
+        // Schema::create('images', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('path');
+        //     $table->foreignId('artisan_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+        //     $table->timestamps();
+        // });
     }
 
     /**

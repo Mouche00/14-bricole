@@ -43,7 +43,7 @@ Route::post('artisan/signup', [RegisterController::class, 'artisan'])->name('sig
                                 // ADMIN DASHBOARD
                                 
 Route::middleware(['can:admin'])->group(function () {
-    Route::get('adminDashboard', [AdminController :: class, 'dashboard'])->name('adminDashboard');
+    Route::get('admin', [AdminController :: class, 'dashboard'])->name('admin');
     Route::get('domainDashboard', [AdminController :: class, 'domain'])->name('domainDashboard');
     Route::get('usersDashboard', [AdminController :: class, 'users'])->name('usersDashboard');
 });

@@ -29,5 +29,10 @@ class DatabaseSeeder extends Seeder
         $admin = Admin::factory()->create();
         $admin->user()->first()->assignRole('admin');
 
+        $domains = ['charpentier', 'électricien', 'plombier', 'maçon', 'peintre', 'jardinier'];
+
+        foreach($domains as $domain) {
+            Domain::create(['nom' => $domain]);
+        }
     }
 }
