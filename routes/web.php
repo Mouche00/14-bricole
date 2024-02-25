@@ -60,5 +60,7 @@ Route::middleware(['auth', 'can:artisan'])->group(function () {
 Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('client', [ClientController::class, 'clientHome'])->name('client');
     Route::get('artisans', [ClientController::class, 'clientArtisans'])->name('artisans');
+    Route::get('reservations', [ClientController::class, 'clientReserv'])->name('reservations');
+    Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
 
 });

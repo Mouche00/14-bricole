@@ -20,6 +20,14 @@ class ClientController extends Controller
         return view('client.domaine');
     }
 
+    public function clientReserv(){
+        return view('client.reservation');
+    }
+    
+    public function clientProfile(){
+        return view('client.profile');
+    }
+
    
     public function create()
     {
