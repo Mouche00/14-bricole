@@ -28,7 +28,14 @@ class DomainController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'nom' => 'required|min:4',
+            'description' => 'required|min:4',
+        ]);
+        
+        Domain::create($attributes);
+        return redirect()->route('domainDashboard');
+
     }
 
     /**

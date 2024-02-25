@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('domains', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->foreignId('artisan_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->text('description');
             $table->timestamps();
         });
     }

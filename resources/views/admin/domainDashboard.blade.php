@@ -1,4 +1,38 @@
 @extends('header')
+<div class="hidden fixed h-full bg-slate-600 bg-opacity-60 blur-2xl z-40 w-screen" id="overlay">
+    </div>
+<div id="popup-window" class="hidden fixed 
+h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
+   <form class="max-w-md mx-auto p-6 bg-white border rounded-lg shadow-lg" action="{{route('domain.store')}}" method="POST">
+       @csrf
+       <div class=" mx-auto">
+       
+            <h2 class="text-2xl font-bold mb-6">Ajouter Domain</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="name">
+              Name:
+            </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" 
+                name="nom" placeholder="Domain Name">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="feedback">
+              Description:
+            </label>
+                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="feedback" rows="5" 
+                name="description"
+                placeholder="Enter your Description"></textarea>
+            </div>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+            Submit
+          </button>
+        
+           
+       </div>
+      
+   </form>
+  
+</div>
 <div class="container flex gap-10">
     <aside class="flex flex-col w-64 h-screen px-4 py-4 overflow-y-auto bg-white   shadow-lg dark:border-gray-700">
         <a href="#" class="mx-auto">
@@ -54,6 +88,18 @@
         <div class="container px-6 py-10 mx-auto">
             <div class="flex items-center justify-between">
                 <h1 class="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">Domain </h1>
+             
+
+                    <div class="relative inline-flex  group">
+                        <div
+                            class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#66aacc] via-[#307299] to-[#172b3a] rounded-xl blur-lg">
+                        </div>
+                        <a href="#" title="Get quote now"
+                            class="reser-button relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl "
+                            role="button">Ajouter Domain
+                        </a>
+                    </div>
+               
     
                
             </div>
@@ -151,11 +197,6 @@
             </div>
         </div>
     </section>
-
-
-
-
-
-    
-
 </div>
+
+<script src="js/main.js"></script>

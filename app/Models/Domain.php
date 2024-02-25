@@ -9,6 +9,10 @@ class Domain extends Model
 {
     use HasFactory;
 
+    protected $fillable =[
+        'nom',
+        'description',
+    ];
     public function artisans() {
         return $this->belongsToMany(Artisan::class)->using(ArtisanDomain::class);
     }

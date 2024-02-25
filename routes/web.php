@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\ArtisanController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DomainController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -44,8 +45,8 @@ Route::middleware(['can:admin'])->group(function () {
     Route::get('adminDashboard', [AdminController :: class, 'dashboard'])->name('adminDashboard');
     Route::get('domainDashboard', [AdminController :: class, 'domain'])->name('domainDashboard');
     Route::get('usersDashboard', [AdminController :: class, 'users'])->name('usersDashboard');
+    Route::resource('domain',DomainController::class);
 });
-
 
                                           // ARTISAN ROUTE
 
