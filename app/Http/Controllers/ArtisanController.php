@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artisan;
+use App\Models\Competance;
+use App\Models\Domain;
 use Illuminate\Http\Request;
 
 class ArtisanController extends Controller
@@ -14,6 +16,9 @@ class ArtisanController extends Controller
 
     public function domain(){
         return view('artisan.artisanDomain');
+    }
+    public function competances(){
+        return view('artisan.artisanCompetances');
     }
     /**
      * Display a listing of the resource.
@@ -36,7 +41,7 @@ class ArtisanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**

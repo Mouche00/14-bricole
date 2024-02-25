@@ -42,7 +42,7 @@ Route::post('artisan/signup', [RegisterController::class, 'artisan'])->name('sig
                                 // ADMIN DASHBOARD
                                 
 Route::middleware(['can:admin'])->group(function () {
-    Route::get('adminDashboard', [AdminController :: class, 'dashboard'])->name('adminDashboard');
+    Route::get('admin', [AdminController :: class, 'dashboard'])->name('admin');
     Route::get('domainDashboard', [AdminController :: class, 'domain'])->name('domainDashboard');
     Route::get('usersDashboard', [AdminController :: class, 'users'])->name('usersDashboard');
     Route::resource('domain',DomainController::class);
@@ -53,7 +53,13 @@ Route::middleware(['can:admin'])->group(function () {
 Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::get('artisan', [ArtisanController::class, 'dashboard'])->name('artisan');
     Route::get('domain', [ArtisanController::class, 'domain'])->name('domain');
+    Route::get('competances', [ArtisanController::class, 'competances'])->name('competances');
 });
+
+Route::post('/domains', [DomainController::class, 'store'])->name('domains.store')->middleware('auth:artisan');
+
+Route::model('artisan', App\Models\Artisan::class);
+
 
 
                    //Client Routes

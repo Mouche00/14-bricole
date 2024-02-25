@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Competance;
 use App\Models\Domain;
+use App\Models\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class DomainController extends Controller
@@ -28,14 +31,37 @@ class DomainController extends Controller
      */
     public function store(Request $request)
     {
-        $attributes = $request->validate([
-            'nom' => 'required|min:4',
-            'description' => 'required|min:4',
-        ]);
-        
-        Domain::create($attributes);
-        return redirect()->route('domainDashboard');
+        $artisan = Auth::guard('artisan')->user();
 
+    $validatedData = $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string',
+        'competances' => 'required|array',
+        'domain_photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    $domain = new Domain([
+        'title' => $validatedData['title'],
+        'description' => $validatedData['description'],
+        'artisan_id' => $artisan->id,
+    ]);
+
+    $domain->save();
+
+    $competances = $validatedData['competances'];
+
+    foreach ($competances as $competance) {
+        $competance = new Competance([
+            'name' => $competance,
+            'domain_id' => $domain->id,
+        ]);
+
+        $competance->save();
+    }
+
+    $request->file('domain_photo')->store('public/domain_photos');
+
+    return response()->json(['message' => 'Data saved successfully']);
     }
 
     /**
