@@ -3,10 +3,9 @@
     </div>
 <div id="popup-window" class="hidden fixed 
 h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
-   <form class="max-w-md mx-auto p-6 bg-white border rounded-lg shadow-lg" action="{{route('domain.store')}}" method="POST">
+   <form class="max-w-md mx-auto p-6 bg-white border rounded-lg shadow-lg" action="{{route('domains.store')}}" method="POST" enctype="multipart/form-data">
        @csrf
        <div class=" mx-auto">
-       
             <h2 class="text-2xl font-bold mb-6">Ajouter Domain</h2>
             <div class="mb-4">
                 <label class="block text-gray-700 font-bold mb-2" for="name">
@@ -22,6 +21,15 @@ h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
                 <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="feedback" rows="5" 
                 name="description"
                 placeholder="Enter your Description"></textarea>
+            </div>
+            <div class="mb-4">
+                <div class="flex-1 items-center max-w-screen-sm mx-auto mb-3 space-y-4 sm:flex sm:space-y-0">
+                    <div class="relative w-full">
+                      <div class="items-center justify-center max-w-xl mx-auto">
+                        <label class="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none" id="drop"><span class="flex items-center space-x-2"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg><span class="font-medium text-gray-600">Drop files to Attach, or<span class="text-blue-600 underline ml-[4px]">browse</span></span></span><input type="file" name="picture" class="hidden" accept="image/png,image/jpeg" id="input"></label>
+                      </div>
+                    </div>
+                  </div>
             </div>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
             Submit
@@ -111,7 +119,7 @@ h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
                 <div>
                     {{-- <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="{{url('img/Menuisier.jpg')}}" alt=""> --}}
     
-                    <div class="mt-8 border-2 border-solid divide-slate-950 rounded-md pl-3 pb-4">
+                    <div class="mt-8 border-2 border-solid divide-slate-950 rounded-md px-3 py-4">
                         {{-- <span class="text-blue-500 uppercase">Menuisier</span> --}}
     
                         <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
@@ -119,6 +127,8 @@ h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
                                 {{$domain->nom}}
                             </a>
                         </h1>
+
+                        <img class="object-cover py-4 object-center w-full h-64 rounded-lg lg:h-80" src="{{ asset('storage/app/public/images/1708593513.jpg') }}" alt="">
     
                         <p class="mt-2 text-gray-500 dark:text-gray-400">
                             {{$domain->description}}
@@ -203,4 +213,4 @@ h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
     </section>
 </div>
 
-<script src="js/dompage.js"></script>
+<script src="js/main.js"></script>

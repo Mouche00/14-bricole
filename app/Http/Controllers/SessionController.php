@@ -44,14 +44,13 @@ class SessionController extends Controller
         }
 
         session()->regenerate();
-
         $redirect = 'login';
         switch (true) {
             case auth()->user()->hasRole('artisan'):
                 $redirect = 'artisan';
                 break;
             case auth()->user()->hasRole('client'):
-                $redirect = 'client';
+                $redirect = 'profile';
                 break;
             case auth()->user()->hasRole('admin'):
                 $redirect = 'admin';

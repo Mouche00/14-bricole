@@ -2,7 +2,6 @@
 @section('profile')
 @include('client.navbar')  
     
-<!-- component -->
 <div class="w-full h-full relative mt-4  my-24 overflow-hidden">
   <div class="top h-64 w-full bg-blue-600 overflow-hidden relative" >
     <img src="{{asset('pictures/cc.jpg')}}" alt="" class="bg w-full h-full object-cover object-center absolute z-0">
