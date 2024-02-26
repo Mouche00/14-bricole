@@ -40,16 +40,17 @@ class ArtisanController extends Controller
     public function addCompetance(Request $request)
     {
         $request->validate([
-            'competance_id' => 'required|array',
+            'competance_ids' => 'required|array',
             'artisan_id' => 'required|exists:artisans,id', 
         ]);
     
-        $competances = $request->input('competance_id');
+        $competanceIds = $request->input('competance_ids');
         $artisanId = $request->input('artisan_id');
     
-       $artisan = Artisan::find($artisanId);
-       $artisan->competances()->sync($competances);
-
+        $artisan = Artisan::find($artisanId);
+    
+        // Use attach to append competances without removing existing ones
+        $artisan->competances()->attach($competanceIds);
     
         return redirect()->route('services');
     }
