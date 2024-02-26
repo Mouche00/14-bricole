@@ -66,6 +66,7 @@ Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::get('domain', [ArtisanController::class, 'domain'])->name('domain');
     Route::get('competances', [ArtisanController::class, 'competances'])->name('competances');
     Route::get('services', [ArtisanController::class, 'services'])->name('services');
+    Route::post('services', [ArtisanController::class, 'addServices'])->name('addServices');
     Route::post('/domain', [ArtisanController::class, 'addDomain'])->name('domains.artisan')->middleware('auth');
 
 
@@ -81,7 +82,7 @@ Route::model('artisan', App\Models\Artisan::class);
 //Client Routes
 Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('client', [ClientController::class, 'clientHome'])->name('client');
-    Route::get('artisans', [ClientController::class, 'clientArtisans'])->name('artisans');
+    Route::get('reservations', [ClientController::class, 'clientReservation'])->name('reservations');
     Route::get('reclamations', [ClientController::class, 'clientReclamation'])->name('reclamations');
     Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
 
