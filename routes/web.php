@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
+use Stevebauman\Location\Facades\Location;
 
 
 
@@ -64,6 +66,11 @@ Route::model('artisan', App\Models\Artisan::class);
 
                    //Client Routes
 Route::middleware(['auth', 'can:client'])->group(function () {
-  
 
 });
+
+
+
+// testing
+
+Route::get('/test/location', [TestController::class, 'location']);
