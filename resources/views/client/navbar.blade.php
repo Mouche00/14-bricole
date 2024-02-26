@@ -5,7 +5,7 @@
             <img src="{{asset('pictures/logo.png')}}" class="h-16" alt="">
           <ul class="flex space-x-4">
             <li><a href="{{route('client')}}" class="text-black text-xl font-mono ">Home</a></li>
-            <li><a href="{{route('artisans')}}" class="text-black text-xl font-mono">Artisans</a></li>
+            <li><a href="{{route('reservations')}}" class="text-black text-xl font-mono">Réservations</a></li>
             <li><a href="{{route('profile')}}" class="text-black text-xl font-mono">Profile</a></li>
         </ul>
           <div class="flex items-center text-gray-500"> 

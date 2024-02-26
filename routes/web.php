@@ -81,7 +81,7 @@ Route::model('artisan', App\Models\Artisan::class);
 //Client Routes
 Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('client', [ClientController::class, 'clientHome'])->name('client');
-    Route::get('artisans', [ClientController::class, 'clientArtisans'])->name('artisans');
+    Route::get('reservations', [ClientController::class, 'clientReservation'])->name('reservations');
     Route::get('reclamations', [ClientController::class, 'clientReclamation'])->name('reclamations');
     Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
 
@@ -89,6 +89,3 @@ Route::middleware(['auth', 'can:client'])->group(function () {
 
 
 
-// testing
-
-Route::get('/test/location', [TestController::class, 'location']);

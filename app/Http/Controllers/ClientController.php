@@ -15,9 +15,9 @@ class ClientController extends Controller
         return view('client.clientDashboard');
     }
 
-    public function clientArtisans()
+    public function clientReservation()
     {
-        return view('client.domaine');
+        return view('client.reservations');
     }
 
     public function clientReclamation(){
