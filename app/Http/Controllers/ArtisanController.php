@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artisan;
+use App\Models\ArtisanDomain;
 use App\Models\Competance;
 use App\Models\Domain;
 use Illuminate\Http\Request;
@@ -14,12 +15,12 @@ class ArtisanController extends Controller
         return view('artisan.artisanDashboard');
     }
 
-    public function domain(){
-        return view('artisan.artisanDomain');
+    public function services(){
+        return view('artisan.artisanServices');
     }
-    public function competances(){
-        return view('artisan.artisanCompetances');
-    }
+
+    
+   
     /**
      * Display a listing of the resource.
      */
@@ -31,10 +32,25 @@ class ArtisanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+//     public function addDomain(Request $request)
+//     {
+
+//     // Validate the request if needed
+
+//     $domainName = $request->input('name');
+//     $artisanId = $request->input('artisan_id');
+//     // $description = $request->input('description');
+
+//     // Insert into artisan_domain table
+//     ArtisanDomain::create([
+//         'domain_id' => $domain->id,
+//         'artisan_id' => $artisanId,
+//         // 'description' => $description,
+//         // Add other fields as needed
+//     ]);
+
+//     return view('artisan.competances');
+// }
 
     /**
      * Store a newly created resource in storage.
