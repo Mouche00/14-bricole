@@ -49,8 +49,13 @@ class ArtisanController extends Controller
     
         $artisan = Artisan::find($artisanId);
     
-        // Use attach to append competances without removing existing ones
-        $artisan->competances()->attach($competanceIds);
+        // Use attach to append competences without removing existing ones
+        foreach ($competanceIds as $competanceId) {
+            // Check if the competence is not already attached
+            if (!$artisan->competances()->where('competance_id', $competanceId)->exists()) {
+                $artisan->competances()->attach($competanceId);
+            }
+        }
     
         return redirect()->route('services');
     }
