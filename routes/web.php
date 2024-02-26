@@ -63,16 +63,16 @@ Route::middleware(['can:admin'])->group(function () {
 
 Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::get('artisan', [ArtisanController::class, 'dashboard'])->name('artisan');
-    Route::get('domain', [DomainController::class, 'domain'])->name('domain');
-    Route::get('competances', [CompetanceController::class, 'competances'])->name('competances');
+    Route::get('domain', [ArtisanController::class, 'domain'])->name('domain');
+    Route::get('competances', [ArtisanController::class, 'competances'])->name('competances');
     Route::get('services', [ArtisanController::class, 'services'])->name('services');
+    Route::post('/domain', [ArtisanController::class, 'addDomain'])->name('domains.artisan')->middleware('auth');
 
 
 });
 
-Route::post('/domain', [ArtisanController::class, 'addDomain'])->name('domains.artisan')->middleware('auth');
 
-Route::post('/domains', [DomainController::class, 'store'])->name('domains.store')->middleware('auth:artisan');
+// Route::post('/domains', [DomainController::class, 'store'])->name('domains.store')->middleware('auth:artisan');
 
 Route::model('artisan', App\Models\Artisan::class);
 
