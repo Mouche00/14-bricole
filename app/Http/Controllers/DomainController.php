@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class DomainController extends Controller
 {
+
+    public function domain(){
+
+        $domains = Domain::all(); // Replace this with your actual query to get domains from the database
+        return view('artisan.artisanDomain', compact('domains'));
+    }
     /**
      * Display a listing of the resource.
      */
@@ -31,37 +37,35 @@ class DomainController extends Controller
      */
     public function store(Request $request)
     {
-        $artisan = Auth::guard('artisan')->user();
+        // $artisan = Auth::guard('artisan')->user();
 
     $validatedData = $request->validate([
-        'title' => 'required|string|max:255',
+        'nom' => 'required|string|max:255',
         'description' => 'required|string',
-        'competances' => 'required|array',
-        'domain_photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
+    Domain::create($validatedData);
+    // $domain = new Domain([
+    //     'nom' => $validatedData['nom'],
+    //     'description' => $validatedData['description'],
+    // ]);
 
-    $domain = new Domain([
-        'title' => $validatedData['title'],
-        'description' => $validatedData['description'],
-        'artisan_id' => $artisan->id,
-    ]);
+    // $domain->save();
 
-    $domain->save();
+    // $competances = $validatedData['competances'];
 
-    $competances = $validatedData['competances'];
+    // foreach ($competances as $competance) {
+    //     $competance = new Competance([
+    //         'name' => $competance,
+    //         'domain_id' => $domain->id,
+    //     ]);
 
-    foreach ($competances as $competance) {
-        $competance = new Competance([
-            'name' => $competance,
-            'domain_id' => $domain->id,
-        ]);
+    //     $competance->save();
+    // }
 
-        $competance->save();
-    }
+    // $request->file('domain_photo')->store('public/domain_photos');
 
-    $request->file('domain_photo')->store('public/domain_photos');
-
-    return response()->json(['message' => 'Data saved successfully']);
+    // return response()->json(['message' => 'Data saved successfully']);
+    return redirect('/domainDashboard');
     }
 
     /**

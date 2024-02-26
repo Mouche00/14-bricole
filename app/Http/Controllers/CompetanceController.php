@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class CompetanceController extends Controller
 {
+
+
+    public function competances(){
+        return view('artisan.artisanCompetances');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -28,7 +33,12 @@ class CompetanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nom' => 'required|string|max:255',
+            'domain_id' => 'required',
+        ]);
+        Competance::create($validatedData);
+        return redirect('/domainDashboard');
     }
 
     /**

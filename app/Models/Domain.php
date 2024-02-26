@@ -9,15 +9,22 @@ class Domain extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
-        'title',
+        'nom',
         'description',
-        'artisan_id',
     ];
 
+
+    
     public function artisan()
     {
         return $this->belongsTo(Artisan::class);
+    }
+
+    public function artisanDomains()
+    {
+        return $this->hasMany(ArtisanDomain::class);
     }
 
     public function artisans() {
