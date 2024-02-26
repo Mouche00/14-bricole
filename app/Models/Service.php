@@ -9,7 +9,7 @@ class Service extends Model
 {
     use HasFactory;
 
-    public function artisan() {
-        return $this->belongsTo(Artisan::class);
+    public function artisans() {
+        return $this->belongsToMany(Artisan::class);
     }
 }
