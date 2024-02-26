@@ -11,6 +11,7 @@ use App\Http\Controllers\DomainController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Stevebauman\Location\Facades\Location;
 
@@ -55,7 +56,7 @@ Route::middleware(['can:admin'])->group(function () {
     Route::get('domainDashboard', [AdminController :: class, 'domain'])->name('domainDashboard');
     Route::get('domainpage/{id}', [AdminController :: class, 'domainpage'])->name('domainPage');
     Route::get('usersDashboard', [AdminController :: class, 'users'])->name('usersDashboard');
-    Route::resource('domain',DomainController::class);
+    Route::resource('domains',DomainController::class);
     Route::resource('competance',CompetanceController::class);
 });
 
@@ -89,3 +90,11 @@ Route::middleware(['auth', 'can:client'])->group(function () {
 });
 
 
+
+// testing
+
+Route::get('/test/location', [TestController::class, 'location']);
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});

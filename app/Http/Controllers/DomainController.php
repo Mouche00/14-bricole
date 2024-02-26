@@ -35,11 +35,16 @@ class DomainController extends Controller
     {
         // $artisan = Auth::guard('artisan')->user();
 
-    $validatedData = $request->validate([
+        $attributes = $request->validate([
         'nom' => 'required|string|max:255',
         'description' => 'required|string',
     ]);
-    Domain::create($validatedData);
+
+        $fileName = time() . '.' . $request->picture->extension();
+        $request->picture->storeAs('public/images', $fileName);
+        $attributes = array_merge($attributes, ['picture' => $fileName]);
+
+    Domain::create($attributes);
     // $domain = new Domain([
     //     'nom' => $validatedData['nom'],
     //     'description' => $validatedData['description'],
