@@ -88,7 +88,3 @@ Route::middleware(['auth', 'can:client'])->group(function () {
 });
 
 
-
-// testing
-
-Route::get('/test/location', [TestController::class, 'location']);
