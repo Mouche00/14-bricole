@@ -19,6 +19,19 @@ class ArtisanController extends Controller
         return view('artisan.artisanServices');
     }
 
+    public function domain(){
+
+        $domains = Domain::all(); // Replace this with your actual query to get domains from the database
+        return view('artisan.artisanDomain', compact('domains'));
+    }
+
+
+    public function competances(){
+        $competances = Competance::all();
+
+        return view('artisan.artisanCompetances', compact('competances'));
+    }
+
     
    
     /**
@@ -32,25 +45,23 @@ class ArtisanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-//     public function addDomain(Request $request)
-//     {
-
-//     // Validate the request if needed
-
-//     $domainName = $request->input('name');
-//     $artisanId = $request->input('artisan_id');
-//     // $description = $request->input('description');
-
-//     // Insert into artisan_domain table
-//     ArtisanDomain::create([
-//         'domain_id' => $domain->id,
-//         'artisan_id' => $artisanId,
-//         // 'description' => $description,
-//         // Add other fields as needed
-//     ]);
-
-//     return view('artisan.competances');
-// }
+    public function addDomain(Request $request)
+    {
+        $request->validate([
+            'domain_id' => 'required|array',
+            'domain_id.*' => 'exists:domains,id', // Ensure each domain_id exists in the domains table
+            'artisan_id' => 'required|exists:artisans,id', // Assuming your artisans table has an 'id' field
+        ]);
+    
+        $artisanId = $request->input('artisan_id');
+    
+        $domainIds = $request->input('domain_id');
+    
+        $artisan = Artisan::find($artisanId);
+        $artisan->domains()->sync($domainIds);
+        return redirect()->route('competances');
+   
+    }
 
     /**
      * Store a newly created resource in storage.

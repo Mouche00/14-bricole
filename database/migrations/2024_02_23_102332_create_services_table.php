@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->string('description');
+            $table->float('tarif');
+            $table->string('description')->nullable();
             $table->foreignId('artisan_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

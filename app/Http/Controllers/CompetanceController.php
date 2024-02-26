@@ -9,9 +9,7 @@ class CompetanceController extends Controller
 {
 
 
-    public function competances(){
-        return view('artisan.artisanCompetances');
-    }
+    
     /**
      * Display a listing of the resource.
      */
