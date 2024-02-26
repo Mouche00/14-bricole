@@ -35,6 +35,6 @@ class Artisan extends Model
     }
 
     public function services() {
-        return $this->belongsToMany(Service::class);
+        return $this->hasMany(Service::class);
     }
 }
