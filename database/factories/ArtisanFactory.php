@@ -6,9 +6,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Admin>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Artisan>
  */
-class AdminFactory extends Factory
+class ArtisanFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +19,7 @@ class AdminFactory extends Factory
     {
         return [
             'user_id' => User::factory()->create([
-                'email' => 'admin@gmail.com'
+                'email' => 'artisan@gmail.com'
             ])
         ];
     }
