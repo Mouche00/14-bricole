@@ -23,7 +23,8 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
         $attributes = $request->validate([
-            'date' => 'required'
+            'date' => 'required',
+            'service_id' => 'required'
         ]);
 
         $reservation = auth()->user()->client()->reservations()->create($attributes);
