@@ -90,7 +90,7 @@ class RegisterController extends Controller
 
         $user->client()->create();
 
-        $user->assignRole('clinet');
+        $user->assignRole('client');
 
         Auth::login($user);
 
