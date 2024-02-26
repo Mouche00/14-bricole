@@ -112,7 +112,7 @@
     <div class="flex justify-center">
         <h2 class="text-2xl font-semibold text-gray-700 capitalize ">Add Sercices</h2>
     </div>  
-    <form action="{{ route('domains.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('addServices') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
             <div>
@@ -121,8 +121,8 @@
                         <label for="competences" class="text-gray-600 ">Competences & tariff</label>
                         <div class="flex justify-center items-center space-x-8 ">
 
-                            <input type="text" name="competences[]" class="competence-input block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-blue-400 rounded-md  dark:text-gray-600 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" placeholder="Competences" required="">
-                            <input type="text" name="tarifs[]" class="tarif-input block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-blue-400 rounded-md  dark:text-gray-600 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" placeholder="Tarif" required="">
+                            <input type="text" name="nom[]" class="competence-input block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-blue-400 rounded-md  dark:text-gray-600 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" placeholder="Competences" required="">
+                            <input type="text" name="tarif[]" class="tarif-input block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-blue-400 rounded-md  dark:text-gray-600 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" placeholder="Tarif" required="">
                             <div class="w-10 h-10 flex items-center justify-center  top-0 right-0 cursor-pointer" onclick="addInput()">
                                 <img src="{{asset('pictures/plus.png')}}"  alt="">
                         </div>
