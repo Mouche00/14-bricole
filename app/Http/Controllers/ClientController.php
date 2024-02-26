@@ -27,7 +27,4 @@ class ClientController extends Controller
     public function clientProfile(){
         return view('client.profile');
     }
-
-   
-
 }

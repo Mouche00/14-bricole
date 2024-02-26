@@ -54,7 +54,7 @@ class SessionController extends Controller
                 $redirect = 'profile';
                 break;
             case auth()->user()->hasRole('admin'):
-                $redirect = 'adminDashboard';
+                $redirect = 'admin';
                 break;
         }
 
