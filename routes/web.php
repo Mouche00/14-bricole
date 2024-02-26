@@ -4,6 +4,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\ArtisanController;
+use App\Http\Controllers\CompetanceController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\RegisterController;
@@ -44,8 +45,10 @@ Route::post('artisan/signup', [RegisterController::class, 'artisan'])->name('sig
 Route::middleware(['can:admin'])->group(function () {
     Route::get('admin', [AdminController :: class, 'dashboard'])->name('admin');
     Route::get('domainDashboard', [AdminController :: class, 'domain'])->name('domainDashboard');
+    Route::get('domainpage/{id}', [AdminController :: class, 'domainpage'])->name('domainPage');
     Route::get('usersDashboard', [AdminController :: class, 'users'])->name('usersDashboard');
     Route::resource('domain',DomainController::class);
+    Route::resource('competance',CompetanceController::class);
 });
 
                                           // ARTISAN ROUTE

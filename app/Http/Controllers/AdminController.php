@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Competance;
+use App\Models\Domain;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -16,8 +18,21 @@ class AdminController extends Controller
     }
 
     public function domain(){
-        return view('admin.domainDashboard');
+        $domains = Domain::all();
+        return view('admin.domainDashboard',[
+            'domains'=> $domains
+        ]);
     }
+    public function domainpage($id){
+        $domain = Domain::findOrFail($id);
+        $competences = Competance::where('domain_id',$id)->get();
+        return view('admin.domainPage',[
+            'competences'=> $competences,
+            'domain'=> $domain
+        ]);
+    }
+
+
     /**
      * Display a listing of the resource.
      */

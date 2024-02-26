@@ -15,7 +15,8 @@ document.body.addEventListener("click", (event) => {
         event.target !== target_button &&
         !target_button.contains(event.target) &&
         event.target !== pop &&
-        !pop.contains(event.target)
+        !pop.contains(event.target) &&
+        !pop.classList.contains("hidden")
     ) {
         pop.classList.toggle("hidden");
         overlay.classList.toggle("hidden");
