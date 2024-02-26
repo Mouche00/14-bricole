@@ -1,5 +1,3 @@
-@dd($services)
-
 @extends('layouts.master')
 @section('client')
 <link rel="stylesheet" href="css/client.css">

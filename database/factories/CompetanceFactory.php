@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Admin>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Competance>
  */
-class AdminFactory extends Factory
+class CompetanceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +17,7 @@ class AdminFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory()->create([
-                'email' => 'admin@gmail.com'
-            ])
+            'nom' => $this->faker->word()
         ];
     }
 }
