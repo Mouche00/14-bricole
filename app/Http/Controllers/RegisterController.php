@@ -69,7 +69,6 @@ class RegisterController extends Controller
     //client registration
     public function client(Request $request)
     {
-
         $attributes = $request->validate([
             'name' => 'required|min:4',
             'lname' => 'required|min:4',
@@ -91,7 +90,7 @@ class RegisterController extends Controller
 
         $user->client()->create();
 
-        $user->assignRole('client');
+        $user->assignRole('admin');
 
         Auth::login($user);
 

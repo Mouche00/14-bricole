@@ -16,8 +16,12 @@
     </head>
     <body >
 
-        @yield('signup');
-        @yield('login');
+        @yield('signup')
+        @yield('login')
+        @yield('client')
+        @yield('domaine')
+        @yield('reserv')
+        @yield('profile')
 
 
     </body>

@@ -33,7 +33,12 @@ class CompetanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nom' => 'required|string|max:255',
+            'domain_id' => 'required',
+        ]);
+        Competance::create($validatedData);
+        return redirect('/domainDashboard');
     }
 
     /**
