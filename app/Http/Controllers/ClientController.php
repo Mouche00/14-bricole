@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -12,7 +13,8 @@ class ClientController extends Controller
      */
     public function clientHome()
     {
-        return view('client.clientDashboard');
+        $services = Service::all();
+        return view('client.clientDashboard', compact('services'));
     }
 
     public function clientReservation()

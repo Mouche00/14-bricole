@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Admin;
+use App\Models\Competance;
 use App\Models\Domain;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
@@ -32,7 +33,10 @@ class DatabaseSeeder extends Seeder
         $domains = ['charpentier', 'électricien', 'plombier', 'maçon', 'peintre', 'jardinier'];
 
         foreach($domains as $domain) {
-            Domain::create(['nom' => $domain]);
+            $domain_id = Domain::create(['nom' => $domain]);
+            Competance::factory(5)->create([
+                'domain_id' => $domain_id
+            ]);
         }
     }
 }

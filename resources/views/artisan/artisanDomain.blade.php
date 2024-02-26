@@ -115,37 +115,26 @@
     </div>  
     <form action="{{ route('domains.artisan') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="grid grid-cols-1 gap-6 mt-10 sm:grid-cols-2">
+        <div class="flex">
             
                 <fieldset x-data="window.Components.radioGroup({ initialCheckedIndex: 0 })" x-init="init()">
                     <legend class="sr-only">
                       Pricing plans
                     </legend>
                     <h2 class="text-gray-600">Domains</h2>
-                    <div class="grid grid-cols-1 gap-6 mt-2 sm:grid-cols-3">    
-               
+                    <div class="grid grid-cols-1 gap-6 mt-2 sm:grid-cols-5">    
+                      @foreach($domains as $domain)
                         <label x-radio-group-option="" class="rounded-tl-md rounded-tr-md border-blue-400   relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none" x-description="Checked: &quot;bg-indigo-50 border-indigo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;" :class="{ 'bg-indigo-50 border-indigo-200 z-10': (value === 'Business'), 'border-gray-200': !(value === 'Business') }">
                             <div class="flex items-center text-sm">
-                              <input type="radio" x-model="value" name="name" value="forgeron" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500" aria-labelledby="pricing-plans-1-label" aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">             
-                              <span id="pricing-plans-1-label" class="ml-3 font-medium" x-description="Checked: &quot;text-indigo-900&quot;, Not Checked: &quot;text-gray-900&quot;" :class="{ 'text-indigo-900': (value === 'Business'), 'text-gray-900': !(value === 'Business') }">Forgeron</span>
+                              <input type="radio" x-model="value" name="domain_id" value="{{ $domain->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500" aria-labelledby="pricing-plans-1-label" aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">             
+                              <span id="pricing-plans-1-label" class="ml-3 font-medium" x-description="Checked: &quot;text-indigo-900&quot;, Not Checked: &quot;text-gray-900&quot;" :class="{ 'text-indigo-900': (value === 'Business'), 'text-gray-900': !(value === 'Business') }">{{$domain->nom}}</span>
                             </div>
                           </label>
+                          <input type="hidden" name="domain_id[]" value="{{ $domain->id }}">
+                          @endforeach
 
-                          <label x-radio-group-option="" class="rounded-tl-md rounded-tr-md border-blue-400   relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none" x-description="Checked: &quot;bg-indigo-50 border-indigo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;" :class="{ 'bg-indigo-50 border-indigo-200 z-10': (value === 'Business'), 'border-gray-200': !(value === 'Business') }">
-                            <div class="flex items-center text-sm">
-                              <input type="radio" x-model="value" name="name" value="Najar" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500" aria-labelledby="pricing-plans-1-label" aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">             
-                              <span id="pricing-plans-1-label" class="ml-3 font-medium" x-description="Checked: &quot;text-indigo-900&quot;, Not Checked: &quot;text-gray-900&quot;" :class="{ 'text-indigo-900': (value === 'Business'), 'text-gray-900': !(value === 'Business') }">Najar</span>
-                            </div>
-                          </label>
                     </div>
                   </fieldset>
-            
-
-            {{-- <div>
-                <label class="text-gray-600" for="description">Description</label>
-                <input id="description" name="description" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-blue-400 rounded-md  dark:text-gray-600 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-            </div> --}}
-
             <input type="hidden" name="artisan_id" value="{{ Auth::user()->artisan->id }}">
 
 

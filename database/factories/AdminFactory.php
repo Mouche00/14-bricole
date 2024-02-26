@@ -19,7 +19,7 @@ class AdminFactory extends Factory
     {
         return [
             'user_id' => User::factory()->create([
-                'email' => 'admin@example.net'
+                'email' => 'admin@gmail.com'
             ])
         ];
     }
