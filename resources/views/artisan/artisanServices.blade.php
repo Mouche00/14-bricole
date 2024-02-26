@@ -112,7 +112,7 @@
     <div class="flex justify-center">
         <h2 class="text-2xl font-semibold text-gray-700 capitalize ">Add Sercices</h2>
     </div>  
-    <form action="{{ route('domains.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="grid grid-cols-1 gap-6 mt-10 sm:grid-cols-2">
                    

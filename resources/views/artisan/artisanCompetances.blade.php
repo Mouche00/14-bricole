@@ -111,7 +111,7 @@
     <div class="flex justify-center">
         <h2 class="text-2xl font-semibold text-gray-700 capitalize ">Add Compétances</h2>
     </div>  
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('competances.artisan') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="grid grid-cols-1 gap-6 mt-10 sm:grid-cols-2">
             <div class="flex flex-col">
@@ -124,9 +124,12 @@
                     <div id="dropdownContent" class="dropdown-content">
                         @foreach($competances as $competance)
                         <label>
-                            <input type="checkbox" name="competances" value="1" class="mr-2" onchange="updateSelection(this)">{{$competance->nom}}
+                            <input type="checkbox" name="competance_id" value="{{$competance->id}}" class="mr-2" onchange="updateSelection(this)">{{$competance->nom}}
                         </label>
+                        <input type="hidden" name="competance_id[]" value="{{ $competance->id }}">
                         @endforeach
+                        <input type="hidden" name="artisan_id" value="{{ Auth::user()->artisan->id }}">
+
                     </div>
                 </div>
 

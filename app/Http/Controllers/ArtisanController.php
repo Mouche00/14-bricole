@@ -37,9 +37,21 @@ class ArtisanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function addCompetance(Request $request)
     {
-       
+        $request->validate([
+            'competance_id' => 'required|array',
+            'artisan_id' => 'required|exists:artisans,id', 
+        ]);
+    
+        $competances = $request->input('competance_id');
+        $artisanId = $request->input('artisan_id');
+    
+       $artisan = Artisan::find($artisanId);
+       $artisan->competances()->sync($competances);
+
+    
+        return redirect()->route('services');
     }
 
     /**
