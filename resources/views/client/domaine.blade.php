@@ -32,7 +32,7 @@
               </div>
               <div class="flex justify-between">
                   <div class="my-2">
-                    <a href="{{route('reservations')}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
+                    <a href="{{route('reclamations')}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
                         <img src="{{asset('pictures/reservation.png')}}" class="h-6 w-6" alt="">
                         
                         Réserver
@@ -40,7 +40,7 @@
                   </div>
                 
                   <div class="my-2">
-                    <a href="{{route('reservations')}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
+                    <a href="{{route('reclamations')}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
                         <img src="{{asset('pictures/conversation.png')}}" class="h-6 w-6" alt="">
                         Envoyer un message
                         </a>
