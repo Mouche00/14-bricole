@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('date')->nullable();
             $table->foreignId('client_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('service_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
