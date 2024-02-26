@@ -72,15 +72,15 @@ class ArtisanController extends Controller
         ]);
     
         $artisanId = $request->input('artisan_id');
-    
         $domainIds = $request->input('domain_id');
     
         $artisan = Artisan::find($artisanId);
-        $artisan->domains()->sync($domainIds);
+    
+        // Use sync without detaching to append domains without removing existing ones
+        $artisan->domains()->syncWithoutDetaching($domainIds);
+    
         return redirect()->route('competances');
-   
     }
-
     /**
      * Store a newly created resource in storage.
      */
