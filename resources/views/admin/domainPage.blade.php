@@ -3,25 +3,24 @@
     </div>
 <div id="popup-window" class="hidden fixed 
 h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
-   <form class="max-w-md mx-auto p-6 bg-white border rounded-lg shadow-lg" action="{{route('domain.store')}}" method="POST">
+   <form class="max-w-md mx-auto p-6 bg-white border rounded-lg shadow-lg" action="{{route('competance.store')}}" method="POST">
        @csrf
        <div class=" mx-auto">
        
-            <h2 class="text-2xl font-bold mb-6">Ajouter Domain</h2>
+            <h2 class="text-2xl font-bold mb-6">Ajouter Competance</h2>
             <div class="mb-4">
                 <label class="block text-gray-700 font-bold mb-2" for="name">
               Name:
             </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" 
-                name="nom" placeholder="Domain Name">
+                name="nom" placeholder="Competence Name">
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="feedback">
-              Description:
+                <label class="block text-gray-700 font-bold mb-2" for="name">
+              Domaine:
             </label>
-                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="feedback" rows="5" 
-                name="description"
-                placeholder="Enter your Description"></textarea>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" 
+                name="domain_id" hidden value="{{$domain->id}}" readonly>
             </div>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
             Submit
@@ -95,7 +94,7 @@ h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
                             class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#66aacc] via-[#307299] to-[#172b3a] rounded-xl blur-lg">
                         </div>
                         <a href="#" title="Get quote now"
-                            class="reser-button relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl "
+                            class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl "
                             role="button">Ajouter Domain
                         </a>
                     </div>
@@ -106,16 +105,55 @@ h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
     
             <hr class="my-8 border-gray-200 dark:border-gray-700">
     
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-                @foreach ($domains as $domain)
-                <div>
-                    {{-- <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="{{url('img/Menuisier.jpg')}}" alt=""> --}}
+
+
+
+
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl">
+                    <div class="py-8">
+                        <h1 class="text-3xl font-bold mb-2">{{$domain->nom}}</h1>
+                        <p class="text-gray-500 text-sm">Published on <time>{{$domain->created_at->diffForHumans()}}</time></p>
+                    </div>
+                    <div class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto">
+                        <p>{{$domain->description}}</p>
+                    </div>
+                </div>
+                <div class="container mx-auto p-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h2 class="text-lg font-semibold mb-4">Competences Assocciee</h2>
+                        <div class="flex flex-wrap gap-2">
+                            @foreach ($competences as $competence)
+                            <a href="#" class="bg-gray-200 hover:bg-gray-300 py-1 px-2 rounded-lg text-sm">{{$competence->nom}}</a>
+                            @endforeach
+                            <button>
+                                <a class="reser-button bg-gray-600 hover:bg-gray-900 py-1 px-2 rounded-lg text-sm text-white mx-10">Ajouter Une Competence</a>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+                {{-- <div>
+
     
                     <div class="mt-8 border-2 border-solid divide-slate-950 rounded-md pl-3 pb-4">
-                        {{-- <span class="text-blue-500 uppercase">Menuisier</span> --}}
+                 
     
                         <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
-                            <a href="/domainpage/{{$domain->id}}">
+                            <a href="">
                                 {{$domain->nom}}
                             </a>
                         </h1>
@@ -124,83 +162,14 @@ h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
                             {{$domain->description}}
                         </p>
     
-                        {{-- <div class="flex items-center justify-between mt-4">
-                            <div>
-                                <a href="#" class="text-lg font-medium text-gray-700 dark:text-gray-300 hover:underline hover:text-gray-500">
-                                    John snow
-                                </a>
     
-                                <p class="text-sm text-gray-500 dark:text-gray-400">February 1, 2022</p>
-                            </div>
-    
-                            <a href="#" class="inline-block text-blue-500 underline hover:text-blue-400">Read more</a>
-                        </div> --}}
-    
-                    </div>
-                </div>
-                    
-                @endforeach
-    
-                {{-- <div>
-                    <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="{{url('img/plombie.jpg')}}" alt="">
-    
-                    <div class="mt-8">
-                        <span class="text-blue-500 uppercase">Plombie</span>
-    
-                        <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
-                            All the features you want to know</h1>
-    
-                        <p class="mt-2 text-gray-500 dark:text-gray-400">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi
-                            recusandae nulla veritatis id tempore sapiente
-                        </p>
-    
-                        <div class="flex items-center justify-between mt-4">
-                            <div>
-                                <a href="#" class="text-lg font-medium text-gray-700 dark:text-gray-300 hover:underline hover:text-gray-500">
-                                    Arthur Melo
-                                </a>
-    
-                                <p class="text-sm text-gray-500 dark:text-gray-400">February 6, 2022</p>
-                            </div>
-    
-                            <a href="#" class="inline-block text-blue-500 underline hover:text-blue-400">Read more</a>
-                        </div>
-    
-                    </div>
-                </div>
-    
-                <div>
-                    <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="{{url('img/forgeron.jpg')}}" alt="">
-    
-                    <div class="mt-8">
-                        <span class="text-blue-500 uppercase">Forgeron</span>
-    
-                        <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
-                            Which services you get from Meraki UI
-                        </h1>
-    
-                        <p class="mt-2 text-gray-500 dark:text-gray-400">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi
-                            recusandae nulla veritatis id tempore sapiente
-                        </p>
-    
-                        <div class="flex items-center justify-between mt-4">
-                            <div>
-                                <a href="#" class="text-lg font-medium text-gray-700 dark:text-gray-300 hover:underline hover:text-gray-500">
-                                    Tom Hank
-                                </a>
-    
-                                <p class="text-sm text-gray-500 dark:text-gray-400">February 19, 2022</p>
-                            </div>
-    
-                            <a href="#" class="inline-block text-blue-500 underline hover:text-blue-400">Read more</a>
-                        </div>
                     </div>
                 </div> --}}
-            </div>
+                    
+    
+          
         </div>
     </section>
 </div>
 
-<script src="js/dompage.js"></script>
+<script src="{{url('js/main.js')}}"></script>

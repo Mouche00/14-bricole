@@ -10,7 +10,8 @@ class Competance extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'nom',
+        'domain_id',
     ];
 
     public function domain() {
