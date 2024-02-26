@@ -4,11 +4,14 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\ArtisanController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
+use Stevebauman\Location\Facades\Location;
 
 
 
@@ -21,9 +24,9 @@ Route::get('/', function () {
 //laravel social
 
 
-Route::get('login', [Controller :: class, 'login']);
+Route::get('login', [Controller::class, 'login']);
 
-Route::post('/signup', [RegisterController :: class, 'client'])->name('signup.client');
+Route::post('/signup', [RegisterController::class, 'client'])->name('signup.client');
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
@@ -39,8 +42,8 @@ Route::post('artisan/signup', [RegisterController::class, 'artisan'])->name('sig
 
 
 
-                                // ADMIN DASHBOARD
-                                
+// ADMIN DASHBOARD
+
 Route::middleware(['can:admin'])->group(function () {
     Route::get('admin', [AdminController :: class, 'dashboard'])->name('admin');
     Route::get('domainDashboard', [AdminController :: class, 'domain'])->name('domainDashboard');
@@ -48,7 +51,7 @@ Route::middleware(['can:admin'])->group(function () {
 });
 
 
-                                          // ARTISAN ROUTE
+// ARTISAN ROUTE
 
 Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::get('artisan', [ArtisanController::class, 'dashboard'])->name('artisan');
@@ -62,8 +65,17 @@ Route::model('artisan', App\Models\Artisan::class);
 
 
 
-                   //Client Routes
+//Client Routes
 Route::middleware(['auth', 'can:client'])->group(function () {
-  
+    Route::get('client', [ClientController::class, 'clientHome'])->name('client');
+    Route::get('artisans', [ClientController::class, 'clientArtisans'])->name('artisans');
+    Route::get('reservations', [ClientController::class, 'clientReserv'])->name('reservations');
+    Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
 
 });
+
+
+
+// testing
+
+Route::get('/test/location', [TestController::class, 'location']);
