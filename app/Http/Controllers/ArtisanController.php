@@ -71,9 +71,27 @@ class ArtisanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function addCompetance(Request $request)
     {
-       
+        $request->validate([
+            'competance_ids' => 'required|array',
+            'artisan_id' => 'required|exists:artisans,id', 
+        ]);
+    
+        $competanceIds = $request->input('competance_ids');
+        $artisanId = $request->input('artisan_id');
+    
+        $artisan = Artisan::find($artisanId);
+    
+        // Use attach to append competences without removing existing ones
+        foreach ($competanceIds as $competanceId) {
+            // Check if the competence is not already attached
+            if (!$artisan->competances()->where('competance_id', $competanceId)->exists()) {
+                $artisan->competances()->attach($competanceId);
+            }
+        }
+    
+        return redirect()->route('services');
     }
 
     /**

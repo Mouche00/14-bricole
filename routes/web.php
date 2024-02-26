@@ -69,8 +69,7 @@ Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::get('services', [ArtisanController::class, 'services'])->name('services');
     Route::post('services', [ArtisanController::class, 'addServices'])->name('addServices');
     Route::post('/domain', [ArtisanController::class, 'addDomain'])->name('domains.artisan')->middleware('auth');
-
-
+    Route::post('/competances', [ArtisanController::class, 'addCompetance'])->name('competances.artisan')->middleware('auth');
 });
 
 
