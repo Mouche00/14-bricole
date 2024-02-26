@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('auth.login');
-})->route('login');
+})->name('login');
 
 
 //laravel social
