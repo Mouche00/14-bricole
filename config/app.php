@@ -168,6 +168,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        Stevebauman\Location\LocationServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -182,7 +184,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Location' => Stevebauman\Location\Facades\Location::class,
     ])->toArray(),
+
 
 ];

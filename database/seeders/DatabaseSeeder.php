@@ -3,7 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Admin;
+use App\Models\Competance;
+use App\Models\Domain;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +22,21 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'client']);
+        Role::create(['name' => 'artisan']);
+
+        $admin = Admin::factory()->create();
+        $admin->user()->first()->assignRole('admin');
+
+        $domains = ['charpentier', 'électricien', 'plombier', 'maçon', 'peintre', 'jardinier'];
+
+        foreach($domains as $domain) {
+            $domain_id = Domain::create(['nom' => $domain]);
+            Competance::factory(5)->create([
+                'domain_id' => $domain_id
+            ]);
+        }
     }
 }
