@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('login')
 
-<div class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-100 lg:max-w-4xl mt-[70px]">
+<div class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-100 lg:max-w-4xl mt-[35px]">
     <div class="hidden bg-cover lg:block lg:w-1/2" style="background-image: url('img/login.jpg');"></div>
 
     <form action="{{ route("login.store") }}" method="POST" class="w-full px-6 py-8 md:px-8 lg:w-1/2">

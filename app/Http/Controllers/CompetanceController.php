@@ -10,7 +10,9 @@ class CompetanceController extends Controller
 
 
     public function competances(){
-        return view('artisan.artisanCompetances');
+        $competances = Competance::all();
+
+        return view('artisan.artisanCompetances', compact('competances'));
     }
     /**
      * Display a listing of the resource.
