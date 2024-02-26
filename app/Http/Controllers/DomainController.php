@@ -11,11 +11,7 @@ use Illuminate\Http\Request;
 class DomainController extends Controller
 {
 
-    public function domain(){
-
-        $domains = Domain::all(); // Replace this with your actual query to get domains from the database
-        return view('artisan.artisanDomain', compact('domains'));
-    }
+    
     /**
      * Display a listing of the resource.
      */

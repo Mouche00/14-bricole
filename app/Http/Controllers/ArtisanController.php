@@ -19,6 +19,19 @@ class ArtisanController extends Controller
         return view('artisan.artisanServices');
     }
 
+    public function domain(){
+
+        $domains = Domain::all(); // Replace this with your actual query to get domains from the database
+        return view('artisan.artisanDomain', compact('domains'));
+    }
+
+
+    public function competances(){
+        $competances = Competance::all();
+
+        return view('artisan.artisanCompetances', compact('competances'));
+    }
+
     
    
     /**
