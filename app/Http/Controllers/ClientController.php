@@ -13,7 +13,8 @@ class ClientController extends Controller
      */
     public function clientHome()
     {
-        $services = Service::all();
+        $services = Service::with('artisan', 'artisan.domains', 'artisan.user')->get();
+        // dd($services[0]->artisan->user->name);
         return view('client.clientDashboard', compact('services'));
     }
 
@@ -28,5 +29,9 @@ class ClientController extends Controller
 
     public function clientProfile(){
         return view('client.profile');
+    }
+
+    public function store(Request $request, $id) {
+        dd($request, $id);
     }
 }

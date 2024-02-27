@@ -14,7 +14,8 @@ use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Stevebauman\Location\Facades\Location;
-
+// use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InvoiceController;
 
 
 
@@ -86,9 +87,12 @@ Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('reclamations', [ClientController::class, 'clientReclamation'])->name('reclamations');
     Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
 
+    Route::post('/reservation/add/{id}', [ClientController::class, 'store'])->name('reservation.store');
+
+
 });
 
-
+Route::get('/invoice', [InvoiceController::class, 'generate'])->name('invoice');
 
 // testing
 
