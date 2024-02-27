@@ -77,7 +77,7 @@ class RegisterController extends Controller
         return redirect('/');
     }
 
-    //client registration
+    //client registration en//
     public function client(Request $request)
     {
         $attributes = $request->validate([
