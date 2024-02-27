@@ -77,6 +77,7 @@ class DomainController extends Controller
     public function show(Domain $domain)
     {
         //
+        dd('hey');
     }
 
     /**
