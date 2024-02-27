@@ -90,12 +90,10 @@ Route::middleware(['auth', 'can:client'])->group(function () {
 
 
 
-<<<<<<< HEAD
 //Chat routes
 
 Route::get('/chat/{id}', [ChatController::class, 'chatForm'])->middleware('auth');
 Route::post('/chat/{id}', [ChatController::class, 'sendMessage'])->middleware('auth');
-=======
 // testing
 
 Route::get('/test/location', [TestController::class, 'location']);
@@ -103,4 +101,3 @@ Route::get('/test/location', [TestController::class, 'location']);
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');
 });
->>>>>>> 9fe83c1bfbd94ed78a59d593ca96377734d2b192
