@@ -34,6 +34,6 @@ class ProviderController extends Controller
         Auth::login($user);
         $user->assignRole('client');
 
-        return redirect()->route('client');
+        return redirect()->route('profile');
     }
 }

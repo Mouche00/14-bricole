@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artisan;
 use App\Models\ArtisanDomain;
 use App\Models\Competance;
+use App\Models\Service; 
 use App\Models\Domain;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,39 @@ class ArtisanController extends Controller
     public function services(){
         return view('artisan.artisanServices');
     }
+
+
+    public function addServices(Request $request){
+        $request->validate([
+            'nom.*' => 'required|string',
+            'tarif.*' => 'required|string',
+        ]);
+        
+   
+        $artisanId = auth()->user()->artisan->id;
+    
+        $noms = $request->input('nom');
+        $tarifs = $request->input('tarif');
+    
+        foreach ($noms as $key => $nom) {
+            $tarif = $tarifs[$key];
+            
+            $service = new Service();
+    
+            $service->nom = $nom;
+            $service->tarif = $tarif;
+            $service->artisan_id = $artisanId; 
+    
+            $service->save();
+        }
+    
+        return view('artisan.artisanServices');
+    }
+    
+    
+    
+    
+   
 
     public function domain(){
 
