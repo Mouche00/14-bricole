@@ -17,4 +17,8 @@ class Service extends Model
     public function artisan() {
         return $this->belongsTo(Artisan::class);
     }
+
+    public function reservations() {
+        return $this->hasMany(Reservation::class);
+    }
 }
