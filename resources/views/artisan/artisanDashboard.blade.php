@@ -152,6 +152,8 @@
       </div>
       <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
         
+
+       
           <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
             <div class="flex-shrink-0">
               <img class="h-48 w-full object-cover" src="{{url('img/plombie.jpg')}}" alt="">
@@ -161,144 +163,6 @@
                 <p class="text-sm font-medium text-blue-700">
                   <a href="#" class="hover:underline">
                     Plombie 
-                  </a>
-                </p>
-                <a href="#" class="block mt-2">
-                  <p class="text-xl font-semibold text-gray-900">
-                    Boost your conversion rate
-                  </p>
-                <div class="flex items-center text-gray-800 mt-4  dark:text-gray-800">
-                    <svg class="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span class="mx-3 text-gray-600">Insurance</span>
-                </div>
-                <div class="flex items-center text-gray-800 mt-4  dark:text-gray-800">
-                    <svg class="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span class="mx-3 text-gray-600">Insurance</span>
-                </div>
-                <div class="flex items-center text-gray-800 mt-4  dark:text-gray-800">
-                    <svg class="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span class="mx-3 text-gray-600">Insurance</span>
-                </div>
-
-                
-                </a>
-              </div>
-              <div class="mt-6 flex items-center">
-                <div class="flex-shrink-0">
-                  <a href="#">
-                    <span class="sr-only">Roel Aufderehar</span>
-                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
-                  </a>
-                </div>
-                <div class="ml-3">
-                  <p class="text-sm font-medium text-gray-900">
-                    <a href="#" class="hover:underline">
-                      Roel Aufderehar
-                    </a>
-                  </p>
-                  <div class="flex space-x-1 text-sm text-gray-500">
-                    <time datetime="2020-03-16">
-                      Mar 16, 2020
-                    </time>
-                    <span aria-hidden="true">
-                      ·
-                    </span>
-                    <span>
-                      6 min read
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-
-          <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
-            <div class="flex-shrink-0">
-              <img class="h-48 w-full object-cover" src="{{url('img/forgeron.jpg')}}" alt="">
-            </div>
-            <div class="flex-1 bg-white p-6 flex flex-col justify-between">
-              <div class="flex-1">
-                <p class="text-sm font-medium text-blue-700">
-                  <a href="#" class="hover:underline">
-                    Forgeron 
-                  </a>
-                </p>
-                <a href="#" class="block mt-2">
-                  <p class="text-xl font-semibold text-gray-900">
-                    Boost your conversion rate
-                  </p>
-                <div class="flex items-center text-gray-800 mt-4  dark:text-gray-800">
-                    <svg class="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span class="mx-3 text-gray-600">Insurance</span>
-                </div>
-                <div class="flex items-center text-gray-800 mt-4  dark:text-gray-800">
-                    <svg class="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span class="mx-3 text-gray-600">Insurance</span>
-                </div>
-                <div class="flex items-center text-gray-800 mt-4  dark:text-gray-800">
-                    <svg class="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span class="mx-3 text-gray-600">Insurance</span>
-                </div>
-                </a>
-              </div>
-              <div class="mt-6 flex items-center">
-                <div class="flex-shrink-0">
-                  <a href="#">
-                    <span class="sr-only">Roel Aufderehar</span>
-                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
-                  </a>
-                </div>
-                <div class="ml-3">
-                  <p class="text-sm font-medium text-gray-900">
-                    <a href="#" class="hover:underline">
-                      Roel Aufderehar
-                    </a>
-                  </p>
-                  <div class="flex space-x-1 text-sm text-gray-500">
-                    <time datetime="2020-03-16">
-                      Mar 16, 2020
-                    </time>
-                    <span aria-hidden="true">
-                      ·
-                    </span>
-                    <span>
-                      6 min read
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-
-
-
-          <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
-            <div class="flex-shrink-0">
-              <img class="h-48 w-full object-cover" src="{{url('img/Menuisier.jpg')}}" alt="">
-            </div>
-            <div class="flex-1 bg-white p-6 flex flex-col justify-between">
-              <div class="flex-1">
-                <p class="text-sm font-medium text-blue-700">
-                  <a href="#" class="hover:underline">
-                    Menuisier 
                   </a>
                 </p>
                 <a href="#" class="block mt-2">

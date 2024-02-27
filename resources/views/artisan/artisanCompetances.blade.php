@@ -111,7 +111,7 @@
     <div class="flex justify-center">
         <h2 class="text-2xl font-semibold text-gray-700 capitalize ">Add Compétances</h2>
     </div>  
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('competances.artisan') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="grid grid-cols-1 gap-6 mt-10 sm:grid-cols-2">
             <div class="flex flex-col">
@@ -120,23 +120,19 @@
                     <div class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-blue-400 rounded-md dark:text-gray-600 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
                         Select Options
                     </div>
-            
+    
                     <div id="dropdownContent" class="dropdown-content">
                         @foreach($competances as $competance)
-                        <label>
-                            <input type="checkbox" name="competances" value="1" class="mr-2" onchange="updateSelection(this)">{{$competance->nom}}
-                        </label>
+                            <label>
+                                <input type="checkbox" name="competance_ids[]" value="{{$competance->id}}" class="mr-2">{{$competance->nom}}
+                            </label>
                         @endforeach
+                        <input type="hidden" name="artisan_id" value="{{ Auth::user()->artisan->id }}">
                     </div>
                 </div>
-
-                
             </div>
-
-            <div>         
-             </div>
         </div>
-
+    
         <div class="flex justify-end mt-6">
             <button type="submit" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-gray-600">Next</button>
         </div>

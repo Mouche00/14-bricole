@@ -13,7 +13,6 @@ class ArtisanController extends Controller
 {
 
     public function dashboard(){
-        return view('artisan.artisanDashboard');
     }
 
     public function services(){
@@ -71,9 +70,27 @@ class ArtisanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function addCompetance(Request $request)
     {
-       
+        $request->validate([
+            'competance_ids' => 'required|array',
+            'artisan_id' => 'required|exists:artisans,id', 
+        ]);
+    
+        $competanceIds = $request->input('competance_ids');
+        $artisanId = $request->input('artisan_id');
+    
+        $artisan = Artisan::find($artisanId);
+    
+        // Use attach to append competences without removing existing ones
+        foreach ($competanceIds as $competanceId) {
+            // Check if the competence is not already attached
+            if (!$artisan->competances()->where('competance_id', $competanceId)->exists()) {
+                $artisan->competances()->attach($competanceId);
+            }
+        }
+    
+        return redirect()->route('services');
     }
 
     /**
@@ -88,15 +105,15 @@ class ArtisanController extends Controller
         ]);
     
         $artisanId = $request->input('artisan_id');
-    
         $domainIds = $request->input('domain_id');
     
         $artisan = Artisan::find($artisanId);
-        $artisan->domains()->sync($domainIds);
+    
+        // Use sync without detaching to append domains without removing existing ones
+        $artisan->domains()->syncWithoutDetaching($domainIds);
+    
         return redirect()->route('competances');
-   
     }
-
     /**
      * Store a newly created resource in storage.
      */

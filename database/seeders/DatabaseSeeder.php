@@ -25,6 +25,15 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        $domains = ['charpentier', 'électricien', 'plombier', 'maçon', 'peintre', 'jardinier'];
+
+        foreach($domains as $domain) {
+            $domain_id = Domain::create(['nom' => $domain]);
+            Competance::factory(5)->create([
+                'domain_id' => $domain_id
+            ]);
+        }
+
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'client']);
         Role::create(['name' => 'artisan']);
@@ -34,17 +43,16 @@ class DatabaseSeeder extends Seeder
 
         $artisan = Artisan::factory()->create();
         $artisan->user()->first()->assignRole('artisan');
+        $artisan->services()->create([
+            'nom' => 'testservice',
+            'description' => 'lorem ipsum',
+            'tarif' => 14
+        ]);
+        $artisan->domains()->attach($domain_id);
 
         $client = Client::factory()->create();
         $client->user()->first()->assignRole('client');
 
-        $domains = ['charpentier', 'électricien', 'plombier', 'maçon', 'peintre', 'jardinier'];
-
-        foreach($domains as $domain) {
-            $domain_id = Domain::create(['nom' => $domain]);
-            Competance::factory(5)->create([
-                'domain_id' => $domain_id
-            ]);
-        }
+        
     }
 }
