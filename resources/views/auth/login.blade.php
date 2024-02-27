@@ -12,7 +12,7 @@
         @endforeach
 
         <div class="flex justify-center mx-auto">
-            <img class="w-32 h-[123px] " src="{{url('img/logo.png')}}" alt="">
+            <img class="w-32 h-[123px] " src="{{url('pictures/logo.png')}}" alt="">
         </div>
 
         <p class="mt-3 text-xl text-center text-gray-600 dark:text-gray-800">
