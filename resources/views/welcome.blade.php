@@ -79,7 +79,7 @@
                                 class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
                                 Log in
                             </a>
-                            <a href="#"
+                            <a href="{{route('signup')}}"
                                 class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
                                 sign up
                             </a>
