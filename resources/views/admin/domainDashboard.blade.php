@@ -117,10 +117,9 @@ h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
             <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
                 @foreach ($domains as $domain)
                 <div>
-                    {{-- <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="{{url('img/Menuisier.jpg')}}" alt=""> --}}
     
                     <div class="mt-8 border-2 border-solid divide-slate-950 rounded-md px-3 py-4">
-                        {{-- <span class="text-blue-500 uppercase">Menuisier</span> --}}
+                
     
                         <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
                             <a href="/domainpage/{{$domain->id}}">
@@ -134,21 +133,9 @@ h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
                         <p class="mt-2 text-gray-500 dark:text-gray-400">
                             {{$domain->description}}
                         </p>
-    
-                        {{-- <div class="flex items-center justify-between mt-4">
-                            <div>
-                                <a href="#" class="text-lg font-medium text-gray-700 dark:text-gray-300 hover:underline hover:text-gray-500">
-                                    John snow
-                                </a>
-    
-                                <p class="text-sm text-gray-500 dark:text-gray-400">February 1, 2022</p>
-                            </div>
-    
-                            <a href="#" class="inline-block text-blue-500 underline hover:text-blue-400">Read more</a>
-                        </div> --}}
                         <div class="flex items-center justify-center mt-2">
                             <div class="inline-flex items-center rounded-md shadow-sm">
-                                <form>
+                             
                                     <button
                                         class="text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-l-lg font-medium px-4 py-2 inline-flex space-x-1 items-center">
                                         <span>
@@ -165,8 +152,8 @@ h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
                                             View
                                         </a></span>
                                     </button>
-                                </form>
-                                <form action="{{route('domains.destroy', ['domain' => $domain['id']])}}" method="POST">
+                               
+                                <form action="{{route('domains.destroy', ['domain' => $domain['id']])}}" method="POST" class=" m-0 p-0 ">
                                     @csrf
                                     @method('DELETE')
                                             <button
@@ -193,64 +180,6 @@ h-48 w-800  p-3 m-auto top-0 right-0 left-0 z-50 ">
                 </div>
                     
                 @endforeach
-    
-                {{-- <div>
-                    <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="{{url('img/plombie.jpg')}}" alt="">
-    
-                    <div class="mt-8">
-                        <span class="text-blue-500 uppercase">Plombie</span>
-    
-                        <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
-                            All the features you want to know</h1>
-    
-                        <p class="mt-2 text-gray-500 dark:text-gray-400">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi
-                            recusandae nulla veritatis id tempore sapiente
-                        </p>
-    
-                        <div class="flex items-center justify-between mt-4">
-                            <div>
-                                <a href="#" class="text-lg font-medium text-gray-700 dark:text-gray-300 hover:underline hover:text-gray-500">
-                                    Arthur Melo
-                                </a>
-    
-                                <p class="text-sm text-gray-500 dark:text-gray-400">February 6, 2022</p>
-                            </div>
-    
-                            <a href="#" class="inline-block text-blue-500 underline hover:text-blue-400">Read more</a>
-                        </div>
-    
-                    </div>
-                </div>
-    
-                <div>
-                    <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="{{url('img/forgeron.jpg')}}" alt="">
-    
-                    <div class="mt-8">
-                        <span class="text-blue-500 uppercase">Forgeron</span>
-    
-                        <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
-                            Which services you get from Meraki UI
-                        </h1>
-    
-                        <p class="mt-2 text-gray-500 dark:text-gray-400">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi
-                            recusandae nulla veritatis id tempore sapiente
-                        </p>
-    
-                        <div class="flex items-center justify-between mt-4">
-                            <div>
-                                <a href="#" class="text-lg font-medium text-gray-700 dark:text-gray-300 hover:underline hover:text-gray-500">
-                                    Tom Hank
-                                </a>
-    
-                                <p class="text-sm text-gray-500 dark:text-gray-400">February 19, 2022</p>
-                            </div>
-    
-                            <a href="#" class="inline-block text-blue-500 underline hover:text-blue-400">Read more</a>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </section>
