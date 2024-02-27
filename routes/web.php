@@ -13,7 +13,6 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Stevebauman\Location\Facades\Location;
-// use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
 
 

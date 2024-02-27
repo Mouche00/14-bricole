@@ -9,10 +9,7 @@
 </head>
 
 <body>
-    <!-- <h1>Invoice </h1>
-    <img src='pictures/logo.png' class='invoice-icon' alt='Invoice icon'>
-    <p><span class='label'>content:</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores consequuntur dolorum dolor dignissimos! Fugiat, sequi sed minus blanditiis iste recusandae nemo dicta totam cupiditate quibusdam molestiae deleniti, sint illum! Ullam.</p>
-      -->
+   
       <style>
         body {
             font-family: Arial, sans-serif;
