@@ -37,4 +37,12 @@ class Artisan extends Model
     public function services() {
         return $this->hasMany(Service::class);
     }
+
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
+
+    public function tempdomains() {
+        return $this->hasMany(TempDomain::class);
+    }
 }

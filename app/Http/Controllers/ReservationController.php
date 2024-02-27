@@ -20,14 +20,17 @@ class ReservationController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $attributes = $request->validate([
             'date' => 'required',
-            'service_id' => 'required'
         ]);
 
-        $reservation = auth()->user()->client()->reservations()->create($attributes);
+        $attributes = array_merge($attributes, [
+            'service_id' => $id
+        ]);
+
+        auth()->user()->client()->first()->reservations()->create($attributes);
 
 
     }
@@ -53,6 +56,8 @@ class ReservationController extends Controller
 
     public function destroy(Reservation $reservation)
     {
-        //
+        $reservation->delete();
+
+        return redirect()->route('client');
     }
 }

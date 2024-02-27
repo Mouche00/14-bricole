@@ -13,13 +13,15 @@ class ClientController extends Controller
      */
     public function clientHome()
     {
-        $services = Service::all();
+        $services = Service::with('artisan', 'artisan.domains', 'artisan.user')->get();
+        // dd($services[0]->artisan->user->name);
         return view('client.clientDashboard', compact('services'));
     }
 
     public function clientReservation()
     {
-        return view('client.reservations');
+        $reservations = auth()->user()->client()->first()->reservations()->with('service', 'service.artisan')->get();
+        return view('client.reservations', compact('reservations'));
     }
 
     public function clientReclamation(){

@@ -32,6 +32,10 @@ class AdminController extends Controller
         ]);
     }
 
+    public function destroyDomain(string $id){
+        dd($id);
+    }
+
 
     /**
      * Display a listing of the resource.

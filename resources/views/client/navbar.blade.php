@@ -1,5 +1,5 @@
 
-<div class=" min-h-screen">
+<div class=" min-h-screen relative">
     <div class=" bg-white text-blue-800 px-10 py-1  w-full">
         <div class=" flex items-center justify-between py-2 text-5x1">
             <img src="{{asset('pictures/logo.png')}}" class="h-16" alt="">

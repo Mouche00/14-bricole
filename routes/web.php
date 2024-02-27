@@ -9,12 +9,14 @@ use App\Http\Controllers\CompetanceController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Stevebauman\Location\Facades\Location;
-
+// use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InvoiceController;
 
 
 
@@ -56,6 +58,7 @@ Route::middleware(['can:admin'])->group(function () {
     Route::get('domainDashboard', [AdminController :: class, 'domain'])->name('domainDashboard');
     Route::get('domainpage/{id}', [AdminController :: class, 'domainpage'])->name('domainPage');
     Route::get('usersDashboard', [AdminController :: class, 'users'])->name('usersDashboard');
+    Route::get('desDom', [AdminController :: class, 'domainDestroy'])->name('desDom');
     Route::resource('domains',DomainController::class);
     Route::resource('competance',CompetanceController::class);
 });
@@ -86,9 +89,12 @@ Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('reclamations', [ClientController::class, 'clientReclamation'])->name('reclamations');
     Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
 
+    Route::post('/reservation/add/{id}', [ReservationController::class, 'store'])->name('reservation.store');
+
+
 });
 
-
+Route::get('/invoice', [InvoiceController::class, 'generate'])->name('invoice');
 
 // testing
 
