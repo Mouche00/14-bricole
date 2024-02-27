@@ -65,6 +65,13 @@ class RegisterController extends Controller
         $user->assignRole('artisan');
 
         $user->artisan()->create();
+
+        $artisan = Artisan::latest()->first();
+        
+        $domainIds = $request->input('domain');
+
+        $artisan->domains()->syncWithoutDetaching($domainIds);
+        
         Auth::login($user);
 
         return redirect('/');
