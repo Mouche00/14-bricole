@@ -13,7 +13,8 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Stevebauman\Location\Facades\Location;
-
+// use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InvoiceController;
 
 
 
@@ -88,4 +89,5 @@ Route::middleware(['auth', 'can:client'])->group(function () {
 
 });
 
-
+///////PDF
+Route::get('/invoice', [InvoiceController::class, 'generate'])->name('invoice');
