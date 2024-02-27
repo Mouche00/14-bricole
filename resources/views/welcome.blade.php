@@ -75,11 +75,11 @@
                     </div>
                     <div class="hidden md:block text-right">
                         <span class="inline-flex rounded-md shadow-md ring-1 ring-black ring-opacity-5">
-                            <a href="#"
+                            <a href="{{route('login.store')}}"
                                 class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
                                 Log in
                             </a>
-                            <a href="#"
+                            <a href="{{route('signup')}}"
                                 class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
                                 sign up
                             </a>
