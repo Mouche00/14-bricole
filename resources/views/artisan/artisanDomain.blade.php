@@ -114,37 +114,24 @@
         <h2 class="text-2xl font-semibold text-gray-700 capitalize ">Add Domain</h2>
     </div>  
     <form action="{{ route('domains.artisan') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="flex">
-            
-                <fieldset x-data="window.Components.radioGroup({ initialCheckedIndex: 0 })" x-init="init()">
-                    <legend class="sr-only">
-                      Pricing plans
-                    </legend>
-                    <h2 class="text-gray-600">Domains</h2>
-                    <div class="grid grid-cols-1 gap-6 mt-2 sm:grid-cols-5">    
-                      @foreach($domains as $domain)
-                        <label x-radio-group-option="" class="rounded-tl-md rounded-tr-md border-blue-400   relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none" x-description="Checked: &quot;bg-indigo-50 border-indigo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;" :class="{ 'bg-indigo-50 border-indigo-200 z-10': (value === 'Business'), 'border-gray-200': !(value === 'Business') }">
-                            <div class="flex items-center text-sm">
-                              <input type="radio" x-model="value" name="domain_id" value="{{ $domain->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500" aria-labelledby="pricing-plans-1-label" aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">             
-                              <span id="pricing-plans-1-label" class="ml-3 font-medium" x-description="Checked: &quot;text-indigo-900&quot;, Not Checked: &quot;text-gray-900&quot;" :class="{ 'text-indigo-900': (value === 'Business'), 'text-gray-900': !(value === 'Business') }">{{$domain->nom}}</span>
-                            </div>
-                          </label>
-                          <input type="hidden" name="domain_id[]" value="{{ $domain->id }}">
-                          @endforeach
-
-                    </div>
-                  </fieldset>
-            <input type="hidden" name="artisan_id" value="{{ Auth::user()->artisan->id }}">
-
-
-           
-        </div>
-
-        <div class="flex justify-end mt-6">
-            <button type="submit" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-gray-600">Next</button>
-        </div>
-    </form>
+      @csrf
+      <div class="grid grid-cols-1 gap-6 mt-2 sm:grid-cols-5">
+          @foreach($domains as $domain)
+              <label class="rounded-tl-md rounded-tr-md border-blue-400 relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none">
+                  <div class="flex items-center text-sm">
+                      <input type="checkbox" name="domain_id[]" value="{{ $domain->id }}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                      <span class="ml-3 font-medium">{{ $domain->nom }}</span>
+                  </div>
+              </label>
+          @endforeach
+      </div>
+  
+      <input type="hidden" name="artisan_id" value="{{ Auth::user()->artisan->id }}">
+  
+      <div class="flex justify-end mt-6">
+          <button type="submit" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-gray-600">Next</button>
+      </div>
+  </form>
 </section>
 
 

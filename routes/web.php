@@ -11,6 +11,7 @@ use App\Http\Controllers\DomainController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Stevebauman\Location\Facades\Location;
 // use Illuminate\Support\Facades\Route;
@@ -56,7 +57,7 @@ Route::middleware(['can:admin'])->group(function () {
     Route::get('domainDashboard', [AdminController :: class, 'domain'])->name('domainDashboard');
     Route::get('domainpage/{id}', [AdminController :: class, 'domainpage'])->name('domainPage');
     Route::get('usersDashboard', [AdminController :: class, 'users'])->name('usersDashboard');
-    Route::resource('domain',DomainController::class);
+    Route::resource('domains',DomainController::class);
     Route::resource('competance',CompetanceController::class);
 });
 
@@ -69,8 +70,7 @@ Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::get('services', [ArtisanController::class, 'services'])->name('services');
     Route::post('services', [ArtisanController::class, 'addServices'])->name('addServices');
     Route::post('/domain', [ArtisanController::class, 'addDomain'])->name('domains.artisan')->middleware('auth');
-
-
+    Route::post('/competances', [ArtisanController::class, 'addCompetance'])->name('competances.artisan')->middleware('auth');
 });
 
 
@@ -92,5 +92,12 @@ Route::middleware(['auth', 'can:client'])->group(function () {
 
 });
 
-///////PDF
 Route::get('/invoice', [InvoiceController::class, 'generate'])->name('invoice');
+
+// testing
+
+Route::get('/test/location', [TestController::class, 'location']);
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});

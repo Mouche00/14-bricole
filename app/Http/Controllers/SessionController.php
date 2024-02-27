@@ -44,7 +44,6 @@ class SessionController extends Controller
         }
 
         session()->regenerate();
-
         $redirect = 'login';
         switch (true) {
             case auth()->user()->hasRole('artisan'):
