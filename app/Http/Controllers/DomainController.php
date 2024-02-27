@@ -77,7 +77,6 @@ class DomainController extends Controller
     public function show(Domain $domain)
     {
         //
-        dd('hey');
     }
 
     /**
@@ -86,6 +85,10 @@ class DomainController extends Controller
     public function edit(Domain $domain)
     {
         //
+    }
+
+    public function dory(string $id){
+        return $id;
     }
 
     /**
