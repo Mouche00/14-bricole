@@ -12,6 +12,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Stevebauman\Location\Facades\Location;
 
@@ -52,12 +53,12 @@ Route::post('artisan/signup', [RegisterController::class, 'artisan'])->name('sig
 // ADMIN DASHBOARD
 
 Route::middleware(['can:admin'])->group(function () {
-    Route::get('admin', [AdminController::class, 'dashboard'])->name('admin');
-    Route::get('domainDashboard', [AdminController::class, 'domain'])->name('domainDashboard');
-    Route::get('domainpage/{id}', [AdminController::class, 'domainpage'])->name('domainPage');
-    Route::get('usersDashboard', [AdminController::class, 'users'])->name('usersDashboard');
-    Route::resource('domain', DomainController::class);
-    Route::resource('competance', CompetanceController::class);
+    Route::get('admin', [AdminController :: class, 'dashboard'])->name('admin');
+    Route::get('domainDashboard', [AdminController :: class, 'domain'])->name('domainDashboard');
+    Route::get('domainpage/{id}', [AdminController :: class, 'domainpage'])->name('domainPage');
+    Route::get('usersDashboard', [AdminController :: class, 'users'])->name('usersDashboard');
+    Route::resource('domains',DomainController::class);
+    Route::resource('competance',CompetanceController::class);
 });
 
 // ARTISAN ROUTE
@@ -69,6 +70,7 @@ Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::get('services', [ArtisanController::class, 'services'])->name('services');
     Route::post('services', [ArtisanController::class, 'addServices'])->name('addServices');
     Route::post('/domain', [ArtisanController::class, 'addDomain'])->name('domains.artisan')->middleware('auth');
+    Route::post('/competances', [ArtisanController::class, 'addCompetance'])->name('competances.artisan')->middleware('auth');
 });
 
 
@@ -88,7 +90,17 @@ Route::middleware(['auth', 'can:client'])->group(function () {
 
 
 
+<<<<<<< HEAD
 //Chat routes
 
 Route::get('/chat/{id}', [ChatController::class, 'chatForm'])->middleware('auth');
 Route::post('/chat/{id}', [ChatController::class, 'sendMessage'])->middleware('auth');
+=======
+// testing
+
+Route::get('/test/location', [TestController::class, 'location']);
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
+>>>>>>> 9fe83c1bfbd94ed78a59d593ca96377734d2b192

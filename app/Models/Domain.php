@@ -13,6 +13,7 @@ class Domain extends Model
     protected $fillable = [
         'nom',
         'description',
+        'picture',
     ];
 
 
