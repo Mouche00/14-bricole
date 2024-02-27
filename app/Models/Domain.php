@@ -40,4 +40,8 @@ class Domain extends Model
     {
         return $this->hasMany(Image::class);
     }
+
+    public function tempdomains() {
+        return $this->hasMany(TempDomain::class);
+    }
 }

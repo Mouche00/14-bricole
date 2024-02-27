@@ -58,7 +58,7 @@ class RegisterController extends Controller
 
         $user = User::create($attributes);
 
-        $user->assignRole('admin');
+        $user->assignRole('artisan');
 
         $user->artisan()->create();
         Auth::login($user);
