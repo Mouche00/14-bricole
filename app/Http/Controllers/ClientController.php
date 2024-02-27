@@ -20,7 +20,8 @@ class ClientController extends Controller
 
     public function clientReservation()
     {
-        return view('client.reservations');
+        $reservations = auth()->user()->client()->first()->reservations()->with('service', 'service.artisan')->get();
+        return view('client.reservations', compact('reservations'));
     }
 
     public function clientReclamation(){
@@ -29,9 +30,5 @@ class ClientController extends Controller
 
     public function clientProfile(){
         return view('client.profile');
-    }
-
-    public function store(Request $request, $id) {
-        dd($request, $id);
     }
 }
