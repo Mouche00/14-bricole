@@ -56,6 +56,7 @@ Route::middleware(['can:admin'])->group(function () {
     Route::get('domainDashboard', [AdminController :: class, 'domain'])->name('domainDashboard');
     Route::get('domainpage/{id}', [AdminController :: class, 'domainpage'])->name('domainPage');
     Route::get('usersDashboard', [AdminController :: class, 'users'])->name('usersDashboard');
+    Route::get('desDom', [AdminController :: class, 'domainDestroy'])->name('desDom');
     Route::resource('domains',DomainController::class);
     Route::resource('competance',CompetanceController::class);
 });
