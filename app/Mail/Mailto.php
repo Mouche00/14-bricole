@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesJobs;
+
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class Mailto extends Mailable

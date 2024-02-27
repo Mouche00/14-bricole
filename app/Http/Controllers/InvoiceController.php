@@ -3,19 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Barryvdh\DomPDF\Facade as PDF;
 use Barryvdh\DomPDF\Facade\Pdf;
-use App\Mail\InvoiceEmail;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\Mailto; // Correctly import your Mailto mailable class
 
-use Illuminate\Mail\PendingMail;
-use App\Mail\Mailto;
 class InvoiceController extends Controller
-
 {
-    
-    
     public function generate(Request $request)
     {
         $data = [
@@ -50,7 +47,3 @@ class InvoiceController extends Controller
         return $pdf->download('invoice.pdf');
     }
 }
-
-
-
-

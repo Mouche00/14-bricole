@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artisan;
 use \App\Models\Client;
+use App\Models\Domain;
 use \App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,10 @@ class RegisterController extends Controller
 
     public function index()
     {
-        return view('auth.signup');
+        $domains = Domain::all();
+        return view('auth.signup',[
+            'domains'=>$domains
+        ]);
     }
 
     // public function store(Request $request, $role){
@@ -38,7 +42,7 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
             'phone' => 'required',
-            // 'picture' => 'required|image',
+            'domain' => 'required',
             'address' => 'required',
         ], [
 

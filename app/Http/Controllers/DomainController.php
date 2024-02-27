@@ -39,9 +39,11 @@ class DomainController extends Controller
         'nom' => 'required|string|max:255',
         'description' => 'required|string',
     ]);
+    // dd(public_path('images/domains'));
 
         $fileName = time() . '.' . $request->picture->extension();
-        $request->picture->storeAs('public/images', $fileName);
+        // $request->picture->storeAs('public/images', $fileName);
+        $request->picture->move(public_path('images/domains'),$fileName);
         $attributes = array_merge($attributes, ['picture' => $fileName]);
 
     Domain::create($attributes);
@@ -75,6 +77,7 @@ class DomainController extends Controller
     public function show(Domain $domain)
     {
         //
+        dd('hey');
     }
 
     /**
@@ -96,8 +99,11 @@ class DomainController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Domain $domain)
+    public function destroy(string $id)
     {
-        //
+        $domain= Domain::findOrFail($id);
+ 
+        $domain->delete();
+        return redirect('/domainDashboard');
     }
 }
