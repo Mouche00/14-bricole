@@ -180,6 +180,18 @@
                             <label class="block mb-2 text-sm text-gray-800">Email address</label>
                             <input name="email" type="email" placeholder="johnsnow@example.com" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-40" />
                         </div>
+
+                        <div>
+                            <label class="block mb-2 text-sm text-gray-800">Domains</label>
+                            <select class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-40"
+                            name="domain" >
+                                @foreach ($domains as $domain)  
+                                <option value="{{$domain->id}}">{{$domain->nom}}</option>
+                                @endforeach
+                                
+                              </select>
+                        </div>
+
                         <div>
                             <label class="block mb-2 text-sm text-gray-700">Password</label>
                             <input name="password" type="password" placeholder="Enter your password" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-40" />

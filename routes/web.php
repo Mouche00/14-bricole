@@ -99,7 +99,3 @@ Route::get('/invoice', [InvoiceController::class, 'generate'])->name('invoice');
 // testing
 
 Route::get('/test/location', [TestController::class, 'location']);
-
-Route::get('/linkstorage', function () {
-    Artisan::call('storage:link');
-});
