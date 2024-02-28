@@ -49,4 +49,8 @@ class Artisan extends Model
     public function reclamations() {
         return $this->hasMany(Reclamation::class);
     }
+
+    public function images() {
+        return $this->hasMany(Image::class);
+    }
 }
