@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Barryvdh\DomPDF\Facade as PDF;
 use Barryvdh\DomPDF\Facade\Pdf;
-
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-use App\Mail\Mailto; // Correctly import your Mailto mailable class
+use App\Notifications\SendMail;
 
 class InvoiceController extends Controller
 {
@@ -35,10 +32,10 @@ class InvoiceController extends Controller
         // Get the authenticated user
         $user = Auth::user();
 
-        // Send email with PDF attachment if user is authenticated
+        // Send notification with PDF attachment if user is authenticated
         if ($user) {
-            // Send email with the Mailto Mailable class
-            Mail::to($user->email)->send(new Mailto($pdfPath));
+            // Dispatch the SendMail notification
+            $user->notify(new SendMail($pdfPath));
         }
 
         // Delete the temporary PDF file
