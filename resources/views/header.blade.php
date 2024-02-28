@@ -15,6 +15,10 @@
             $('#table').dataTable();
 
         });
+        $(document).ready(function(){
+            $('#table1').dataTable();
+
+        });
     </script>
     <title>Bricole</title>
     <style>
