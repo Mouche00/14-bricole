@@ -8,22 +8,22 @@ use App\Models\Competance;
 use App\Models\TempDomain;
 use App\Models\Service; 
 use App\Models\Domain;
+use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArtisanController extends Controller
 {
 
     public function dashboard(){
+        return view('artisan.artisanDashboard');
     }
 
     public function services(){
         return view('artisan.artisanServices');
     }
 
-    public function images()
-    {
-       return view('artisan.artisanImages');
-    }
+
 
 
     public function addServices(Request $request){
@@ -130,8 +130,17 @@ class ArtisanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-  
 
+     public function images()
+    {
+        $images = Image::all();
+        return view('artisan.artisanImages', compact('images'));
+    }
+
+    public function addImage(Request $request)
+    {
+   
+    }
     /**
      * Display the specified resource.
      */

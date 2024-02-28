@@ -9,6 +9,7 @@ use \App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class RegisterController extends Controller
 {
 
@@ -68,19 +69,12 @@ class RegisterController extends Controller
         $user->assignRole('artisan');
 
         $user->artisan()->create();
-
-        $artisan = Artisan::latest()->first();
-        
-        $domainIds = $request->input('domain');
-
-        $artisan->domains()->syncWithoutDetaching($domainIds);
-        
         Auth::login($user);
 
-        return redirect('/login');
+        return redirect('/');
     }
 
-    //client registration en//
+    //client registration
     public function client(Request $request)
     {
         $attributes = $request->validate([
@@ -97,6 +91,7 @@ class RegisterController extends Controller
         $request->picture->move(public_path('images/users'),$fileName);
         $attributes = array_merge($attributes, ['picture' => $fileName]);
 
+    
 
 
         $user = User::create($attributes);
@@ -109,4 +104,7 @@ class RegisterController extends Controller
 
         return redirect('/');
     }
+
+
+
 }
