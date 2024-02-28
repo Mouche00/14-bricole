@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 use Stevebauman\Location\Facades\Location;
 // use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ReviewController;
 
 
 
@@ -107,3 +108,6 @@ Route::post('/chat/{id}', [ChatController::class, 'sendMessage'])->middleware('a
 // testing
 
 Route::get('/test/location', [TestController::class, 'location']);
+ //////////////////
+ Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
+ Route::post('/review-store', [ReviewController::class, 'reviewstore'])->name('review.store');
