@@ -88,6 +88,10 @@ class DomainController extends Controller
         //
     }
 
+    public function dory(string $id){
+        return $id;
+    }
+
     /**
      * Update the specified resource in storage.
      */
