@@ -44,6 +44,7 @@ Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback'])
 
 // Route::get('login', [SessionController::class, 'create']);
 Route::post('login', [SessionController::class, 'store'])->name('login.store');
+Route::get('logout', [SessionController::class, 'destroy'])->name('logout');
 Route::get('signup', [RegisterController::class, 'index'])->name('signup');
 
 Route::post('client/signup', [RegisterController::class, 'client'])->name('signup.client');
@@ -80,8 +81,9 @@ Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::post('services', [ArtisanController::class, 'addServices'])->name('addServices');
     Route::post('/domain', [ArtisanController::class, 'addDomain'])->name('domains.artisan')->middleware('auth');
     Route::post('/competances', [ArtisanController::class, 'addCompetance'])->name('competances.artisan')->middleware('auth');
+    Route::post('/artisan/images', [ArtisanController::class, 'addImage'])->name('images.artisan')->middleware('auth');
+    Route::get('artisanImages', [ArtisanController::class, 'images'])->name('images');
     Route::get('/artisan/images', [ArtisanController::class, 'images'])->name('images');
-
 });
 
 
@@ -110,8 +112,8 @@ Route::get('/invoice', [InvoiceController::class, 'generate'])->name('invoice');
 
 //Chat routes
 
-Route::get('/chat/{id}', [ChatController::class, 'chatForm'])->middleware('auth');
-Route::post('/chat/{id}', [ChatController::class, 'sendMessage'])->middleware('auth');
+// Route::get('/chat/{id}', [ChatController::class, 'chatForm'])->middleware('auth');
+// Route::post('/chat/{id}', [ChatController::class, 'sendMessage'])->middleware('auth');
 // testing
 
 Route::get('/test/location', [TestController::class, 'location']);

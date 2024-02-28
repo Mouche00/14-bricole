@@ -97,11 +97,14 @@ class RegisterController extends Controller
         $request->picture->move(public_path('images/users'),$fileName);
         $attributes = array_merge($attributes, ['picture' => $fileName]);
 
-
+        $signature = time() . '.' . $request->signature->extension();
+        $request->signature->storeAs('public/signatures', $signature);
 
         $user = User::create($attributes);
 
-        $user->client()->create();
+        $user->client()->create([
+            'signature' => $signature
+        ]);
 
         $user->assignRole('client');
 
