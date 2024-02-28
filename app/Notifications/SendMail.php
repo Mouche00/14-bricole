@@ -46,8 +46,8 @@ class SendMail extends Notification
         $pdfName = 'invoice.pdf';
 
         return (new MailMessage)
-            ->subject('Your Invoice')
-            ->line('Please find your invoice attached below.')
+            ->subject('Voila votre devis')
+            ->line('Vous pouvez telecharger votre devis.')
             ->attach($this->pdfPath, [
                 'as' => $pdfName,
                 'mime' => 'application/pdf',
