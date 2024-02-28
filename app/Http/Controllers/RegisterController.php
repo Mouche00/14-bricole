@@ -60,27 +60,17 @@ class RegisterController extends Controller
         $request->picture->storeAs('public/images', $fileName);
         $attributes = array_merge($attributes, ['picture' => $fileName]);
 
-        $signature = time() . '.' . $request->signature->extension();
-        $request->picture->storeAs('public/signatures', $signature);
-
         $user = User::create($attributes);
 
         $user->assignRole('artisan');
 
         $user->artisan()->create();
-
-        $artisan = Artisan::latest()->first();
-        
-        $domainIds = $request->input('domain');
-
-        $artisan->domains()->syncWithoutDetaching($domainIds);
-        
         Auth::login($user);
 
-        return redirect('/login');
+        return redirect('/');
     }
 
-    //client registration en//
+    //client registration
     public function client(Request $request)
     {
         $attributes = $request->validate([
@@ -97,14 +87,12 @@ class RegisterController extends Controller
         $request->picture->storeAs('public/images', $fileName);
         $attributes = array_merge($attributes, ['picture' => $fileName]);
 
-        $signature = time() . '.' . $request->signature->extension();
-        $request->signature->storeAs('public/signatures', $signature);
+    
+
 
         $user = User::create($attributes);
 
-        $user->client()->create([
-            'signature' => $signature
-        ]);
+        $user->client()->create();
 
         $user->assignRole('client');
 
