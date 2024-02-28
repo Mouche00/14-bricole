@@ -10,15 +10,15 @@
         <div class="relative z-0 text-base text-black">
             
             <div class="overflow-hidden z-0 rounded-full relative p-3 font-mono">
-                <form action="{{ route('search') }}" method="GET" role="form" class="relative flex z-50 bg-white rounded-full">
-                    <input type="text" name="query" placeholder="enter your search here" class="rounded-full flex-1 px-6 py-4 text-gray-700 focus:outline-none">
-                    <button type="submit" class="rounded-full w-16 h-16">
-                        <div class="flex gap-3 justify-center items-center">
-                            <span>
-                                <img class="h-6 w-6" src="{{ asset('pictures/chercher.png') }}" alt="">
-                            </span>
-                        </div>
-                    </button>
+                <form role="form" class="relative flex z-50 bg-white rounded-full">
+                  <input type="text" placeholder="enter your search here" class="rounded-full flex-1 px-6 py-4 text-gray-700 focus:outline-none">
+                  <button class=" rounded-full w-16 h-16 ">
+                    <div class="flex gap-3 justify-center items-center">
+                      <span>
+                          <img class="h-6 w-6" src="{{asset('pictures/chercher.png')}}" alt="">
+                      </span>
+                    </div>
+                </button>
                 </form>
                 <div class="glow glow-1 z-10 bg-[#023e8a] absolute"></div>
                 <div class="glow glow-2 z-20 bg-blue-400 absolute"></div>
@@ -100,11 +100,10 @@
 {{-- search card  end  --}}
 
 {{-- popup reserve --}}
-<div id="reserve-form" class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col-reverse justify-center items-center bg-opacity-[0.8] z-[35] hidden">
+<div id="reserve-form" class="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col-reverse justify-center items-center bg-opacity-[0.8] z-[35] hidden">
     
     <form action="" method="POST" class="my-2 bg-white flex flex-col items-center gap-8 p-4 rounded z-[50]">
         @csrf
-
         <input class="text-xl p-2 bg-gray-200 rounded" type="datetime-local" value = "{{ now()->addHours(1)->timezone('Africa/Casablanca')->format('Y-m-d\TH:i') }}" min="{{ now()->timezone('Africa/Casablanca')->format('Y-m-d\TH:i') }}" max="{{ now()->timezone('Africa/Casablanca')->addMonth()->format('Y-m-d\TH:i') }}" name="date">
         <button type="submit" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
             <img src="{{asset('pictures/reservation.png')}}" class="h-6 w-6" alt="">
@@ -117,7 +116,7 @@
 
 </div>
 
-<div id="overlay" class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-black opacity-[0.8] z-[25] hidden"></div>
+<div id="overlay" class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-black opacity-[0.8] z-[20] hidden"></div>
 
 {{-- popup reserve end --}}
 
@@ -128,7 +127,7 @@
 	<div class="py-4 px-2 mx-auto max-w-screen-xl sm:py-4 lg:px-6">
 		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 h-full">
 			
-            @foreach ($artisans as $art)
+            {{-- @foreach ($artisans as $art)
                 
             
 			<div class="col-span-2 sm:col-span-2 md:col-span-2 bg-stone-50">
@@ -138,7 +137,7 @@
 					<h3 class="z-10 text-2xl font-medium text-white absolute top-0 left-0 p-4 xs:text-xl md:text-3xl">{{$art->user->name}}</h3>
 				</a>
 			</div>
-            @endforeach
+            @endforeach --}}
 			
 			
 		</div>

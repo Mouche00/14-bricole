@@ -36,7 +36,7 @@
       
           <div class="form-item w-full">
               <label class="text-2xl font-mono text-black font-bold ">Email</label>
-              <input type="text" name="email" value="{{ $user->email }}" class="mt-1 p-2 w-full border rounded-md font-bold text-xl font-mono" >
+              <input type="text" name="email" value="{{ $user->email }}" class="mt-1 p-2 w-full border rounded-md font-bold text-xl font-mono" disabled>
           </div>
       
           <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4">
@@ -79,3 +79,5 @@
 
 
 @endsection
+
+

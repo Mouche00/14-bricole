@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 use Stevebauman\Location\Facades\Location;
 // use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TempDomainController;
 use App\Models\TempDomain;
 
@@ -102,16 +103,20 @@ Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('reservations', [ClientController::class, 'clientReservation'])->name('reservations');
     Route::get('reclamation/{id}', [ClientController::class, 'clientReclamation'])->name('reclamation');
     Route::post('reclamation/add/{artisan}', [ReclamationController::class, 'store'])->name('reclamation.store');
+    Route::get('ArtisanPage/{artisan}', [ClientController::class, 'ArtisanPage'])->name('artisan.client');
 
     Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
-
     Route::post('/reservation/add/{id}', [ReservationController::class, 'store'])->name('reservation.store');
     Route::delete('/reservation/delete/{reservation}', [ReservationController::class, 'destroy'])->name('reservation.delete');
-
+    Route::get('/search', [SearchController::class, 'search'])->name('search');
+    Route::get('/searchResults', [SearchController::class, 'searchResults'])->name('searchResults');
 
 });
 
 Route::get('/invoice', [InvoiceController::class, 'generate'])->name('invoice');
+
+
+
 
 //Chat routes
 
