@@ -13,8 +13,9 @@ class InvoiceController extends Controller
     public function generate(Request $request)
     {
         $data = [
-            'to' => 'Sam Example',
-            'content' => 'lorem sdfghjklmpazertyui azertyui azertyui',
+            'to' => auth()->user()->name . ' ' . auth()->user()->lname,
+            'address' => auth()->user()->address,
+            'email' => auth()->user()->email,
         ];
 
         if ($request->has('preview')) {

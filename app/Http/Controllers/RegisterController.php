@@ -61,9 +61,6 @@ class RegisterController extends Controller
         $request->picture->move(public_path('images/users'),$fileName);
         $attributes = array_merge($attributes, ['picture' => $fileName]);
 
-        // $signature = time() . '.' . $request->signature->extension();
-        // $request->picture->move(public_path('images/signatures'),$signature);
-
         $user = User::create($attributes);
 
         $user->assignRole('artisan');
@@ -91,12 +88,14 @@ class RegisterController extends Controller
         $request->picture->move(public_path('images/users'),$fileName);
         $attributes = array_merge($attributes, ['picture' => $fileName]);
 
-    
-
+        $signatureName = time() . '.' . $request->signature->extension();
+        $request->signature->move(public_path('images/signatures'), $signatureName);
 
         $user = User::create($attributes);
 
-        $user->client()->create();
+        $user->client()->create([
+            'signature' => $signatureName
+        ]);
 
         $user->assignRole('client');
 
