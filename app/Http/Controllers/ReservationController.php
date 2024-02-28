@@ -32,7 +32,7 @@ class ReservationController extends Controller
 
         auth()->user()->client()->first()->reservations()->create($attributes);
 
-
+        return redirect()->route('reservations');
     }
 
 
