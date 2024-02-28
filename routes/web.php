@@ -90,6 +90,7 @@ Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
 
     Route::post('/reservation/add/{id}', [ReservationController::class, 'store'])->name('reservation.store');
+    Route::delete('/reservation/delete/{reservation}', [ReservationController::class, 'destroy'])->name('reservation.delete');
 
 
 });
