@@ -11,14 +11,13 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
-
-    public function index()
-    {
-        $domains = Domain::all();
-        return view('auth.signup',[
-            'domains'=>$domains
-        ]);
-    }
+ public function index()
+{
+    //     $domains = Domain::all();
+    //     return view('auth.signup',[
+    //         'domains'=>$domains
+    //     ]);
+   }
 
     // public function store(Request $request, $role){
 
