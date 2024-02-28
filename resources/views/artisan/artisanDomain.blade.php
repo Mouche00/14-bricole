@@ -1,5 +1,7 @@
 @extends('header')
 
+@include('artisan.navbar')
+
 <nav x-data="{ isOpen: false }" class="relative bg-white shadow ">
     <div class="container px-6 mx-auto">
         <div class="lg:flex lg:items-center lg:justify-between">
@@ -58,8 +60,6 @@
         </div>
     </div>
 </nav>
-
-
 
 
 <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md mt-32">
