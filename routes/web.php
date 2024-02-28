@@ -73,8 +73,9 @@ Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::post('services', [ArtisanController::class, 'addServices'])->name('addServices');
     Route::post('/domain', [ArtisanController::class, 'addDomain'])->name('domains.artisan')->middleware('auth');
     Route::post('/competances', [ArtisanController::class, 'addCompetance'])->name('competances.artisan')->middleware('auth');
+    Route::post('/artisan/images', [ArtisanController::class, 'addImage'])->name('images.artisan')->middleware('auth');
     Route::get('artisanImages', [ArtisanController::class, 'images'])->name('images');
-
+    Route::get('/artisan/images', [ArtisanController::class, 'images'])->name('images');
 });
 
 
@@ -92,6 +93,7 @@ Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
 
     Route::post('/reservation/add/{id}', [ReservationController::class, 'store'])->name('reservation.store');
+    Route::delete('/reservation/delete/{reservation}', [ReservationController::class, 'destroy'])->name('reservation.delete');
 
 
 });

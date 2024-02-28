@@ -9,6 +9,7 @@ use App\Models\TempDomain;
 use App\Models\Service; 
 use App\Models\Domain;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArtisanController extends Controller
 {
@@ -128,6 +129,28 @@ class ArtisanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+     public function addImage(Request $request)
+     {
+         $request->validate([
+             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+         ]);
+     
+         $user = Auth::user();
+         $artisan = $user->artisan;
+     
+         $images = [];
+     
+         foreach ($request->file('images') as $image) {
+             $path = $image->store('images');
+             $images[] = $path;
+         }
+     
+         $currentImages = $artisan->images ?? [];
+         $artisan->update(['images' => array_merge($currentImages, $images)]);
+     
+         return redirect()->route('services');
+     }
   
 
     /**
