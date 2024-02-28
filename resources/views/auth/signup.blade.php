@@ -124,6 +124,11 @@
                             <label class="block mb-2 text-sm text-gray-700">Confirme Password</label>
                             <input name="conpassword" type="password" placeholder="Enter your password" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-40" />
                         </div>
+
+                        <div>
+                            <label class="block mb-2 text-sm text-gray-700">Signature</label>
+                            <input name="signature" type="file" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-40" />
+                        </div>
                     
                         <button type="submit" class="col-span-2 flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#3a86ff] rounded-lg hover:bg-[#3a86ff] focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                             <span>Sign Up </span>
