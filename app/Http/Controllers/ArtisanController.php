@@ -20,6 +20,11 @@ class ArtisanController extends Controller
         return view('artisan.artisanServices');
     }
 
+    public function images()
+    {
+       return view('artisan.artisanImages');
+    }
+
 
     public function addServices(Request $request){
         $request->validate([
@@ -123,10 +128,7 @@ class ArtisanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-       
-    }
+  
 
     /**
      * Display the specified resource.
