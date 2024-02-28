@@ -14,6 +14,7 @@ class ArtisanController extends Controller
 {
 
     public function dashboard(){
+        return view('artisan.artisanDashboard');
     }
 
     public function services(){
