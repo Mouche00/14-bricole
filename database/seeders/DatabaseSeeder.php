@@ -8,6 +8,7 @@ use App\Models\Artisan;
 use App\Models\Client;
 use App\Models\Competance;
 use App\Models\Domain;
+use App\Models\Reclamation;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -52,6 +53,7 @@ class DatabaseSeeder extends Seeder
 
         $client = Client::factory()->create();
         $client->user()->first()->assignRole('client');
+        $rec = Reclamation::factory(10)->create();
 
         
     }
