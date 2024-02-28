@@ -2,64 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artisan;
 use App\Models\Reclamation;
 use Illuminate\Http\Request;
 
 class ReclamationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(Request $request, Artisan $artisan)
     {
-        //
-    }
+        $attributes = $request->validate([
+            'message' => 'required'
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $attributes = array_merge($attributes, [
+            'artisan_id' => $artisan->id
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Reclamation $reclamation)
-    {
-        //
-    }
+        auth()->user()->client()->first()->reclamations()->create($attributes);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Reclamation $reclamation)
-    {
-        //
+        return redirect()->route('client')->with('success', 'Reclamation sent successfully');
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Reclamation $reclamation)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Reclamation $reclamation)
-    {
-        //
-    }
+    
 }

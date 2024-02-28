@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Artisan;
+use App\Models\Client;
 use App\Models\Competance;
 use App\Models\Domain;
+use App\Models\Reclamation;
+use App\Models\TempDomain;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,7 +18,12 @@ class AdminController extends Controller
     }
 
     public function users(){
-        return view('admin.usersDashboard');
+        $artisans= Artisan::all();
+        $clients= Client::all();
+        return view('admin.usersDashboard',[
+            'artisans'=>$artisans,
+            'clients' =>$clients
+        ]);
     }
 
     public function domain(){
@@ -31,6 +40,32 @@ class AdminController extends Controller
             'domain'=> $domain
         ]);
     }
+    public function requestpage(){
+        $requests=TempDomain::all();
+        return view('admin.requestPage',[
+            'requests'=> $requests,
+        ]);
+    }
+
+    public function reclaPage(){
+        $recla = Reclamation::where('status',null)->get();
+        return view('admin.reclaDashboard',[
+            'reclamations'=> $recla,
+        ]);
+    }
+    public function acceRecla($id){
+        Reclamation::where('id',$id)->update(['status'=>1]);
+        return redirect('/reclaDashboard');
+    }
+    public function refRecla($id){
+        Reclamation::where('id',$id)->update(['status'=>0]);
+        return redirect('/reclaDashboard');
+    }
+
+    
+
+
+
 
     public function destroyDomain(string $id){
         dd($id);

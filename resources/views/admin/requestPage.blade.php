@@ -1,7 +1,10 @@
 @extends('header')
 <div class="container flex gap-10">
-    @include('admin.asside')
-    
+<aside class="flex flex-col w-64 h-screen px-4 py-4 overflow-y-auto bg-white   shadow-lg dark:border-gray-700">
+    <a href="#" class="mx-auto">
+        <img class="w-28 h-28 " src="{{url('img/logo.png')}}" alt="">
+    </a>
+
     <div class="flex flex-col items-center mt-6 -mx-2">
         <img class="object-cover w-24 h-24 mx-2 rounded-full" src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="avatar">
         <h4 class="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-600">John Doe</h4>
@@ -69,32 +72,23 @@
     <div class="mt-10">
     <table id="table">
         <thead class="bg-blue-600 text-white">
+            <th>Id</th>
             <th>Name</th>
-            <th>Role</th>
-            <th>Email</th>
-            <th>Adress</th>
-            <th>Phone</th>
-           
+            <th>Le Domain Souhaitee</th>
+            <th>Actions</th>
         </thead>
         <tbody class="bg-gray-100 text-center">
-            @foreach ($artisans as $art)
+            @foreach ($requests as $req)
             <tr>
-                <td>{{$art->user->name}}</td>
-                <td>Artisan</td>
-                <td>{{$art->user->email}}</td>
-                <td>{{$art->user->address}}</td>
-                <td>{{$art->user->phone}}</td>
-             
-            </tr>
-                
-            @endforeach
-            @foreach ($clients as $cli)
-            <tr>
-                <td>{{$cli->user->name}}</td>
-                <td>Client</td>
-                <td>{{$cli->user->email}}</td>
-                <td>{{$cli->user->address}}</td>
-                <td>{{$cli->user->phone}}</td>
+                <td>{{$req->id}}</td>
+                <td>{{$req->artisan->user->name}}</td>
+                <td>{{$req->domain->nom}}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <button class="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">
+                        <a href="/accepterDemande/{{$req->id}}">Confirmer</a></button>
+                    <button class="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">
+                        <a href="/refuserDemande/{{$req->id}}">Refuser</a></button>
+                </td>
              
             </tr>
                 
