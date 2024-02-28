@@ -10,15 +10,15 @@
         <div class="relative z-0 text-base text-black">
             
             <div class="overflow-hidden z-0 rounded-full relative p-3 font-mono">
-                <form role="form" class="relative flex z-50 bg-white rounded-full">
-                  <input type="text" placeholder="enter your search here" class="rounded-full flex-1 px-6 py-4 text-gray-700 focus:outline-none">
-                  <button class=" rounded-full w-16 h-16 ">
-                    <div class="flex gap-3 justify-center items-center">
-                      <span>
-                          <img class="h-6 w-6" src="{{asset('pictures/chercher.png')}}" alt="">
-                      </span>
-                    </div>
-                </button>
+                <form action="{{ route('search') }}" method="GET" role="form" class="relative flex z-50 bg-white rounded-full">
+                    <input type="text" name="query" placeholder="enter your search here" class="rounded-full flex-1 px-6 py-4 text-gray-700 focus:outline-none">
+                    <button type="submit" class="rounded-full w-16 h-16">
+                        <div class="flex gap-3 justify-center items-center">
+                            <span>
+                                <img class="h-6 w-6" src="{{ asset('pictures/chercher.png') }}" alt="">
+                            </span>
+                        </div>
+                    </button>
                 </form>
                 <div class="glow glow-1 z-10 bg-[#023e8a] absolute"></div>
                 <div class="glow glow-2 z-20 bg-blue-400 absolute"></div>
