@@ -3,7 +3,7 @@
 
 @include('client.navbar')  
 
-<div class=" flex justify-center space-x-8">
+<div class=" flex justify-center gap-x-8 flex-wrap">
   @if($reservations->first())
   @foreach ($reservations as $reservation)
     

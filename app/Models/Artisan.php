@@ -45,4 +45,8 @@ class Artisan extends Model
     public function tempdomains() {
         return $this->hasMany(TempDomain::class);
     }
+
+    public function reclamations() {
+        return $this->hasMany(Reclamation::class);
+    }
 }
