@@ -100,7 +100,7 @@
 {{-- search card  end  --}}
 
 {{-- popup reserve --}}
-<div id="reserve-form" class="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col-reverse justify-center items-center bg-opacity-[0.8] z-[35] hidden">
+<div id="reserve-form" class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col-reverse justify-center items-center bg-opacity-[0.8] z-[35] hidden">
     
     <form action="" method="POST" class="my-2 bg-white flex flex-col items-center gap-8 p-4 rounded z-[50]">
         @csrf
@@ -117,7 +117,7 @@
 
 </div>
 
-<div id="overlay" class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-black opacity-[0.8] z-[20] hidden"></div>
+<div id="overlay" class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-black opacity-[0.8] z-[25] hidden"></div>
 
 {{-- popup reserve end --}}
 

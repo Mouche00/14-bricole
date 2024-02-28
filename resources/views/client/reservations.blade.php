@@ -73,18 +73,22 @@
 
                     {{-- INVOICE BUTTON START --}}
                       @if($reservation->date < now()->timezone('Africa/Casablanca')->toDateTimeString())
-                        <a href="{{route('invoice')}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
+                        <a href="{{route('invoice', ['id' => $reservation->service->artisan->id])}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
                           <img src="{{asset('pictures/pdf.png')}}" class="h-6 w-6" alt="">
                           Devis
                         </a>
                       @endif
                     {{-- INVOICE BUTTON END --}}
-
+                       
+                     <a href="{{route('review.store')}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
+                          <img src="{{asset('pictures/review.png')}}" class="h-6 w-6" alt="">
+                          Review
+                        </a>
                     <a href="" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
                         <img src="{{asset('pictures/conversation.png')}}" class="h-6 w-6" alt="">
                         Envoyer un message
                         </a>
-
+                     
                     
                 </div>
               </div>
