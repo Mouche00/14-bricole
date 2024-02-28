@@ -88,7 +88,7 @@ Route::model('artisan', App\Models\Artisan::class);
 Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('client', [ClientController::class, 'clientHome'])->name('client');
     Route::get('reservations', [ClientController::class, 'clientReservation'])->name('reservations');
-    Route::get('reclamations', [ClientController::class, 'clientReclamation'])->name('reclamations');
+    Route::get('reclamation/{id}', [ClientController::class, 'clientReclamation'])->name('reclamation');
     Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
 
     Route::post('/reservation/add/{id}', [ReservationController::class, 'store'])->name('reservation.store');
