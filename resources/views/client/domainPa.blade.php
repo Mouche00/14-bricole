@@ -104,7 +104,6 @@
     
     <form action="" method="POST" class="my-2 bg-white flex flex-col items-center gap-8 p-4 rounded z-[50]">
         @csrf
-
         <input class="text-xl p-2 bg-gray-200 rounded" type="datetime-local" value = "{{ now()->addHours(1)->timezone('Africa/Casablanca')->format('Y-m-d\TH:i') }}" min="{{ now()->timezone('Africa/Casablanca')->format('Y-m-d\TH:i') }}" max="{{ now()->timezone('Africa/Casablanca')->addMonth()->format('Y-m-d\TH:i') }}" name="date">
         <button type="submit" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
             <img src="{{asset('pictures/reservation.png')}}" class="h-6 w-6" alt="">
@@ -128,7 +127,7 @@
 	<div class="py-4 px-2 mx-auto max-w-screen-xl sm:py-4 lg:px-6">
 		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 h-full">
 			
-            @foreach ($artisans as $art)
+            {{-- @foreach ($artisans as $art)
                 
             
 			<div class="col-span-2 sm:col-span-2 md:col-span-2 bg-stone-50">
@@ -138,7 +137,7 @@
 					<h3 class="z-10 text-2xl font-medium text-white absolute top-0 left-0 p-4 xs:text-xl md:text-3xl">{{$art->user->name}}</h3>
 				</a>
 			</div>
-            @endforeach
+            @endforeach --}}
 			
 			
 		</div>
