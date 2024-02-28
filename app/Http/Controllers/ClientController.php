@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artisan;
 use App\Models\Client;
+use App\Models\Domain;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +19,20 @@ class ClientController extends Controller
     public function clientHome()
     {
         $services = Service::with('artisan', 'artisan.domains', 'artisan.user')->get();
-        // dd($services[0]->artisan->user->name);
-        return view('client.clientDashboard', compact('services'));
+        $artisans = Artisan::all()->take(10);
+        return view('client.clientDashboard', compact('services','artisans'));
     }
+
+    public function ArtisanPage(string $id)
+    {
+        $ser = Service::where('artisan_id',$id);
+        return view('client.domainPa', [
+            'services' => $ser,
+        ]);
+    }
+
+
+    
 
     public function clientReservation()
     {
