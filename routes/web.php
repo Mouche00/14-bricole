@@ -8,6 +8,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompetanceController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DomainController;
+use App\Http\Controllers\ReclamationController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SessionController;
@@ -90,6 +91,8 @@ Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('client', [ClientController::class, 'clientHome'])->name('client');
     Route::get('reservations', [ClientController::class, 'clientReservation'])->name('reservations');
     Route::get('reclamation/{id}', [ClientController::class, 'clientReclamation'])->name('reclamation');
+    Route::post('reclamation/add/{artisan}', [ReclamationController::class, 'store'])->name('reclamation.store');
+
     Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
 
     Route::post('/reservation/add/{id}', [ReservationController::class, 'store'])->name('reservation.store');
