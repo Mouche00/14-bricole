@@ -11,6 +11,7 @@ use App\Http\Controllers\DomainController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -88,7 +89,7 @@ Route::model('artisan', App\Models\Artisan::class);
 Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('client', [ClientController::class, 'clientHome'])->name('client');
     Route::get('reservations', [ClientController::class, 'clientReservation'])->name('reservations');
-    Route::get('reclamations', [ClientController::class, 'clientReclamation'])->name('reclamations');
+    Route::get('reclamation/{id}', [ClientController::class, 'clientReclamation'])->name('reclamation');
     Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
 
     Route::post('/reservation/add/{id}', [ReservationController::class, 'store'])->name('reservation.store');
@@ -99,6 +100,10 @@ Route::middleware(['auth', 'can:client'])->group(function () {
 
 Route::get('/invoice', [InvoiceController::class, 'generate'])->name('invoice');
 
+//Chat routes
+
+Route::get('/chat/{id}', [ChatController::class, 'chatForm'])->middleware('auth');
+Route::post('/chat/{id}', [ChatController::class, 'sendMessage'])->middleware('auth');
 // testing
 
 Route::get('/test/location', [TestController::class, 'location']);
