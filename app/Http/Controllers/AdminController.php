@@ -7,6 +7,7 @@ use App\Models\Artisan;
 use App\Models\Client;
 use App\Models\Competance;
 use App\Models\Domain;
+use App\Models\Reclamation;
 use App\Models\TempDomain;
 use Illuminate\Http\Request;
 
@@ -45,6 +46,26 @@ class AdminController extends Controller
             'requests'=> $requests,
         ]);
     }
+
+    public function reclaPage(){
+        $recla = Reclamation::where('status',null)->get();
+        return view('admin.reclaDashboard',[
+            'reclamations'=> $recla,
+        ]);
+    }
+    public function acceRecla($id){
+        Reclamation::where('id',$id)->update(['status'=>1]);
+        return redirect('/reclaDashboard');
+    }
+    public function refRecla($id){
+        Reclamation::where('id',$id)->update(['status'=>0]);
+        return redirect('/reclaDashboard');
+    }
+
+    
+
+
+
 
     public function destroyDomain(string $id){
         dd($id);

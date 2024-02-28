@@ -61,6 +61,9 @@ Route::middleware(['can:admin'])->group(function () {
     Route::get('domainpage/{id}', [AdminController :: class, 'domainpage'])->name('domainPage');
     Route::get('usersDashboard', [AdminController :: class, 'users'])->name('usersDashboard');
     Route::get('requestsDashboard', [AdminController :: class, 'requestpage'])->name('requestsDashboard');
+    Route::get('reclaDashboard', [AdminController :: class, 'reclapage'])->name('reclaDashboard');
+    Route::get('accepterrecla/{id}', [AdminController :: class, 'acceRecla'])->name('acceRecla');
+    Route::get('refuserrecla/{id}', [AdminController :: class, 'refRecla'])->name('refRecla');
     Route::get('desDom', [AdminController :: class, 'domainDestroy'])->name('desDom');
     Route::get('accepterDemande/{id}', [TempDomainController :: class, 'accepterDemande'])->name('accepterDemande');
     Route::get('refuserDemande/{id}', [TempDomainController :: class, 'refuserDemande'])->name('refuserDemande');

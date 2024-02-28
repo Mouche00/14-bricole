@@ -57,8 +57,11 @@ class RegisterController extends Controller
 
 
         $fileName = time() . '.' . $request->picture->extension();
-        $request->picture->storeAs('public/images', $fileName);
+        $request->picture->move(public_path('images/users'),$fileName);
         $attributes = array_merge($attributes, ['picture' => $fileName]);
+
+        // $signature = time() . '.' . $request->signature->extension();
+        // $request->picture->move(public_path('images/signatures'),$signature);
 
         $user = User::create($attributes);
 
@@ -84,7 +87,7 @@ class RegisterController extends Controller
         ]);
         
         $fileName = time() . '.' . $request->picture->extension();
-        $request->picture->storeAs('public/images', $fileName);
+        $request->picture->move(public_path('images/users'),$fileName);
         $attributes = array_merge($attributes, ['picture' => $fileName]);
 
     

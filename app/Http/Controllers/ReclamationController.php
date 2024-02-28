@@ -23,5 +23,5 @@ class ReclamationController extends Controller
 
         return redirect()->route('client')->with('success', 'Reclamation sent successfully');
     }
-
+    
 }
