@@ -65,7 +65,7 @@ class ClientController extends Controller
     
         $user->update($attributes);
     
-        return view('client.profile');
+        return redirect()->route('profile');
     
     }
 }
