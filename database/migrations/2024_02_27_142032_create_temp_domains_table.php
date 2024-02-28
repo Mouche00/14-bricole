@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('temp_domains', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
             $table->foreignId('artisan_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('domain_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
