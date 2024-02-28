@@ -23,6 +23,6 @@
         @yield('reserv')
         @yield('profile')
 
-
+        @include('layouts.footer')
     </body>
     </html>
