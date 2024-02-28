@@ -11,6 +11,7 @@ use App\Http\Controllers\DomainController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -99,6 +100,10 @@ Route::middleware(['auth', 'can:client'])->group(function () {
 
 Route::get('/invoice', [InvoiceController::class, 'generate'])->name('invoice');
 
+//Chat routes
+
+Route::get('/chat/{id}', [ChatController::class, 'chatForm'])->middleware('auth');
+Route::post('/chat/{id}', [ChatController::class, 'sendMessage'])->middleware('auth');
 // testing
 
 Route::get('/test/location', [TestController::class, 'location']);
