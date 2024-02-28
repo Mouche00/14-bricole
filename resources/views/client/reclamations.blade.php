@@ -21,15 +21,17 @@
                 <div class="flex-auto p-5 lg:p-10">
                   <h4 class="text-2xl font-semibold font-mono">Remplissez ce formulaire et nous vous répondrons dans les 24 heures.
                   </h4>
-                 
                   <div class="relative w-full mb-3 mt-8 ">
-                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 font-mono " for="full-name">Full Name</label><input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Full Name">
+                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 font-mono " for="full-name">Full Name</label><input type="text" value="{{ auth()->user()->name . ' ' . auth()->user()->lname }}" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Full Name" disabled>
                   </div>
                   <div class="relative w-full mb-3">
-                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 font-mono" for="email">Email</label><input type="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Email">
+                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 font-mono" for="email">Email</label><input type="email" value="{{ auth()->user()->email }}" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Email" disabled>
                   </div>
                   <div class="relative w-full mb-3">
-                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 font-mono" for="message">Message</label><textarea rows="4" cols="80" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" placeholder="Type a message..."></textarea>
+                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 font-mono" for="artisan">Artisan</label><input type="text" value="{{ $artisan->name . ' ' . $artisan->lname }}" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Email" disabled>
+                  </div>
+                  <div class="relative w-full mb-3">
+                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 font-mono" for="message">Message</label><textarea name="message" rows="4" cols="80" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" placeholder="Type a message..."></textarea>
                   </div>
                   <div class="text-center mt-6">
                     <button class=" font-mono bg-[#023e8a] text-white active:bg-[#023e8a] text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">

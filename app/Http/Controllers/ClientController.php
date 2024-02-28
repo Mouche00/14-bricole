@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artisan;
 use App\Models\Client;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -24,8 +25,10 @@ class ClientController extends Controller
         return view('client.reservations', compact('reservations'));
     }
 
-    public function clientReclamation(){
-        return view('client.reclamations');
+    public function clientReclamation($id){
+
+        $artisan = Artisan::find($id)->user()->first();
+        return view('client.reclamations', compact('artisan'));
     }
 
     public function clientProfile(){

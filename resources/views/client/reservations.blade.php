@@ -4,12 +4,22 @@
 @include('client.navbar')  
 
 <div class=" flex justify-center space-x-8">
-  @if($reservations)
+  @if($reservations->first())
   @foreach ($reservations as $reservation)
     
 
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 w-[700px] relative">
-        <a href="{{ route('reservation.delete', ['reservation', $reservation->id]) }}" class="absolute top-0 right-0 translate-x-[50%] px-4 py-2 bg-red-500 text-white text-3xl font-black rounded-full z-50">X</a>
+
+        {{-- DELETE BUTTON START --}}
+        @if($reservation->date > now()->addHour()->timezone('Africa/Casablanca')->toDateTimeString())
+          <form action="{{ route('reservation.delete', ['reservation' => $reservation->id]) }}" method="POST" class="absolute top-0 right-0 translate-x-[50%] z-50 w-12 h-12">
+            @csrf
+            @method('DELETE')
+
+            <button type="submit" class="absolute w-full h-full top-0 left-0 px-4 py-2 bg-red-500 text-white text-2xl font-black rounded-full">X</button>
+          </form>
+        @endif
+        {{-- DELETE BUTTON END --}}
 
         <div class="relative py-6 px-6 rounded-3xl my-4 shadow-xl  " style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)), url('{{ asset('pictures/cc.jpg') }}') no-repeat center;background-size:cover">
            
@@ -45,21 +55,32 @@
               <div class="flex space-x-3 text-white font-bold text-xl my-3">
               </div>
               <div class="flex justify-between">
-                  <div class="my-2">
-                    <a href="{{route('reclamations')}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
-                        <img src="{{asset('pictures/reservation.png')}}" class="h-6 w-6" alt="">
-                        
-                        Réclamations
-                        </a>
-                  </div>
+
+                  {{-- RECLAMATION BUTTON START --}}
+                    @if($reservation->date < now()->timezone('Africa/Casablanca')->toDateTimeString())
+                      <div class="my-2">
+                        <a href="{{route('reclamation', ['id' => $reservation->service->artisan->id])}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
+                            <img src="{{asset('pictures/reservation.png')}}" class="h-6 w-6" alt="">
+                            
+                            Réclamation
+                            </a>
+                      </div>
+                    @endif
+                  {{-- RECLAMATION BUTTON END --}}
                  
 
                   <div class="my-2">
-                    <a href="{{route('invoice')}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
-                      <img src="{{asset('pictures/pdf.png')}}" class="h-6 w-6" alt="">
-                      Download
-                      </a>
-                    <a href="{{route('reclamations')}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
+
+                    {{-- INVOICE BUTTON START --}}
+                      @if($reservation->date < now()->timezone('Africa/Casablanca')->toDateTimeString())
+                        <a href="{{route('invoice')}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
+                          <img src="{{asset('pictures/pdf.png')}}" class="h-6 w-6" alt="">
+                          Devis
+                        </a>
+                      @endif
+                    {{-- INVOICE BUTTON END --}}
+
+                    <a href="" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
                         <img src="{{asset('pictures/conversation.png')}}" class="h-6 w-6" alt="">
                         Envoyer un message
                         </a>
@@ -74,7 +95,7 @@
   </div>
     @endforeach
     @else
-      <h1>Nothing here.</h1>
+      <h1 class="h-full">Nothing here.</h1>
     @endif
   
 </div>

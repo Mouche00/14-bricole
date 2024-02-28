@@ -11,6 +11,7 @@ use App\Http\Controllers\DomainController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +74,8 @@ Route::middleware(['auth', 'can:artisan'])->group(function () {
     Route::post('services', [ArtisanController::class, 'addServices'])->name('addServices');
     Route::post('/domain', [ArtisanController::class, 'addDomain'])->name('domains.artisan')->middleware('auth');
     Route::post('/competances', [ArtisanController::class, 'addCompetance'])->name('competances.artisan')->middleware('auth');
+    Route::get('/artisan/images', [ArtisanController::class, 'images'])->name('images');
+
 });
 
 
@@ -86,16 +89,21 @@ Route::model('artisan', App\Models\Artisan::class);
 Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('client', [ClientController::class, 'clientHome'])->name('client');
     Route::get('reservations', [ClientController::class, 'clientReservation'])->name('reservations');
-    Route::get('reclamations', [ClientController::class, 'clientReclamation'])->name('reclamations');
+    Route::get('reclamation/{id}', [ClientController::class, 'clientReclamation'])->name('reclamation');
     Route::get('profile', [ClientController::class, 'clientProfile'])->name('profile');
 
     Route::post('/reservation/add/{id}', [ReservationController::class, 'store'])->name('reservation.store');
+    Route::delete('/reservation/delete/{reservation}', [ReservationController::class, 'destroy'])->name('reservation.delete');
 
 
 });
 
 Route::get('/invoice', [InvoiceController::class, 'generate'])->name('invoice');
 
+//Chat routes
+
+Route::get('/chat/{id}', [ChatController::class, 'chatForm'])->middleware('auth');
+Route::post('/chat/{id}', [ChatController::class, 'sendMessage'])->middleware('auth');
 // testing
 
 Route::get('/test/location', [TestController::class, 'location']);
