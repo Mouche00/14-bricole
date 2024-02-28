@@ -1,5 +1,7 @@
 @extends('header')
 
+@include('artisan.navbar')
+
 <nav x-data="{ isOpen: false }" class="relative bg-white shadow ">
     <div class="container px-6 mx-auto">
         <div class="lg:flex lg:items-center lg:justify-between">
@@ -21,6 +23,8 @@
                     </button>
                 </div>
             </div>
+
+            {{-- klkl --}}
 
             <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
             <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white  lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
@@ -56,8 +60,6 @@
         </div>
     </div>
 </nav>
-
-
 
 
 <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md mt-32">

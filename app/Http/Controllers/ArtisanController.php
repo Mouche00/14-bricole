@@ -112,10 +112,12 @@ class ArtisanController extends Controller
         ]);
     
         $artisanId = $request->input('artisan_id');
+
+    
         $domainIds = $request->input('domain_id');
     
         $artisan = Artisan::find($artisanId);
-    
+
         // Use sync without detaching to append domains without removing existing ones
         foreach ($domainIds as $domainId) {
             $tempDomain = TempDomain::firstOrCreate([

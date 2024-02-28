@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
@@ -57,15 +58,18 @@ class User extends Authenticatable
 
 
 
-    public function admin(){
+    public function admin()
+    {
         return $this->hasOne(Admin::class);
     }
 
-    public function client(){
+    public function client()
+    {
         return $this->hasOne(Client::class);
     }
 
-    public function artisan(){
+    public function artisan()
+    {
         return $this->hasOne(Artisan::class);
     }
 }
