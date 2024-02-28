@@ -33,6 +33,7 @@
 
                         <a href="services" class="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-800 hover:border-blue-600 mx-1.5 sm:mx-6">Services</a>
 
+                        <a href="images" class="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-800 hover:border-blue-600 mx-1.5 sm:mx-6">Images</a>
 
                 </div>
 
