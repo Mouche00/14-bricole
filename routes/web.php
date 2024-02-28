@@ -50,6 +50,9 @@ Route::get('signup', [RegisterController::class, 'index'])->name('signup');
 Route::post('client/signup', [RegisterController::class, 'client'])->name('signup.client');
 Route::post('artisan/signup', [RegisterController::class, 'artisan'])->name('signup.artisan');
 
+Route::put('client/update', [RegisterController::class, 'update'])->name('update.client');
+
+
 
 
 
