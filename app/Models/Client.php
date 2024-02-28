@@ -9,9 +9,7 @@ class Client extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
-        'user_id'
-    ];
+    protected $guarded = [];
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -23,5 +21,9 @@ class Client extends Model
 
     public function reviews(){
         return $this->hasMany(Review::class);
+    }
+
+    public function reclamations() {
+        return $this->hasMany(Reclamation::class);
     }
 }

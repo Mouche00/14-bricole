@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('artisans', function (Blueprint $table) {
             $table->id();
             $table->enum('disponible', [1, 0])->default(1);
-            $table->json('images')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
