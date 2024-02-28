@@ -65,32 +65,23 @@
     <div class="mt-10">
     <table id="table">
         <thead class="bg-blue-600 text-white">
+            <th>Id</th>
             <th>Name</th>
-            <th>Role</th>
-            <th>Email</th>
-            <th>Adress</th>
-            <th>Phone</th>
-           
+            <th>Le Domain Souhaitee</th>
+            <th>Actions</th>
         </thead>
         <tbody class="bg-gray-100 text-center">
-            @foreach ($artisans as $art)
+            @foreach ($requests as $req)
             <tr>
-                <td>{{$art->user->name}}</td>
-                <td>Artisan</td>
-                <td>{{$art->user->email}}</td>
-                <td>{{$art->user->address}}</td>
-                <td>{{$art->user->phone}}</td>
-             
-            </tr>
-                
-            @endforeach
-            @foreach ($clients as $cli)
-            <tr>
-                <td>{{$cli->user->name}}</td>
-                <td>Client</td>
-                <td>{{$cli->user->email}}</td>
-                <td>{{$cli->user->address}}</td>
-                <td>{{$cli->user->phone}}</td>
+                <td>{{$req->id}}</td>
+                <td>{{$req->artisan->user->name}}</td>
+                <td>{{$req->domain->nom}}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <button class="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">
+                        <a href="/accepterDemande/{{$req->id}}">Confirmer</a></button>
+                    <button class="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">
+                        <a href="/refuserDemande/{{$req->id}}">Refuser</a></button>
+                </td>
              
             </tr>
                 

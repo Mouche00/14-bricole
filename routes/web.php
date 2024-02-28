@@ -19,9 +19,8 @@ use Illuminate\Support\Facades\Route;
 use Stevebauman\Location\Facades\Location;
 // use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
-
-
-
+use App\Http\Controllers\TempDomainController;
+use App\Models\TempDomain;
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,7 +59,10 @@ Route::middleware(['can:admin'])->group(function () {
     Route::get('domainDashboard', [AdminController :: class, 'domain'])->name('domainDashboard');
     Route::get('domainpage/{id}', [AdminController :: class, 'domainpage'])->name('domainPage');
     Route::get('usersDashboard', [AdminController :: class, 'users'])->name('usersDashboard');
+    Route::get('requestsDashboard', [AdminController :: class, 'requestpage'])->name('requestsDashboard');
     Route::get('desDom', [AdminController :: class, 'domainDestroy'])->name('desDom');
+    Route::get('accepterDemande/{id}', [TempDomainController :: class, 'accepterDemande'])->name('accepterDemande');
+    Route::get('refuserDemande/{id}', [TempDomainController :: class, 'refuserDemande'])->name('refuserDemande');
     Route::resource('domains',DomainController::class);
     Route::resource('competance',CompetanceController::class);
 });
