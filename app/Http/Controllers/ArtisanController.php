@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artisan;
 use App\Models\ArtisanDomain;
 use App\Models\Competance;
+use App\Models\TempDomain;
 use App\Models\Service; 
 use App\Models\Domain;
 use Illuminate\Http\Request;
@@ -17,6 +18,11 @@ class ArtisanController extends Controller
 
     public function services(){
         return view('artisan.artisanServices');
+    }
+
+    public function images()
+    {
+       return view('artisan.artisanImages');
     }
 
 
@@ -110,17 +116,19 @@ class ArtisanController extends Controller
         $artisan = Artisan::find($artisanId);
     
         // Use sync without detaching to append domains without removing existing ones
-        $artisan->domains()->syncWithoutDetaching($domainIds);
+        foreach ($domainIds as $domainId) {
+            $tempDomain = TempDomain::firstOrCreate([
+                'artisan_id' => $artisanId,
+                'domain_id' => $domainId,
+            ]);
+        }
     
         return redirect()->route('competances');
     }
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-       
-    }
+  
 
     /**
      * Display the specified resource.
