@@ -21,6 +21,7 @@ use Stevebauman\Location\Facades\Location;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\PusherController;
 use App\Http\Controllers\TempDomainController;
 use App\Models\TempDomain;
 
@@ -130,3 +131,9 @@ Route::get('/test/location', [TestController::class, 'location']);
  //////////////////
  Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
  Route::post('/review-store', [ReviewController::class, 'reviewstore'])->name('review.store');
+
+
+ //chat 
+ Route::get('/chat', [PusherController::class, 'index'])->name('chat');    
+ Route::post('/broadcast', [PusherController::class, 'broadcast'])->name('broadcast');
+ Route::post('/receive', [PusherController::class, 'receive'])->name('receive');
