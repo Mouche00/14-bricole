@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Artisan extends Model
 {
@@ -52,5 +53,9 @@ class Artisan extends Model
 
     public function images() {
         return $this->hasMany(Image::class);
+    }
+
+    public function avgRating() {
+        return $this->reviews()->select(DB::raw('AVG(note) as aggregate, artisan_id'))->groupBy('artisan_id');
     }
 }

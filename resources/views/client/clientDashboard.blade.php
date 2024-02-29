@@ -37,7 +37,7 @@
 <div class=" flex justify-center gap-x-8 flex-wrap">
 
     @foreach ($services as $service)
-            <div class="reserve-wrapper grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 w-[500px]">
+            <div class="reserve-wrapper grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 w-[500px] relative">
                 <div class=" relative  py-6 px-6 rounded-3xl my-4 shadow-xl  " style="background:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)), url('{{ asset('pictures/cc.jpg') }}') no-repeat center;background-size:cover">
                 
                 <div class=" text-white flex items-center justify-between left-4 -top-6">
@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="p-4 bg-white text-black rounded-lg font-bold">
-                        <p>${{ $service->tarif }}</p> 
+                        <p>${{ $service->tarif }}/h</p> 
                     </div>
                 </div>
                 
@@ -75,7 +75,7 @@
                     </div>
                     <div class="flex justify-between">
                         <div class="my-2">
-                            <button type="button" data-id="{{ $service->id }}" class="reserve-button text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
+                            <button type="button" onclick="showForm(event)" data-id="{{ $service->id }}" class="reserve-button text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
                                 <img src="{{asset('pictures/reservation.png')}}" class="h-6 w-6" alt="">
                                 
                                 Réserver
@@ -100,7 +100,7 @@
 {{-- search card  end  --}}
 
 {{-- popup reserve --}}
-<div id="reserve-form" class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col-reverse justify-center items-center bg-opacity-[0.8] z-[35] hidden">
+<div id="reserve-form" class="absolute top-[0%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col-reverse justify-center items-center bg-opacity-[0.8] z-[35] hidden">
     
     <form action="" method="POST" class="my-2 bg-white flex flex-col items-center gap-8 p-4 rounded z-[50]">
         @csrf
@@ -193,27 +193,73 @@
 <script>
     const reserveButtons = document.querySelectorAll('.reserve-button');
     const overlay = document.querySelector('#overlay');
-    const reserveForm = document.querySelector('#reserve-form');
+    // const reserveForm = document.querySelector('#reserve-form');
     const reserveWrappers = document.querySelectorAll('.reserve-wrapper');
 
+    /*
     reserveButtons.forEach((e) => {
         e.addEventListener('click', () => {
             // e.getAttribute('data-id')
+            console.log(1);
     
             overlay.classList.toggle('hidden');
-            e.closest(".reserve-wrapper").classList.toggle('z-[30]');
-            reserveForm.classList.toggle('hidden');
-            reserveForm.firstElementChild.action = "{{ route('reservation.store', ['id' => $service->id]) }}";
+            reserveWrapper = e.closest(".reserve-wrapper");
+            reserveWrapper.classList.toggle('z-[30]');
+            reserveWrapper.innerHTML += `<div id="reserve-form" class="absolute top-[0%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col-reverse justify-center items-center bg-opacity-[0.8] z-[35]">
+    
+                                            <form action="{{ route('reservation.store', ['id' => $service->id]) }}" method="POST" class="my-2 bg-white flex flex-col items-center gap-8 p-4 rounded z-[50]">
+                                                @csrf
+
+                                                <input class="text-xl p-2 bg-gray-200 rounded" type="datetime-local" value = "{{ now()->addHours(1)->timezone('Africa/Casablanca')->format('Y-m-d\TH:i') }}" min="{{ now()->timezone('Africa/Casablanca')->format('Y-m-d\TH:i') }}" max="{{ now()->timezone('Africa/Casablanca')->addMonth()->format('Y-m-d\TH:i') }}" name="date">
+                                                <button type="submit" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
+                                                    <img src="{{asset('pictures/reservation.png')}}" class="h-6 w-6" alt="">
+                                                    
+                                                    
+                                                    Réserver
+                                                </button>
+                                            </form>
+                                            <h1 class="p-4 bg-white rounded-lg">SELECT DATE:</h1>
+
+                                        </div>`;
+                console.log(2);
+            // reserveForm.classList.toggle('hidden');
+            // reserveForm.firstElementChild.action = "{{ route('reservation.store', ['id' => $service->id]) }}";
         })
     })
+    */
+
+    function showForm(e) {
+        //console.log(e.target);
+        overlay.classList.toggle('hidden');
+        reserveWrapper = e.target.closest(".reserve-wrapper");
+        reserveWrapper.classList.toggle('z-[30]');
+        reserveWrapper.innerHTML += `<div id="reserve-form" class="absolute top-[0%] left-[50%] translate-x-[-50%] translate-y-[-100%] flex flex-col-reverse justify-center items-center bg-opacity-[0.8] z-[35]">
+
+                                        <form action="http://localhost/reservation/add/${e.target.getAttribute('data-id')}" method="POST" class="my-2 bg-white flex flex-col items-center gap-8 p-4 rounded z-[50]">
+                                            @csrf
+
+                                            <input class="text-xl p-2 bg-gray-200 rounded" type="datetime-local" value = "{{ now()->addHours(1)->timezone('Africa/Casablanca')->format('Y-m-d\TH:i') }}" min="{{ now()->timezone('Africa/Casablanca')->format('Y-m-d\TH:i') }}" max="{{ now()->timezone('Africa/Casablanca')->addMonth()->format('Y-m-d\TH:i') }}" name="date">
+                                            <button type="submit" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
+                                                <img src="{{asset('pictures/reservation.png')}}" class="h-6 w-6" alt="">
+                                                
+                                                
+                                                Réserver
+                                            </button>
+                                        </form>
+                                        <h1 class="p-4 bg-white rounded-lg">SELECT DATE:</h1>
+
+                                    </div>`;
+    }
 
     overlay.addEventListener('click', () => {
         overlay.classList.toggle('hidden');
-        reserveForm.classList.toggle('hidden');
+        // reserveForm.classList.toggle('hidden');
+        document.querySelector('#reserve-form').remove();
         reserveWrappers.forEach((e) => {
             e.classList.remove('z-[30]');
         })
     })
+
 
 
 </script>

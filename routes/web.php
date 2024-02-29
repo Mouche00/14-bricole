@@ -113,6 +113,9 @@ Route::middleware(['auth', 'can:client'])->group(function () {
     Route::get('/searchResults', [SearchController::class, 'searchResults'])->name('searchResults');
     Route::get('/invoice/{reservation}', [InvoiceController::class, 'generate'])->name('invoice');
 
+    Route::post('/review/add/{artisan}', [ReviewController::class, 'reviewstore'])->name('review.store');
+
+
 
 });
 
@@ -128,5 +131,4 @@ Route::middleware(['auth', 'can:client'])->group(function () {
 
 Route::get('/test/location', [TestController::class, 'location']);
  //////////////////
- Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
- Route::post('/review-store', [ReviewController::class, 'reviewstore'])->name('review.store');
+//  Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
