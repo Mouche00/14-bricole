@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->enum('note', [1, 2, 3, 4, 5])->nullable();
+            $table->integer('note')->nullable();
             $table->string('commentaire')->nullable();
             $table->foreignId('artisan_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('client_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
