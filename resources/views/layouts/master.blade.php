@@ -16,8 +16,7 @@
     </head>
     <body >
 
-        @yield('signup')
-        @yield('login')
+     
         @yield('client')
         @yield('domaine')
         @yield('reserv')
