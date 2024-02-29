@@ -36,7 +36,7 @@ class ClientController extends Controller
 
     public function clientReservation()
     {
-        $reservations = auth()->user()->client()->first()->reservations()->with('service', 'service.artisan')->get();
+        $reservations = auth()->user()->client()->first()->reservations()->with('services', 'services.artisan')->get();
         return view('client.reservations', compact('reservations'));
     }
 

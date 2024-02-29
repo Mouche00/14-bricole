@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
 
         $client = Client::factory()->create();
         $client->user()->first()->assignRole('client');
-        $rec = Reclamation::factory(10)->create();
+        // $rec = Reclamation::factory(10)->create();
 
         
     }

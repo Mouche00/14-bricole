@@ -56,12 +56,19 @@
             max-width: 150px;
             max-height: 150px;
         }
+
+        .sig {
+            display: flex;
+            width: 100%;
+            justify-content: right;
+            margin-top: 2rem;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <img src='pictures/logo.png' alt="Company Logo" class="logo">
+        {{-- <img src='pictures/logo.png' alt="Company Logo" class="logo"> --}}
         <h1>Invoice</h1>
     </header>
 
@@ -73,7 +80,7 @@
                 <p><strong> Email:</strong>BricoleMe@email.com<</p>
             </div>
             <div>
-                <p><strong>To:</strong> {{ $to }}</p>
+                <p><strong>To:</strong> {{ $name }}</p>
                 <p><strong>Customer Address:</strong>{{ $address }}</p>
                 <p><strong>Customer Email:</strong>{{ $email }}<p>
             </div>
@@ -83,18 +90,21 @@
             <thead>
                 <tr>
                     <th>Description</th>
-                    <th>Quantity</th>
-                    <th>Unit Price</th>
+                    <th>Time</th>
+                    <th>Tarif</th>
                     <th>Total</th>
                 </tr>
             </thead>
             <tbody>
+            @foreach ($reservation->services as $item)
                 <tr>
-                    <td>Item 1</td>
-                    <td>2</td>
-                    <td>$50.00</td>
-                    <td>$100.00</td>
+                    <td>{{ $item->nom }}</td>
+                    <td>{{ $hours }}h</td>
+                    <td>${{ $item->tarif }}</td>
+                    <td>${{ $item->tarif * $hours }}</td>
                 </tr>
+            @endforeach
+                
                 {{-- <tr>
                     <td>Item 2</td>
                     <td>1</td>
@@ -105,8 +115,14 @@
         </table>
 
         <div class="total">
-            <p><strong>Total: $130.00</strong></p>
+            <p><strong>Total: ${{ $sum }}</strong></p>
         </div>
+
+        
+    </div>
+
+    <div class="sig">
+        <img width="100px" src="{{ 'images/signatures/' . $signature }}">
     </div>
    
 </body>
