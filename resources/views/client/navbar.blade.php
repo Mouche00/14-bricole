@@ -51,7 +51,7 @@
                     <div class="flex items-center mt-4 lg:mt-0">
                         <button type="button" class="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
                             <div class="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
-                                <img src="{{ asset('images/users/' . $user->picture) }}" class="object-cover w-full h-full" alt="avatar">
+                                <img src="{{ asset('images/users/' . auth()->user()->picture) }}" class="object-cover w-full h-full" alt="avatar">
                             </div>
     
                             <h3 class="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">Khatab wedaa</h3>

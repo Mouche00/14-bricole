@@ -18,6 +18,11 @@
     </div>  
     <form action="{{ route('images.artisan') }}" method="POST" enctype="multipart/form-data">
         @csrf
+    
+        @if(Auth::user()->artisans && Auth::user()->artisans->isNotEmpty())
+            <input type="hidden" name="artisan_id" value="{{ Auth::user()->artisans->first()->id }}">
+        @endif
+    
         <div class="mt-10">
             <div class="flex justify-center">
                 <label for="dropzone-file" class="flex items-center px-3 py-3 w-72  mx-auto mt-4 text-center bg-white border-2 border-dashed rounded-lg cursor-pointer dark:border-blue-500 dark:bg-gray-900">

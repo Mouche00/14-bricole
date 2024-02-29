@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('artisan_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('client_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
-        });
+        });     
     }
 
     /**

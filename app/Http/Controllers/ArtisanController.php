@@ -8,6 +8,7 @@ use App\Models\Competance;
 use App\Models\TempDomain;
 use App\Models\Service; 
 use App\Models\Domain;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,10 +23,7 @@ class ArtisanController extends Controller
         return view('artisan.artisanServices');
     }
 
-    public function images()
-    {
-       return view('artisan.artisanImages');
-    }
+
 
 
     public function addServices(Request $request){
@@ -133,29 +131,16 @@ class ArtisanController extends Controller
      * Store a newly created resource in storage.
      */
 
-     public function addImage(Request $request)
-     {
-         $request->validate([
-             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-         ]);
-     
-         $user = Auth::user();
-         $artisan = $user->artisan;
-     
-         $images = [];
-     
-         foreach ($request->file('images') as $image) {
-             $path = $image->store('images');
-             $images[] = $path;
-         }
-     
-         $currentImages = $artisan->images ?? [];
-         $artisan->update(['images' => array_merge($currentImages, $images)]);
-     
-         return redirect()->route('services');
-     }
-  
+     public function images()
+    {
+        $images = Image::all();
+        return view('artisan.artisanImages', compact('images'));
+    }
 
+    public function addImage(Request $request)
+    {
+   
+    }
     /**
      * Display the specified resource.
      */
