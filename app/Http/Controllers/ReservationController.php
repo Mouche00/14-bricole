@@ -26,11 +26,13 @@ class ReservationController extends Controller
             'date' => 'required',
         ]);
 
-        $attributes = array_merge($attributes, [
-            'service_id' => $id
-        ]);
+        // $attributes = array_merge($attributes, [
+        //     'service_id' => $id
+        // ]);
 
-        auth()->user()->client()->first()->reservations()->create($attributes);
+        $reservation = auth()->user()->client()->first()->reservations()->create($attributes);
+
+        $reservation->services()->attach($id);
 
         return redirect()->route('reservations');
     }

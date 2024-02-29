@@ -30,9 +30,9 @@
               <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
               </div>
               <div>
-                <p class="font-bold font-mono text-xl text-white">{{ $reservation->service->artisan->user->name }}</p>
+                <p class="font-bold font-mono text-xl text-white">{{ $reservation->services->first()->artisan->user->name }}</p>
                 <p class="text-m font-mono text-white font-bold">
-                    @foreach ($reservation->service->artisan->domains as $domain)
+                    @foreach ($reservation->services->first()->artisan->domains as $domain)
                         <span>{{ ucwords($domain->nom) . ($loop->last ? '' : ', ') }}</span>
                     @endforeach
                 </p>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="p-4 bg-white text-black rounded-lg font-bold">
-                        <p>${{ $reservation->service->tarif }}</p> 
+                        <p>${{ $reservation->services->first()->tarif }}</p> 
                     </div>
           </div>
           
@@ -48,8 +48,8 @@
               <div class="flex space-x-3 text-white text-xl font-bold">
                 
                 <div class="flex-col justify-between items-center">
-                    <h1 class="text-4xl">{{ $reservation->service->nom }}</h1> 
-                    <p>{{ $reservation->service->description }}</p> 
+                    <h1 class="text-4xl">{{ $reservation->services->first()->nom }}</h1> 
+                    <p>{{ $reservation->services->first()->description }}</p> 
                 </div> 
             </div>
               <div class="flex space-x-3 text-white font-bold text-xl my-3">
@@ -59,7 +59,7 @@
                   {{-- RECLAMATION BUTTON START --}}
                     @if($reservation->date < now()->timezone('Africa/Casablanca')->toDateTimeString())
                       <div class="my-2">
-                        <a href="{{route('reclamation', ['id' => $reservation->service->artisan->id])}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
+                        <a href="{{route('reclamation', ['id' => $reservation->services->first()->artisan->id])}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
                             <img src="{{asset('pictures/reservation.png')}}" class="h-6 w-6" alt="">
                             
                             Réclamation
@@ -73,7 +73,7 @@
 
                     {{-- INVOICE BUTTON START --}}
                       @if($reservation->date < now()->timezone('Africa/Casablanca')->toDateTimeString())
-                        <a href="{{route('invoice', ['id' => $reservation->service->artisan->id])}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
+                        <a href="{{route('invoice', ['reservation' => $reservation->id])}}" class="text-[#023e8a] bg-white focus:ring-4 focus:outline-none focus:ring-blue-400 /50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-blue-400 /50 dark:hover:bg-blue-400 /30 me-2 mb-2">
                           <img src="{{asset('pictures/pdf.png')}}" class="h-6 w-6" alt="">
                           Devis
                         </a>

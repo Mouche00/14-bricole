@@ -111,10 +111,11 @@ Route::middleware(['auth', 'can:client'])->group(function () {
     Route::delete('/reservation/delete/{reservation}', [ReservationController::class, 'destroy'])->name('reservation.delete');
     Route::get('/search', [SearchController::class, 'search'])->name('search');
     Route::get('/searchResults', [SearchController::class, 'searchResults'])->name('searchResults');
+    Route::get('/invoice/{reservation}', [InvoiceController::class, 'generate'])->name('invoice');
+
 
 });
 
-Route::get('/invoice', [InvoiceController::class, 'generate'])->name('invoice');
 
 
 
