@@ -19,24 +19,6 @@ class SessionController extends Controller
             'password'=> 'required',
             ]);
 
-
-        /* REDIRECTION WHITHOUT SAPTIE
-
-        if(auth()->attempt($attributes)){
-            if(auth()->user()->artisan()->first()->exists()) {
-
-            } elseif(auth()->user()->client()->first()->exists()) {
-                
-            } elseif(auth()->user()->admin()->first()->exists()) {
-
-            } else {
-
-                return back();
-            }
-        }
-
-        */
-
         if(! auth()->attempt($attributes)) {
             throw ValidationException::withMessages([
                 'email' => 'Your provided credentials could not be verified.'
@@ -56,21 +38,6 @@ class SessionController extends Controller
                 $redirect = 'admin';
                 break;
         }
-
-        /* OLD REDIRECTION WITH SAPTIE (MORE CONTROLE OVER ROUTES)
-        
-        if(auth()->user()->hasRole('artisan')) {
-
-            return redirect()->route('artisan');
-        } elseif (auth()->user()->hasRole('client')) {
-
-            return redirect()->route('client');
-        } elseif (auth()->user()->hasRole('admin')) {
-
-            return redirect()->route('artisan');
-        }
-
-        */
 
         return redirect()->route($redirect);
     }
